@@ -109,7 +109,13 @@ div.col-md-12.header-title {
   -moz-box-shadow: -1px 0px 13px 2px rgba(0, 0, 0, 0.5);
 }
 
+div.content-wrapper > div.row:first-child {
+  margin-left: 0;
+  margin-right: 0;
+}
+
 div.col-md-12.header-title > h1 {
   font-weight: 525;
   padding-left: 2rem;
+  display: inline-block;
 }
