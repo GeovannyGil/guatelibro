@@ -195,7 +195,7 @@ h1{
   gap: 50px;
   flex-wrap: wrap;
   justify-content: center;
-  margin-top:6%;
+  margin-top:5%;
 
 }
 .card__perfil{
@@ -218,12 +218,7 @@ h1{
   padding: 5px 25px;
   color: rgb(53, 53, 53);
 }
-img{
-  width: 140px;
-  border-radius: 50%;
-  box-shadow: 2px 2px 5px rgb(216, 216, 216);
 
-}
 .card__nombre{
   display: flex;
   flex-direction: column;
@@ -258,4 +253,11 @@ hr{
 box-sizing: content-box;
 min-height: 200px; 
 }
+
+.tam{
+  width: 125px;
+  height: 50px;
+}
+
+
   
