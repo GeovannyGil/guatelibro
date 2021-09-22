@@ -1,6 +1,46 @@
 :root {
-  --letter: #4b4b4b;
-  --bg-primary-watsy: #ff6600;
-  --bg-primary-watsy-hover: #ec5f00;
-  --bg-primary-watsy-disabled: #ff8b3e;
+  --letter-light: #f3f8f2;
+  --letter-black: #2d3142;
+  --bg-primary-color: #3581b8;
+  --bg-secondary-color: #2d3142;
+  --bg-terceary-color: #f3f8f2;
+}
+
+/* Tipo de letra Open Sans */
+.sidebar-dark-primary {
+  background-color: var(--bg-primary-color);
+}
+
+.layout-navbar-fixed
+  .wrapper
+  .sidebar-dark-primary
+  .brand-link:not([class*="navbar"]) {
+  background-color: var(--bg-secondary-color);
+}
+
+[class*="sidebar-dark-"] .sidebar a,
+[class*="sidebar-dark-"] .brand-link,
+[class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link {
+  color: var(--letter-black);
+}
+
+[class*="sidebar-dark"] .form-control-sidebar {
+  background-color: var(--bg-terceary-color);
+  border: 1px solid var(--bg-terceary-color);
+  color: var(--letter-black);
+}
+
+[class*="sidebar-dark"] .btn-sidebar {
+  background-color: var(--bg-secondary-color);
+  border: 1px solid var(--bg-terceary-color);
+  color: #fff;
+}
+
+.navbar-white {
+  background-color: var(--bg-terceary-color);
+  color: var(--letter-black);
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: var(--letter-black);
 }
