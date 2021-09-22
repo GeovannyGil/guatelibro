@@ -21,13 +21,13 @@
 [class*="sidebar-dark-"] .sidebar a,
 [class*="sidebar-dark-"] .brand-link,
 [class*="sidebar-dark-"] .nav-treeview > .nav-item > .nav-link {
-  color: var(--letter-black);
+  color: var(--letter-light);
 }
 
 [class*="sidebar-dark"] .form-control-sidebar {
   background-color: var(--bg-terceary-color);
   border: 1px solid var(--bg-terceary-color);
-  color: var(--letter-black);
+  color: var(--letter-light);
 }
 
 [class*="sidebar-dark"] .btn-sidebar {
