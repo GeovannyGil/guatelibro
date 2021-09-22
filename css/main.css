@@ -2,8 +2,63 @@
   --letter-light: #f3f8f2;
   --letter-black: #2d3142;
   --bg-primary-color: #3581b8;
-  --bg-secondary-color: #2d3142;
+  --bg-primary-color-hover: #2b6d9c;
+  --bg-secondary-color: #072446;
   --bg-terceary-color: #f3f8f2;
+}
+/* Globales */
+.card-header-bg2 {
+  background-color: var(--bg-secondary-color);
+  color: var(--letter-light);
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.card-header-bg1 {
+  background-color: var(--bg-primary-color);
+  color: var(--letter-light);
+  font-weight: 500;
+  font-size: 1.5rem;
+}
+
+.thead-bg1 {
+  background-color: var(--bg-primary-color);
+  color: var(--letter-light);
+  font-size: 1.2rem;
+}
+
+.btn-primary-gt {
+  background-color: var(--bg-primary-color);
+  color: var(--letter-light);
+  font-weight: 525;
+}
+
+.btn-primary-gt:hover {
+  background-color: var(--bg-primary-color-hover);
+  color: var(--letter-light);
+}
+
+.btn-secondary-gt {
+  border: 2px solid var(--bg-primary-color);
+  color: var(--bg-primary-color);
+  font-weight: 525;
+}
+
+.btn-secondary-gt:hover {
+  border: none;
+  background-color: var(--bg-primary-color-hover);
+  color: var(--letter-light);
+}
+
+.btn-terceary-gt {
+  color: var(--bg-primary-color);
+  font-weight: 525;
+}
+
+.btn-terceary-gt:hover {
+  border: none;
+  background-color: var(--bg-primary-color-hover);
+  color: var(--letter-light);
 }
 
 /* Tipo de letra Open Sans */
@@ -27,7 +82,7 @@
 [class*="sidebar-dark"] .form-control-sidebar {
   background-color: var(--bg-terceary-color);
   border: 1px solid var(--bg-terceary-color);
-  color: var(--letter-light);
+  color: var(--letter-dark);
 }
 
 [class*="sidebar-dark"] .btn-sidebar {
@@ -43,4 +98,17 @@
 
 .navbar-light .navbar-nav .nav-link {
   color: var(--letter-black);
+}
+
+div.col-md-12.header-title {
+  background-color: var(--bg-secondary-color);
+  color: var(--letter-light);
+  box-shadow: -1px 0px 13px 2px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: -1px 0px 13px 2px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: -1px 0px 13px 2px rgba(0, 0, 0, 0.5);
+}
+
+div.col-md-12.header-title > h1 {
+  font-weight: 525;
+  padding-left: 2rem;
 }
