@@ -170,13 +170,13 @@
               </a>
             </li>
             <li class="nav-item">
-                <a href="http://localhost/guatelibro/rol.html" class="nav-link">
-                  <i class="nav-icon fas fa-user-lock"></i>
-                  <p>
-                    Rol
-                  </p>
-                </a>
-              </li>
+              <a href="http://localhost/guatelibro/rol.html" class="nav-link">
+                <i class="nav-icon fas fa-user-lock"></i>
+                <p>
+                  Rol
+                </p>
+              </a>
+            </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -206,7 +206,7 @@
                     <input type="text" placeholder="Ingrese una categoria" class="form-control">
                   </div>
                 </form>
-                <input type="button" class="btn btn-primary-gt btn-block" value="Guardar Categoria">
+                <input type="button" id="btnSave" class="btn btn-primary-gt btn-block" value="Guardar Categoria">
 
               </div>
             </div>
@@ -226,7 +226,8 @@
                     <th scope="row">1</th>
                     <td>Mark</td>
                     <td>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button>
+                      <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i
+                          class="fas fa-trash"></i></button>
                       <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i
                           class="fas fa-edit"></i></button>
                     </td>
@@ -235,7 +236,8 @@
                     <th scope="row">2</th>
                     <td>Jacob</td>
                     <td>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button>
+                      <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i
+                          class="fas fa-trash"></i></button>
                       <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i
                           class="fas fa-edit"></i></button>
                     </td>
@@ -244,7 +246,8 @@
                     <th scope="row">3</th>
                     <td>Larry</td>
                     <td>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button>
+                      <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i
+                          class="fas fa-trash"></i></button>
                       <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i
                           class="fas fa-edit"></i></button>
                     </td>
@@ -283,7 +286,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-primary-gt">Actualizar</button>
+            <button type="button" class="btn btn-primary-gt" id="btnUpdate">Actualizar</button>
             <button type="button" class="btn btn-secondary-gt" data-dismiss="modal">Cerrar</button>
           </div>
         </div>
@@ -303,9 +306,12 @@
   <script src="./js/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="./js/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="./js/sweetAlert/sweetalert2.all.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="./js/adminlte.min.js"></script>
   <script src="./js/demo.js"></script>
+  <script src="./js/category.js"></script>
+  <script src="./js/global.js"></script>
 </body>
 
 </html>
