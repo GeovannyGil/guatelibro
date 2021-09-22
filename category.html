@@ -100,8 +100,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="#" class="brand-link">
-        <img src="./img/logo-admin.png" alt="Guatelibro Logo" class="brand-image img-circle elevation-3"
-          style="opacity: .8">
+        <img src="./img/logo-admin.png" alt="Guatelibro Logo" class="brand-image img-circle elevation-3">
         <span class="brand-text font-weight-light">Guatelibro Admin</span>
       </a>
 
@@ -216,14 +215,14 @@
                 Formulario Categorias
               </div>
               <div class="card-body">
-                <form action="">
+                <form action="" id="form-rol">
                   <div class="form-group">
                     <label for="">Categoria</label>
-                    <input type="text" placeholder="Ingrese una categoria" class="form-control">
+                    <input type="text" name="category" id="category" placeholder="Ingrese una categoria"
+                      class="form-control">
                   </div>
                 </form>
                 <input type="button" id="btnSave" class="btn btn-primary-gt btn-block" value="Guardar Categoria">
-
               </div>
             </div>
           </div>
@@ -293,7 +292,7 @@
           <div class="modal-body">
             <form action="" id="updateCategory">
               <div class="row">
-                <input type="hidden" name="keyCategory" placeholder="Ingrese una categoria">
+                <input type="hidden" name="keyCategory" id="keyCategory" placeholder="Ingrese una categoria">
                 <div class="form-group col-12">
                   <label for="">Categoria</label>
                   <input type="text" name="categoryU" placeholder="Ingrese una categoria" class="form-control">
@@ -326,7 +325,7 @@
   <!-- AdminLTE for demo purposes -->
   <script src="./js/adminlte.min.js"></script>
   <script src="./js/demo.js"></script>
-  <script src="./js/category.js"></script>
+  <!-- <script src="./js/category.js"></script> -->
   <script src="./js/global.js"></script>
 </body>
 

@@ -100,8 +100,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="#" class="brand-link">
-        <img src="./img/logo-admin.png" alt="Guatelibro Logo" class="brand-image img-circle elevation-3"
-          style="opacity: .8">
+        <img src="./img/logo-admin.png" alt="Guatelibro Logo" class="brand-image img-circle elevation-3">
         <span class="brand-text font-weight-light">Guatelibro Admin</span>
       </a>
 
@@ -170,29 +169,29 @@
               </a>
             </li>
             <li class="nav-item">
-                <a href="http://localhost/guatelibro/rol.html" class="nav-link">
-                  <i class="nav-icon fas fa-user-lock"></i>
-                  <p>
-                    Rol
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="http://localhost/guatelibro/library_user.html" class="nav-link">
-                  <i class="nav-icon fas fa-book-reader"></i>
-                  <p>
-                    Libreria Personal
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="http://localhost/guatelibro/product.html" class="nav-link">
-                  <i class="nav-icon fas fa-book"></i>
-                  <p>
-                    Productos
-                  </p>
-                </a>
-              </li>
+              <a href="http://localhost/guatelibro/rol.html" class="nav-link">
+                <i class="nav-icon fas fa-user-lock"></i>
+                <p>
+                  Rol
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="http://localhost/guatelibro/library_user.html" class="nav-link">
+                <i class="nav-icon fas fa-book-reader"></i>
+                <p>
+                  Libreria Personal
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="http://localhost/guatelibro/product.html" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Productos
+                </p>
+              </a>
+            </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -216,25 +215,26 @@
                 Formulario Libreria Personal
               </div>
               <div class="card-body">
-                <form action="">
+                <form action="" id="formLibraryUser">
                   <div class="form-group">
                     <label for="">Miembro</label>
-                    <select class="form-control">
-                        <option>Kevin</option>
-                        <option>Angel</option>
-                        <option>Mateo</option>
+                    <select class="form-control" name="selectMember" id="selectMember">
+                      <option>Kevin</option>
+                      <option>Angel</option>
+                      <option>Mateo</option>
                     </select>
                   </div>
                   <div class="form-group">
                     <label for="">Producto</label>
-                    <select class="form-control">
-                        <option>Libro 1</option>
-                        <option>Libro 2</option>
-                        <option>Libro 3</option>
+                    <select class="form-control" name="selectProduct" id="selectProduct">
+                      <option>Libro 1</option>
+                      <option>Libro 2</option>
+                      <option>Libro 3</option>
                     </select>
                   </div>
                 </form>
-                <input type="button" class="btn btn-primary-gt btn-block" value="Guardar Libreria Personal">
+                <input type="button" id="btnSave" class="btn btn-primary-gt btn-block"
+                  value="Guardar Libreria Personal">
 
               </div>
             </div>
@@ -256,8 +256,10 @@
                     <td>Kevin</td>
                     <td>Libro 1</td>
                     <td>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-edit"></i></button>
+                      <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i
+                          class="fas fa-trash"></i></button>
+                      <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i
+                          class="fas fa-edit"></i></button>
                     </td>
                   </tr>
                   <tr>
@@ -265,8 +267,10 @@
                     <td>Angel</td>
                     <td>Libro 2</td>
                     <td>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-edit"></i></button>
+                      <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i
+                          class="fas fa-trash"></i></button>
+                      <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i
+                          class="fas fa-edit"></i></button>
                     </td>
                   </tr>
                   <tr>
@@ -274,8 +278,10 @@
                     <td>Mateo</td>
                     <td>Libro 3</td>
                     <td>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-edit"></i></button>
+                      <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i
+                          class="fas fa-trash"></i></button>
+                      <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i
+                          class="fas fa-edit"></i></button>
                     </td>
                   </tr>
                 </tbody>
@@ -286,7 +292,45 @@
       </div>
     </div>
     <!-- /.content-wrapper -->
-
+    <!-- Modal -->
+    <div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header card-header-bg1">
+            <h5 class="modal-title " id="exampleModalLongTitle">Actualizar Dato</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true" class="text-white">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="" id="formLibraryUserU">
+              <input type="hidden" id="keyLibraryUser" id="keyLibraryUser">
+              <div class="form-group">
+                <label for="">Miembro</label>
+                <select class="form-control" name="selectMemberU" id="selectMemberU">
+                  <option>Kevin</option>
+                  <option>Angel</option>
+                  <option>Mateo</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="">Producto</label>
+                <select class="form-control" name="selectProductU" id="selectProductU">
+                  <option>Libro 1</option>
+                  <option>Libro 2</option>
+                  <option>Libro 3</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary-gt" id="btnUpdate">Actualizar</button>
+            <button type="button" class="btn btn-secondary-gt" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
 
     <!-- Control Sidebar -->
@@ -301,9 +345,11 @@
   <script src="./js/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="./js/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="./js/sweetAlert/sweetalert2.all.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="./js/adminlte.min.js"></script>
   <script src="./js/demo.js"></script>
+  <script src="./js/global.js"></script>
 </body>
 
 </html>

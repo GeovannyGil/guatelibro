@@ -100,8 +100,7 @@
     <aside class="main-sidebar sidebar-dark-primary elevation-4">
       <!-- Brand Logo -->
       <a href="#" class="brand-link">
-        <img src="./img/logo-admin.png" alt="Guatelibro Logo" class="brand-image img-circle elevation-3"
-          style="opacity: .8">
+        <img src="./img/logo-admin.png" alt="Guatelibro Logo" class="brand-image img-circle elevation-3">
         <span class="brand-text font-weight-light">Guatelibro Admin</span>
       </a>
 
@@ -217,17 +216,87 @@
                 Formulario Rol
               </div>
               <div class="card-body">
-                <form action="">
+                <form action="" id="formRol">
                   <div class="form-group">
                     <label for="">Rol</label>
-                    <input type="text" placeholder="Ingrese una rol" class="form-control">
+                    <input type="text" name="rol" id="rol" placeholder="Ingrese una rol" class="form-control">
                   </div>
                   <div class="form-group">
-                    <label for="">Permiso</label>
-                    <input type="text" placeholder="Ingrese un permiso" class="form-control">
+                    <ul class="list-group list-group-flush">
+                      <div class="row" id="listAccess">
+                        <div class="col-md-6 my-2"">
+                          <li class=" list-group-item">
+                          <!-- Default checked -->
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="categoryAccess"
+                              name="categoryAccess">
+                            <label class="custom-control-label" for="categoryAccess">Categorias</label>
+                          </div>
+                          </li>
+                        </div>
+                        <div class="col-md-6 my-2">
+                          <li class="list-group-item">
+                            <!-- Default checked -->
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="rolAccess" name="rolAccess">
+                              <label class="custom-control-label" for="rolAccess">Rol</label>
+                            </div>
+                          </li>
+                        </div>
+                        <div class="col-md-6 my-2"">
+                          <li class=" list-group-item">
+                          <!-- Default checked -->
+                          <div class="custom-control custom-checkbox">
+                            <input type="checkbox" class="custom-control-input" id="productAccess" name="productAccess">
+                            <label class="custom-control-label" for="productAccess">Productos</label>
+                          </div>
+                          </li>
+                        </div>
+                        <div class="col-md-6 my-2">
+                          <li class=" list-group-item">
+                            <!-- Default checked -->
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="membersAccess"
+                                name="membersAccess">
+                              <label class="custom-control-label" for="membersAccess">Miembros</label>
+                            </div>
+                          </li>
+                        </div>
+                        <div class="col-md-6 my-2">
+                          <li class=" list-group-item">
+                            <!-- Default checked -->
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="membershipAccess"
+                                name="membershipAccess">
+                              <label class="custom-control-label" for="membershipAccess">Membresias</label>
+                            </div>
+                          </li>
+                        </div>
+                        <div class="col-md-6 my-2">
+                          <li class=" list-group-item">
+                            <!-- Default checked -->
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="suscriptionsAccess"
+                                name="suscriptionsAccess">
+                              <label class="custom-control-label" for="suscriptionsAccess">Suscripciones</label>
+                            </div>
+                          </li>
+                        </div>
+                        <div class="col-md-6 my-2">
+                          <li class=" list-group-item">
+                            <!-- Default checked -->
+                            <div class="custom-control custom-checkbox">
+                              <input type="checkbox" class="custom-control-input" id="paymentsAccess"
+                                name="paymentsAccess">
+                              <label class="custom-control-label" for="paymentsAccess">Pagos</label>
+                            </div>
+                          </li>
+                        </div>
+                      </div>
+                    </ul>
                   </div>
                 </form>
-                <input type="button" class="btn btn-primary-gt btn-block" value="Guardar Rol">
+                <input type="button" class="btn btn-primary-gt btn-block" value="Guardar Rol" id="btnSave">
 
               </div>
             </div>
@@ -249,8 +318,10 @@
                     <td>Administrador</td>
                     <td>Registrar</td>
                     <td>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-edit"></i></button>
+                      <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i
+                          class="fas fa-trash"></i></button>
+                      <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i
+                          class="fas fa-edit"></i></button>
                     </td>
                   </tr>
                   <tr>
@@ -258,8 +329,10 @@
                     <td>Alumno</td>
                     <td>Ver</td>
                     <td>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-edit"></i></button>
+                      <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i
+                          class="fas fa-trash"></i></button>
+                      <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i
+                          class="fas fa-edit"></i></button>
                     </td>
                   </tr>
                   <tr>
@@ -267,8 +340,10 @@
                     <td>Profesor</td>
                     <td>Editar</td>
                     <td>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-edit"></i></button>
+                      <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i
+                          class="fas fa-trash"></i></button>
+                      <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i
+                          class="fas fa-edit"></i></button>
                     </td>
                   </tr>
                 </tbody>
@@ -280,7 +355,106 @@
     </div>
     <!-- /.content-wrapper -->
 
-
+    <!-- Modal -->
+    <div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header card-header-bg1">
+            <h5 class="modal-title " id="exampleModalLongTitle">Actualizar Datos</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true" class="text-white">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="" id="formRolU">
+              <input type="hidden" id="keyRol" name="keyRol">
+              <div class="form-group">
+                <label for="">Rol</label>
+                <input type="text" name="rolU" id="rolU" placeholder="Ingrese una rol" class="form-control">
+              </div>
+              <div class="form-group">
+                <ul class="list-group list-group-flush">
+                  <div class="row" id="listAccessU">
+                    <div class="col-md-6 my-2">
+                      <li class=" list-group-item">
+                        <!-- Default checked -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="categoryAccessU"
+                            name="categoryAccessU">
+                          <label class="custom-control-label" for="categoryAccessU">Categorias</label>
+                        </div>
+                      </li>
+                    </div>
+                    <div class="col-md-6 my-2">
+                      <li class="list-group-item">
+                        <!-- Default checked -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="rolAccessU" name="rolAccessU">
+                          <label class="custom-control-label" for="rolAccessU">Rol</label>
+                        </div>
+                      </li>
+                    </div>
+                    <div class="col-md-6 my-2">
+                      <li class=" list-group-item">
+                        <!-- Default checked -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="productAccessU" name="productAccessU">
+                          <label class="custom-control-label" for="productAccessU">Productos</label>
+                        </div>
+                      </li>
+                    </div>
+                    <div class="col-md-6 my-2">
+                      <li class=" list-group-item">
+                        <!-- Default checked -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="membersAccessU" name="membersAccessU">
+                          <label class="custom-control-label" for="membersAccessU">Miembros</label>
+                        </div>
+                      </li>
+                    </div>
+                    <div class="col-md-6 my-2">
+                      <li class=" list-group-item">
+                        <!-- Default checked -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="membershipAccessU"
+                            name="membershipAccessU">
+                          <label class="custom-control-label" for="membershipAccessU">Membresias</label>
+                        </div>
+                      </li>
+                    </div>
+                    <div class="col-md-6 my-2">
+                      <li class=" list-group-item">
+                        <!-- Default checked -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="suscriptionsAccessU"
+                            name="suscriptionsAccessU">
+                          <label class="custom-control-label" for="suscriptionsAccessU">Suscripciones</label>
+                        </div>
+                      </li>
+                    </div>
+                    <div class="col-md-6 my-2">
+                      <li class=" list-group-item">
+                        <!-- Default checked -->
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="paymentsAccessU"
+                            name="paymentsAccessU">
+                          <label class="custom-control-label" for="paymentsAccessU">Pagos</label>
+                        </div>
+                      </li>
+                    </div>
+                  </div>
+                </ul>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary-gt" id="btnUpdate">Actualizar</button>
+            <button type="button" class="btn btn-secondary-gt" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -294,6 +468,7 @@
   <script src="./js/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="./js/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="./js/sweetAlert/sweetalert2.all.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="./js/adminlte.min.js"></script>
   <script src="./js/demo.js"></script>
