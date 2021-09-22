@@ -215,29 +215,30 @@
                 Formulario Productos
               </div>
               <div class="card-body">
-                <form action="">
+                <form action="" id="formProducts">
                   <div class="form-group">
                     <label for="">Nombre Producto</label>
-                    <input type="text" placeholder="Ingrese el nombre del producto" class="form-control">
+                    <input type="text" placeholder="Ingrese el nombre del producto" name="productName" id="productName"
+                      class="form-control">
                   </div>
                   <div class="form-group">
                     <label for="">Descripción</label>
-                    <textarea name="descripcion" class="form-control" rows="3" cols="20"
+                    <textarea name="description" id="description" class="form-control" rows="3" cols="20"
                       placeholder="Ingrese el nombre del producto"></textarea>
                   </div>
                   <div class="form-group">
                     <label for="">Path del Producto</label>
-                    <input type="text" placeholder="Ingrese el path del producto" class="form-control">
+                    <input type="text" name="pathProduct" id="pathProduct" placeholder="Ingrese el path del producto"
+                      class="form-control">
                   </div>
                   <div class="form-group">
                     <label for="">Fecha Registro</label>
-                    <input type="date" class="form-control">
+                    <input type="date" name="dateRegister" id="dateRegister" class="form-control">
                   </div>
-
 
                   <div class="form-group">
                     <label for="">Categoria</label>
-                    <select class="form-control">
+                    <select class="form-control" name="selectCategory" id="selectCategory">
                       <option>Revista</option>
                       <option>Libro</option>
                       <option>Articulo 3</option>
@@ -245,14 +246,15 @@
                   </div>
                   <div class="form-group">
                     <label for="">Miembro</label>
-                    <select class="form-control">
+                    <select class="form-control" name="selectMember" id="selectMember">
                       <option>Kevin</option>
                       <option>Angel</option>
                       <option>Mateo</option>
                     </select>
                   </div>
                 </form>
-                <input type="button" class="btn btn-primary-gt btn-block" value="Guardar Libreria Personal">
+                <input type="button" id="btnSave" class="btn btn-primary-gt btn-block"
+                  value="Guardar Libreria Personal">
 
               </div>
             </div>
@@ -282,8 +284,10 @@
                     <td>Libro</td>
                     <td>Kevin</td>
                     <td>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-edit"></i></button>
+                      <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i
+                          class="fas fa-trash"></i></button>
+                      <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i
+                          class="fas fa-edit"></i></button>
                     </td>
                   </tr>
                   <tr>
@@ -295,8 +299,10 @@
                     <td>Libro</td>
                     <td>Angel</td>
                     <td>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-edit"></i></button>
+                      <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i
+                          class="fas fa-trash"></i></button>
+                      <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i
+                          class="fas fa-edit"></i></button>
                     </td>
                   </tr>
                 </tbody>
@@ -308,7 +314,65 @@
     </div>
     <!-- /.content-wrapper -->
 
+    <!-- Modal -->
+    <div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header card-header-bg1">
+            <h5 class="modal-title " id="exampleModalLongTitle">Actualizar Dato</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true" class="text-white">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="" id="formProductsU">
+              <input type="hidden" id="keyProduct" name="keyProduct">
+              <div class="form-group">
+                <label for="">Nombre Producto</label>
+                <input type="text" placeholder="Ingrese el nombre del producto" name="productNameU" id="productNameU"
+                  class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="">Descripción</label>
+                <textarea name="descriptionU" id="descriptionU" class="form-control" rows="3" cols="20"
+                  placeholder="Ingrese el nombre del producto"></textarea>
+              </div>
+              <div class="form-group">
+                <label for="">Path del Producto</label>
+                <input type="text" name="pathProductU" id="pathProductU" placeholder="Ingrese el path del producto"
+                  class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="">Fecha Registro</label>
+                <input type="date" name="dateRegisterU" id="dateRegisterU" class="form-control">
+              </div>
 
+              <div class="form-group">
+                <label for="">Categoria</label>
+                <select class="form-control" name="selectCategoryU" id="selectCategoryU">
+                  <option>Revista</option>
+                  <option>Libro</option>
+                  <option>Articulo 3</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="">Miembro</label>
+                <select class="form-control" name="selectMemberU" id="selectMemberU">
+                  <option>Kevin</option>
+                  <option>Angel</option>
+                  <option>Mateo</option>
+                </select>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary-gt" id="btnUpdate">Actualizar</button>
+            <button type="button" class="btn btn-secondary-gt" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -322,9 +386,11 @@
   <script src="./js/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="./js/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="./js/sweetAlert/sweetalert2.all.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="./js/adminlte.min.js"></script>
   <script src="./js/demo.js"></script>
+  <script src="./js/global.js"></script>
 </body>
 
 </html>
