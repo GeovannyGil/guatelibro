@@ -44,7 +44,7 @@ create table membership(
 id_membership int primary key auto_increment,
 type_membership varchar(30),
 price decimal(12,2),
-date_months date);
+date_months int(11));
 
 create table suscriptions(
 id_suscription int primary key auto_increment,
