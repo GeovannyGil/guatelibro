@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<link rel="stylesheet" href="css/style.css">
+	<script src="https://kit.fontawesome.com/b99e675b6e.js"></script>
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+	    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página card</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/03a89292db.js" crossorigin="anonymous"></script>
+	<script>
+		$(document).ready(function(){
+			$(".profile .icon_wrap").click(function(){
+			  $(this).parent().toggleClass("active");
+			  $(".notifications").removeClass("active");
+			});
+
+			$(".notifications .icon_wrap").click(function(){
+			  $(this).parent().toggleClass("active");
+			   $(".profile").removeClass("active");
+			});
+
+			$(".show_all .link").click(function(){
+			  $(".notifications").removeClass("active");
+			  $(".popup").show();
+			});
+
+			$(".close").click(function(){
+			  $(".popup").hide();
+			});
+		});
+	</script>
+</head>
+<body>
+
+<div class="wrapper">
+  <div class="navbar">
+    <div class="navbar_left">
+      <div class="logo">
+        <a href="#" class="letra">GuateLibro</a>
+ 	
+      </div>
+
+    </div>
+    <div class="navbar_left">
+      <div class="mover">
+        <a href="#" class="letra mover">Libros</a>
+		<a href="#" class="letra mover">Mi Biblioteca</a>  	
+      </div>
+
+    </div>
+
+    <div class="navbar_right">
+ 
+      <div class="profile">
+        <div class="icon_wrap">
+          <img src="img/profile_pic.png" alt="profile_pic">
+          <span class="name">Angel Teret</span>
+          <i class="fas fa-chevron-down"></i>
+        </div>
+
+        <div class="profile_dd">
+          <ul class="profile_ul">
+            <li class="profile_li"><a class="profile letra" href="#"><span class="picon"><i class="fas fa-user-alt"></i>
+                </span>Perfil</a>
+              <div class="btn">Mi Perfil</div>
+            </li>
+            <li><a class="address letra" href="#"><span class="picon"><i class="fas fa-crown"></i></i></span>Membresias</a></li>
+            <li><a class="logout letra" href="#"><span class="picon"><i class="fas fa-sign-out-alt"></i></span>Salir</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  
+</div>
+
+<body class="">
+<br>
+    <h1>Ten a tu alcance miles de libros de toda la comunidad</h1>
+    <p class="descripcion">y tambien comparte tus libros</p>
+	<p class="descri">¿Qué esperas?</p>
+
+    <section class="card">
+        <div class="card__perfil">
+            <div class="card__nombre">
+            	<p>Mensual</p>
+                <h2 class="titulos">Q 79.99</h2>
+                
+            </div>
+            <hr>
+            <div class="card__descripcion">
+                <p>Acceso a todos los libros</p>
+                <p>Compartir libros</p>
+            </div>
+            <hr>
+            <div class="card__button">
+                <a class="enlace" href="#">Saber más</a>
+            </div>
+        </div>
+        <div class="card__perfil elevar">
+            <div class="card__nombre">
+            	<p>Anual</p>
+                <h2 class="titulos">Q 849.99</h2>
+            </div>
+            <hr>
+            <div class="card__descripcion">
+                <p>Acceso a todos los libros</p>
+                <p>Compartir libros</p>
+                <p>Te llevas 2 meses gratis</p>
+            </div>
+            <hr>
+            <div class="card__button">
+                <a class="enlace" href="#">Suscribirse</a>
+            </div>
+        </div>
+        <div class="card__perfil">
+            <div class="card__nombre">
+             	<p>Semestral</p>
+                <h2 class="titulos">Q 399.99</h2>
+            </div>
+            <hr>
+            <div class="card__descripcion">
+                <p>Acceso a todos los libros</p>
+                <p>Compartir libros</p>
+                <p>Te llevas un meses gratis</p>
+            </div>
+
+            <hr>
+            <div class="card__button">
+                <a class="enlace" href="#">Saber más</a>
+            </div>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+
+</body>
+</html>
