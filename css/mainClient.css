@@ -614,3 +614,40 @@ div.portada-book-modal > img {
   object-fit: contain;
   border-radius: 25px;
 }
+
+/* VIew PDF */
+.details-book-pdf {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.details-book-pdf > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.details-book-pdf > div:first-child > .img-book {
+  background-color: var(--bg-secondary-color);
+  width: 65px;
+  height: 65px;
+  border-radius: 100%;
+}
+.details-book-pdf > div:first-child > .img-book > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.details-book-pdf > div:first-child > p {
+  font-size: 1.5rem;
+  color: var(--letter-black);
+  font-weight: 550;
+  margin: 0;
+  margin-left: 15px;
+}
+
+.hide {
+  display: none;
+}
