@@ -148,10 +148,15 @@ a {
   width: 225px;
 }
 .navbar .profile .profile_dd:before {
-  rigth: 10px;
+  right: 10px;
+}
+
+.navbar .profile .profile_dd > ul.profile_ul {
+  padding-left: 0;
 }
 
 .navbar .profile .profile_dd ul li {
+  text-align: center;
   border-bottom: 1px solid #f1f2f4;
 }
 
