@@ -26,7 +26,7 @@ a {
 }
 
 .letra {
-  color: #2d3142;
+  color: var(--letter-black);
 }
 
 .navbar {
@@ -148,10 +148,15 @@ a {
   width: 225px;
 }
 .navbar .profile .profile_dd:before {
-  rigth: 10px;
+  right: 10px;
+}
+
+.navbar .profile .profile_dd > ul.profile_ul {
+  padding-left: 0;
 }
 
 .navbar .profile .profile_dd ul li {
+  text-align: center;
   border-bottom: 1px solid #f1f2f4;
 }
 
@@ -446,7 +451,7 @@ body {
   }
 }
 
-.card {
+.card.card-book {
   position: relative;
   display: flex;
   align-items: flex-end;
@@ -462,12 +467,12 @@ body {
     0 16px 16px rgba(0, 0, 0, 0.1);
 }
 @media (min-width: 600px) {
-  .card {
+  .card.card-book {
     height: 350px;
   }
 }
 
-.card:before {
+.card.card-book:before {
   content: "";
   position: absolute;
   top: 0;
@@ -480,7 +485,7 @@ body {
   pointer-events: none;
 }
 
-.card:after {
+.card.card-book:after {
   content: "";
   display: block;
   position: absolute;
@@ -512,16 +517,16 @@ body {
   transition: transform calc(var(--d) * 2) var(--e);
 }
 
-.card:nth-child(1):before {
+.card.card-book:nth-child(1):before {
   background-image: url(https://images.unsplash.com/photo-1517021897933-0e0319cfbc28?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
 }
-.card:nth-child(2):before {
+.card.card-book:nth-child(2):before {
   background-image: url(https://images.unsplash.com/photo-1533903345306-15d1c30952de?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
 }
-.card:nth-child(3):before {
+.card.card-book:nth-child(3):before {
   background-image: url(https://images.unsplash.com/photo-1545243424-0ce743321e11?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
 }
-.card:nth-child(4):before {
+.card.card-book:nth-child(4):before {
   background-image: url(https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
 }
 
@@ -573,7 +578,7 @@ body {
 }
 
 @media (hover: hover) and (min-width: 600px) {
-  .card:after {
+  .card.card-book:after {
     transform: translateY(0);
   }
 
@@ -586,33 +591,33 @@ body {
     transition: transform var(--d) var(--e), opacity var(--d) var(--e);
   }
 
-  .card:hover,
-  .card:focus-within {
+  .card.card-book:hover,
+  .card.card-book:focus-within {
     align-items: center;
   }
-  .card:hover:before,
-  .card:focus-within:before {
+  .card.card-book:hover:before,
+  .card.card-book:focus-within:before {
     transform: translateY(-4%);
   }
-  .card:hover:after,
-  .card:focus-within:after {
+  .card.card-book:hover:after,
+  .card.card-book:focus-within:after {
     transform: translateY(-50%);
   }
-  .card:hover .content,
-  .card:focus-within .content {
+  .card.card-book:hover .content,
+  .card.card-book:focus-within .content {
     transform: translateY(0);
   }
-  .card:hover .content > *:not(.title),
-  .card:focus-within .content > *:not(.title) {
+  .card.card-book:hover .content > *:not(.title),
+  .card.card-book:focus-within .content > *:not(.title) {
     opacity: 1;
     transform: translateY(0);
     transition-delay: calc(var(--d) / 8);
   }
 
-  .card:focus-within:before,
-  .card:focus-within:after,
-  .card:focus-within .content,
-  .card:focus-within .content > *:not(.title) {
+  .card.card-book:focus-within:before,
+  .card.card-book:focus-within:after,
+  .card.card-book:focus-within .content,
+  .card.card-book:focus-within .content > *:not(.title) {
     transition-duration: 0s;
   }
 }
@@ -645,4 +650,62 @@ div.portada-book-modal > img {
 
 /*Editar Perfil*/
 
+/* VIew PDF */
+.details-book-pdf {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.details-book-pdf > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
+.details-book-pdf > div:first-child > .img-book {
+  background-color: var(--bg-secondary-color);
+  width: 65px;
+  height: 65px;
+  border-radius: 100%;
+}
+.details-book-pdf > div:first-child > .img-book > img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 100%;
+}
+
+.details-book-pdf > div:first-child > p {
+  font-size: 1.5rem;
+  color: var(--letter-black);
+  font-weight: 550;
+  margin: 0;
+  margin-left: 15px;
+}
+
+.hide {
+  display: none;
+}
+
+/* Membresias */
+a.rounded-pill {
+  padding: 1rem 2rem !important;
+}
+
+.rounded-lg {
+  border-radius: 1rem !important;
+}
+
+.text-small {
+  font-size: 0.9rem !important;
+}
+
+.custom-separator {
+  width: 5rem;
+  height: 6px;
+  border-radius: 1rem;
+}
+
+.text-uppercase {
+  letter-spacing: 0.2em;
+}
