@@ -368,7 +368,35 @@ div.brand-navbar > a {
   transform: translateY(0%);
 }
 
+
+.title-libro{
+  /* margin: 1em;
+  padding: 1em; */
+  color: var(--letter-black);
+  font-weight: 500;
+  font-family: "Open Sans";
+  font-size: 3rem;
+  position: absolute;
+  transition: all 0.4s ease;
+  border-radius: 1em;
+  box-shadow: 1em 1em 2em var(--sombra-ppal), -1em -1em 2em var(--sombra-sec),
+    inset 0 0 0 transparent, inset 0 0 0 transparent;
+  opacity: 0;
+  transform: translateY(50%);
+  transition: all 0.5s ease;
+}
+
+.title-libro.active {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
 .btn-category.active {
+  background-color: var(--bg-primary-color);
+  color: var(--letter-light);
+}
+
+.btn-libro.active {
   background-color: var(--bg-primary-color);
   color: var(--letter-light);
 }
@@ -614,5 +642,7 @@ div.portada-book-modal > img {
   object-fit: contain;
   border-radius: 25px;
 }
+
+/*Editar Perfil*/
 
 

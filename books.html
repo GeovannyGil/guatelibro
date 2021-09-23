@@ -61,15 +61,25 @@
 
   <div class="container mt-5">
     <div class="row">
+      <h2>Agragados a mi biblioteca</h2>
       <div class="col-md-12 tab-container-buttons">
         <input type="button" class="btn btn-lg btn-secondary-gt btn-category active my-3 mx-2" value="Todos">
         <input type="button" class="btn btn-lg btn-secondary-gt btn-category my-3 mx-2" value="Libros">
         <input type="button" class="btn btn-lg btn-secondary-gt btn-category my-3 mx-2" value="Articulos">
         <input type="button" class="btn btn-lg btn-secondary-gt btn-category my-3 mx-2" value="Revistas">
       </div>
-      <div class="col-md-12">
-        <div class="title-tab-container px-2">
-          <h2>Agragados a mi biblioteca</h2>
+      <div class="title-tab-container px-2">
+        <div class="title-category active">
+          Todos los articulos
+        </div>
+        <div class="title-category">
+          Libros
+        </div>
+        <div class="title-category">
+          Articulos
+        </div>
+        <div class="title-category">
+          Revistas
         </div>
       </div>
     </div>
@@ -85,28 +95,28 @@
               <button class="btn-card-book" data-toggle="modal" data-target=".modal-product-details">View Trips</button>
             </div>
           </div>
-          <div class="card">
+          <div class="card card-book">
             <div class="content">
               <h2 class="title">To The Beach</h2>
               <p class="copy">Plan your next beach trip with these fabulous destinations</p>
               <button class="btn-card-book" data-toggle="modal" data-target=".modal-product-details">View Trips</button>
             </div>
           </div>
-          <div class="card">
+          <div class="card card-book">
             <div class="content">
               <h2 class="title">Desert Destinations</h2>
               <p class="copy">It's the desert you've always dreamed of</p>
               <button class="btn-card-book" data-toggle="modal" data-target=".modal-product-details">Book Now</button>
             </div>
           </div>
-          <div class="card">
+          <div class="card card-book">
             <div class="content">
               <h2 class="title">Explore The Galaxy</h2>
               <p class="copy">Seriously, straight up, just blast off into outer space today</p>
               <button class="btn-card-book" data-toggle="modal" data-target=".modal-product-details">Book Now</button>
             </div>
           </div>
-          <div class="card" style="background-image: url(./img/portadas/memory.jpeg)">
+          <div class="card card-book" style="background-image: url(./img/portadas/memory.jpeg)">
             <div class="content">
               <h2 class="title">Explore The Galaxy</h2>
               <p class="copy">Seriously, straight up, just blast off into outer space today</p>
@@ -118,11 +128,25 @@
       </div>
     </div>
 
-    <div class="col-md-12 mt-4">
+    <div class="row">
+      <div class="col-md-12 tab-container-buttons mt-2">
+       <input type="button" class="btn btn-lg btn-secondary-gt btn-libro my-3 mx-2" value="Mis Libros">
+        <input type="button" class="btn btn-lg btn-secondary-gt btn-libro my-3 mx-2" value="Mis Revistas">
+        <input type="button" class="btn btn-lg btn-secondary-gt btn-libro my-3 mx-2" value="Mis Articulos">
+      </div>
       <div class="title-tab-container px-2">
-        <h2>Mis Libros</h2>
+        <div class="title-libro">
+          Mis Libros
+        </div>
+        <div class="title-libro">
+          Mis Revistas
+        </div>
+        <div class="title-libro">
+          Mis Articulos
+        </div>
       </div>
     </div>
+
     <div class="row grid-cards">
       <div class="col-md-12">
         <main class="page-content">
@@ -135,28 +159,28 @@
                 <button class="btn-card-book" data-toggle="modal" data-target=".modal-product-detailsU">Book Now</button>
             </div>
           </div>
-          <div class="card">
+          <div class="card card-book">
             <div class="content">
               <h2 class="title">To The Beach</h2>
               <p class="copy">Plan your next beach trip with these fabulous destinations</p>
               <button class="btn-card-book" data-toggle="modal" data-target=".modal-product-detailsU">Book Now</button>
             </div>
           </div>
-          <div class="card">
+          <div class="card card-book">
             <div class="content">
               <h2 class="title">Desert Destinations</h2>
               <p class="copy">It's the desert you've always dreamed of</p>
               <button class="btn-card-book" data-toggle="modal" data-target=".modal-product-detailsU">Book Now</button>
             </div>
           </div>
-          <div class="card">
+          <div class="card card-book">
             <div class="content">
               <h2 class="title">Explore The Galaxy</h2>
               <p class="copy">Seriously, straight up, just blast off into outer space today</p>
               <button class="btn-card-book" data-toggle="modal" data-target=".modal-product-detailsU">Book Now</button>
             </div>
           </div>
-          <div class="card" style="background-image: url(./img/portadas/memory.jpeg)">
+          <div class="card card-book" style="background-image: url(./img/portadas/memory.jpeg)">
             <div class="content">
               <h2 class="title">Explore The Galaxy</h2>
               <p class="copy">Seriously, straight up, just blast off into outer space today</p>
