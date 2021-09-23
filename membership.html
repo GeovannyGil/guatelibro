@@ -170,29 +170,29 @@
               </a>
             </li>
             <li class="nav-item">
-                <a href="http://localhost/guatelibro/rol.html" class="nav-link">
-                  <i class="nav-icon fas fa-user-lock"></i>
-                  <p>
-                    Rol
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="http://localhost/guatelibro/library_user.html" class="nav-link">
-                  <i class="nav-icon fas fa-book-reader"></i>
-                  <p>
-                    Libreria Personal
-                  </p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="http://localhost/guatelibro/product.html" class="nav-link">
-                  <i class="nav-icon fas fa-book"></i>
-                  <p>
-                    Productos
-                  </p>
-                </a>
-              </li>
+              <a href="http://localhost/guatelibro/rol.html" class="nav-link">
+                <i class="nav-icon fas fa-user-lock"></i>
+                <p>
+                  Rol
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="http://localhost/guatelibro/library_user.html" class="nav-link">
+                <i class="nav-icon fas fa-book-reader"></i>
+                <p>
+                  Libreria Personal
+                </p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a href="http://localhost/guatelibro/product.html" class="nav-link">
+                <i class="nav-icon fas fa-book"></i>
+                <p>
+                  Productos
+                </p>
+              </a>
+            </li>
           </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -216,28 +216,30 @@
                 Formulario Membresias
               </div>
               <div class="card-body">
-                <form action="">
-                  <div class="form-group">
-                    <label for="">tipo membresia</label>
-                    <select class="form-control" name="type_membership" id="type_membership">
+                <form action="" id="formMembership">
+                  <div class="row">
+                    <div class="form-group col-md-12">
+                      <label for="">tipo membresia</label>
+                      <select class="form-control" name="type_membership" id="type_membership">
                         <option>Mensual</option>
                         <option>Semestral</option>
                         <option>Anual</option>
-                    </select>
+                      </select>
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="">Precio</label>
+                      <input type="number" name="price" id="price" placeholder="Ingrese el precio" class="form-control">
+                    </div>
+                    <div class="form-group col-md-6">
+                      <label for="">Numero de meses</label>
+                      <input type="number" name="date_months" id="date_months" placeholder="Ingrese el numero de meses"
+                        class="form-control">
+                    </div>
                   </div>
-                  <div class="form-group">
-                    <label for="">Precio</label>
-                    <input type="number" name="precio" id="precio" placeholder="Ingrese el precio" class="form-control">
-                </div>
-                <div class="form-group">
-                    <label for="">Numero de meses</label>
-                    <input type="number" name="date_months" id="date_months" placeholder="Ingrese el numero de meses" class="form-control">
-                </div>
-
 
 
                 </form>
-                <input type="button" class="btn btn-primary-gt btn-block" value="Guardar Membresia">
+                <input type="button" class="btn btn-primary-gt btn-block" id="btnSave" value="Guardar Membresia">
 
               </div>
             </div>
@@ -261,8 +263,10 @@
                     <td>899.99</td>
                     <td>12</td>
                     <td>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-edit"></i></button>
+                      <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i
+                          class="fas fa-trash"></i></button>
+                      <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i
+                          class="fas fa-edit"></i></button>
                     </td>
                   </tr>
                   <tr>
@@ -271,8 +275,10 @@
                     <td>149.99</td>
                     <td>1</td>
                     <td>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button>
-                      <button class="btn btn-secondary-gt"><i class="fas fa-edit"></i></button>
+                      <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i
+                          class="fas fa-trash"></i></button>
+                      <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i
+                          class="fas fa-edit"></i></button>
                     </td>
                   </tr>
                 </tbody>
@@ -284,7 +290,49 @@
     </div>
     <!-- /.content-wrapper -->
 
+    <!-- Modal -->
+    <div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header card-header-bg1">
+            <h5 class="modal-title " id="exampleModalLongTitle">Actualizar Datos</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true" class="text-white">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form action="" id="formMembershipU">
+              <div class="row">
+                <div class="form-group col-md-12">
+                  <label for="">tipo membresia</label>
+                  <select class="form-control" name="type_membershipU" id="type_membershipU">
+                    <option>Mensual</option>
+                    <option>Semestral</option>
+                    <option>Anual</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="">Precio</label>
+                  <input type="number" name="priceU" id="priceU" placeholder="Ingrese el precio" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="">Numero de meses</label>
+                  <input type="number" name="date_monthsU" id="date_monthsU" placeholder="Ingrese el numero de meses"
+                    class="form-control">
+                </div>
+              </div>
 
+
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary-gt" id="btnUpdate">Actualizar</button>
+            <button type="button" class="btn btn-secondary-gt" data-dismiss="modal">Cerrar</button>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <!-- Control Sidebar -->
     <aside class="control-sidebar control-sidebar-dark">
@@ -298,9 +346,11 @@
   <script src="./js/jquery/jquery.min.js"></script>
   <!-- Bootstrap 4 -->
   <script src="./js/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="./js/sweetAlert/sweetalert2.all.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="./js/adminlte.min.js"></script>
   <script src="./js/demo.js"></script>
+  <script src="./js/global.js"></script>
 </body>
 
 </html>

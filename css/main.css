@@ -101,6 +101,10 @@
   color: var(--letter-black);
 }
 
+li.list-group-item {
+  border-radius: 15px !important;
+}
+
 div.col-md-12.header-title {
   background-color: var(--bg-secondary-color);
   color: var(--letter-light);
