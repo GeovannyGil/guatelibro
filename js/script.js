@@ -1,31 +1,31 @@
 'use strict'
 
-const li        = document.querySelectorAll('.li')
-const bloque    = document.querySelectorAll('.bloque')
+const input = document.querySelectorAll('.btn-category');
+const bloque = document.querySelectorAll('.title-category');
 
 // CLICK en li
-    // TODOS .li quitar la clase activo
-    // TODOS .bloque quitar la clase activo
-    // .li con la posicion se añadimos la clase activo
-    // .bloque con la posicion se añadimos la clase activo
+// TODOS .li quitar la clase activo
+// TODOS .bloque quitar la clase activo
+// .li con la posicion se añadimos la clase activo
+// .bloque con la posicion se añadimos la clase activo
 
 // Recorriendo todos los LI
-li.forEach( ( cadaLi , i )=>{
+input.forEach((cadaLi, i) => {
     // Asignando un CLICK a CADALI
-    li[i].addEventListener('click',()=>{
+    input[i].addEventListener('click', () => {
 
         // Recorrer TODOS los .li
-        li.forEach( ( cadaLi , i )=>{
+        input.forEach((cadaLi, i) => {
             // Quitando la clase activo de cada li
-            li[i].classList.remove('activo')
+            input[i].classList.remove('active')
             // Quitando la clase activo de cada bloque
-            bloque[i].classList.remove('activo')
+            bloque[i].classList.remove('active')
         })
 
         // En el li que hemos click le añadimos la clase activo
-        li[i].classList.add('activo')
+        input[i].classList.add('active')
         // En el bloque con la misma posición le añadimos la clase activo
-        bloque[i].classList.add('activo')
+        bloque[i].classList.add('active')
 
     })
 })
