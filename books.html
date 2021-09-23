@@ -30,8 +30,8 @@
     </div>
 
     <div class="navbar_left">
-      <a href="http://localhost/guatelibro/books.html" class="link_page active-link">Mi Biblioteca</a>
       <a href="http://localhost/guatelibro/biblioteca.html" class="link_page  ">Libros</a>
+      <a href="http://localhost/guatelibro/books.html" class="link_page active-link">Mi Biblioteca</a>
     </div>
 
     <div class="navbar_right">
@@ -132,7 +132,7 @@
               <p class="copy">Check out all of these gorgeous mountain trips with beautiful views of, you guessed it,
                 the
                 mountains</p>
-                <button class="btn-card-book" data-toggle="modal" data-target=".modal-product-detailsU">Book Now</button>
+              <button class="btn-card-book" data-toggle="modal" data-target=".modal-product-detailsU">Book Now</button>
             </div>
           </div>
           <div class="card">
@@ -169,7 +169,7 @@
     </div>
   </div>
 
-  
+
 
 
   <div class="modal fade modal-product-details" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
@@ -240,96 +240,96 @@
 
 
   <div class="modal fade modal-product-detailsU" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
-  aria-hidden="true">
-  <div class="modal-dialog modal-lg modal-dialog-centered">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Detalles del libro</h5>
-      </div>
-      <div class="modal-body">
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Detalles del libro</h5>
+        </div>
+        <div class="modal-body">
 
-        <div class="row">
+          <div class="row">
 
-          <div class="col-md-12">
-            <div class="row">
-              <div class="col-md-12">
-                <div class="form-group">
-                  <p for="">Titulo:</p>
-                  <input type="text" name="category" id="category" placeholder="Ingrese una categoria"
-                    class="form-control">
+            <div class="col-md-12">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <p for="">Titulo:</p>
+                    <input type="text" name="category" id="category" placeholder="Ingrese una categoria"
+                      class="form-control">
+                  </div>
+                </div>
+                <div class="col-md-12 form-group">
+                  <div class="">
+                    <p for="">Descripción:</p>
+                    <textarea name="description" id="description" class="form-control" rows="4" cols="30"
+                      placeholder="Ingrese el nombre del producto"></textarea>
+                  </div>
+                </div>
+                <div class="col-md-12 form-group">
+                  <p for="">Categoria:</p>
+                  <select class="form-control" name="selectProduct" id="selectProduct">
+                    <option>Libro 1</option>
+                    <option>Libro 2</option>
+                    <option>Libro 3</option>
+                  </select>
+                </div>
+
+                <div class="col-md-6 form-group mt-4">
+                  <p for="">Subir nuevo PDF:</p>
+                  <form enctype="multipart/form-data" action="" method="POST" class="mt-2">
+                    <input name="uploadedfile" type="file" />
+                  </form>
+                </div>
+                <div class="col-md-6 form-group mt-4">
+                  <p for="">Subir nueva portada:</p>
+                  <form enctype="multipart/form-data" action="" method="POST" class="mt-2">
+                    <input name="uploadedfile" type="file" />
+                  </form>
                 </div>
               </div>
-              <div class="col-md-12 form-group">
-                <div class="">
-                <p for="">Descripción:</p>
-                <textarea name="description" id="description" class="form-control" rows="4" cols="30"
-                  placeholder="Ingrese el nombre del producto"></textarea>
-              </div>
-            </div>
-            <div class="col-md-12 form-group">
-              <p for="">Categoria:</p>
-              <select class="form-control" name="selectProduct" id="selectProduct">
-                <option>Libro 1</option>
-                <option>Libro 2</option>
-                <option>Libro 3</option>
-              </select>
-            </div>
 
-            <div class="col-md-6 form-group mt-4">
-              <p for="">Subir nuevo PDF:</p>
-              <form enctype="multipart/form-data" action="" method="POST" class="mt-2">
-                <input name="uploadedfile" type="file" />
-              </form>
-            </div>
-            <div class="col-md-6 form-group mt-4">
-              <p for="">Subir nueva portada:</p>
-              <form enctype="multipart/form-data" action="" method="POST" class="mt-2">
-                <input name="uploadedfile" type="file" />
-              </form>
             </div>
           </div>
-
+          <br>
+          <div class="modal-footer mt-4">
+            <a href="" class="btn btn-primary-gt"><i class="fas fa-eye"></i> Ver libro</a>
+            <button type="button" class="btn btn-primary-gt">Editar</button>
+            <button type="button" class="btn btn-primary-gt">Eliminar mi libro</button>
+            <button type="button" class="btn btn-secondary-gt" data-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
-      <br>
-      <div class="modal-footer mt-4">
-        <a href="" class="btn btn-primary-gt"><i class="fas fa-eye"></i> Ver libro</a>
-        <button type="button" class="btn btn-primary-gt">Editar</button>
-        <button type="button" class="btn btn-primary-gt">Eliminar mi libro</button>
-        <button type="button" class="btn btn-secondary-gt" data-dismiss="modal">Close</button>
-      </div>
     </div>
-  </div>
-</div>
 
-  <!-- </div> -->
-  <!-- jQuery -->
-  <script src="./js/jquery/jquery.min.js"></script>
-  <!-- Bootstrap 4 -->
-  <script src="./js/bootstrap/bootstrap.bundle.min.js"></script>
-  <script src="js/script.js"></script>
-  <script>
-    $(document).ready(function () {
-      $(".profile .icon_wrap").click(function () {
-        $(this).parent().toggleClass("active");
-        $(".notifications").removeClass("active");
-      });
+    <!-- </div> -->
+    <!-- jQuery -->
+    <script src="./js/jquery/jquery.min.js"></script>
+    <!-- Bootstrap 4 -->
+    <script src="./js/bootstrap/bootstrap.bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+      $(document).ready(function () {
+        $(".profile .icon_wrap").click(function () {
+          $(this).parent().toggleClass("active");
+          $(".notifications").removeClass("active");
+        });
 
-      $(".notifications .icon_wrap").click(function () {
-        $(this).parent().toggleClass("active");
-        $(".profile").removeClass("active");
-      });
+        $(".notifications .icon_wrap").click(function () {
+          $(this).parent().toggleClass("active");
+          $(".profile").removeClass("active");
+        });
 
-      $(".show_all .link").click(function () {
-        $(".notifications").removeClass("active");
-        $(".popup").show();
-      });
+        $(".show_all .link").click(function () {
+          $(".notifications").removeClass("active");
+          $(".popup").show();
+        });
 
-      $(".close").click(function () {
-        $(".popup").hide();
+        $(".close").click(function () {
+          $(".popup").hide();
+        });
       });
-    });
-  </script>
+    </script>
 
 
 
