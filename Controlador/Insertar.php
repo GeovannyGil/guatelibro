@@ -205,6 +205,19 @@ class Insertar extends Controlador{
         return true;
     }
 
+    /*Membership */
+    public function membership(){
+        $consultas=$this->modelo('Membership');
+        $type_membership=$_POST['type_membership'];
+        $price=$_POST['price'];
+        $date_months=$_POST['date_months'];
+    
+        $mensaje=$consultas->InsertarMembership($type_membership,$price,$date_months);
+        echo json_encode($mensaje); 
+        
+        return true;
+    }
+
     public function correo($datos){
         require 'Modelo/activar.php';
     }

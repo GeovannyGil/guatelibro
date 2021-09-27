@@ -187,17 +187,28 @@ class Modificar extends Controlador{
     }
 
         /*Categoria*/
-        public function categoria(){
-            $consultas=$this->modelo('Categoria');
-            $id=$_POST['id_category'];
-            $category=$_POST['category'];
+    public function categoria(){
+        $consultas=$this->modelo('Categoria');
+        $id=$_POST['id_category'];
+        $category=$_POST['category'];
 
-           
-    
-            $mensaje=$consultas->ActualizarCategoria($category,$id);
-                    echo json_encode($mensaje);        
-                    return true;
-        }
+        $mensaje=$consultas->ActualizarCategoria($category,$id);
+                echo json_encode($mensaje);        
+                return true;
+    }
+
+        /*Membership*/
+    public function membership(){
+        $consultas=$this->modelo('Membership');
+        $id=$_POST['id_membership'];
+        $type_membership=$_POST['type_membership'];
+        $price=$_POST['price'];
+        $date_months=$_POST['date_months'];
+
+        $mensaje=$consultas->ActualizarMembership($type_membership,$price,$date_months,$id);
+                echo json_encode($mensaje);        
+                return true;
+    }
 
 }
 ?>
