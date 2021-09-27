@@ -95,6 +95,19 @@ class Cargar extends Controlador
         return $filas;
     }
 
+    // public function selectCategoria()
+    // {
+    //     $consultas = $this->modelo('Categoria');
+    //     $filas = $consultas->buscarCategoria();
+    //     echo '<select class="form-control" name="type_membership" id="type_membership">';
+    //     if ($filas) {
+    //         foreach ($filas as $fila) {
+    //             echo '<option value="' . $fila['id_category'] . '">' . $fila['category'] . '</option>';
+    //         }
+    //     }
+    //     echo '</select>';
+    // }
+
     /*Membership*/
     public function membership()
     {

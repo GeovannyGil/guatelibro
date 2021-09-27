@@ -1,11 +1,13 @@
 <?php
-class Conexion{
- public function obtener_conexion(){
-     $user='root';
-     $host='localhost';
-     $pass='';
-     $db='guatelibro';
-     $conexion= new PDO("mysql:host=$host;dbname=$db;",$user,$pass);
-     return $conexion;
- }
+class Conexion
+{
+    public function obtener_conexion()
+    {
+        $user = 'root';
+        $host = 'localhost';
+        $pass = '';
+        $db = 'guatelibro';
+        $conexion = new PDO("mysql:host=$host;dbname=$db;", $user, $pass);
+        return $conexion;
+    }
 }

@@ -18,12 +18,11 @@ require 'encabezado.php';
           <form enctype="multipart/form-data" id="form-membership">
             <div class="row">
               <div class="form-group col-md-12">
-                <label for="">tipo membresia</label>
-                <select class="form-control" name="type_membership" id="type_membership">
-                  <option>Mensual</option>
-                  <option>Semestral</option>
-                  <option>Anual</option>
-                </select>
+                <label for="">Tipo membresia:</label>
+                <?php
+                $Cargar = new Cargar();
+                // $Cargar->selectCategoria();
+                ?>
               </div>
               <div class="form-group col-md-6">
                 <label for="">Precio</label>
@@ -42,20 +41,19 @@ require 'encabezado.php';
       </div>
     </div>
     <div class="col-md-8">
-    <div class="row no-gutters">        
-                <!-- parte del encabezado-->
+      <div class="row no-gutters">
+        <!-- parte del encabezado-->
 
-                <!-- Cuerpo de la página-->
-                <?php
-                $Cargar = new Cargar();
-                $Cargar->membership();
-                ?>
-                <!-- Cuerpo de la página-->
-            </div>
-        </div>
+        <!-- Cuerpo de la página-->
+        <?php
+        $Cargar->membership();
+        ?>
+        <!-- Cuerpo de la página-->
+      </div>
     </div>
   </div>
-  </div>
+</div>
+</div>
 </div>
 
 
@@ -73,8 +71,8 @@ require 'encabezado.php';
         <form id="form_membershipA" name="form_membershipA">
           <div class="row">
             <div class="form-group col-md-12">
-            <input type="hidden" name="id_membership" id="id_membership" placeholder="Ingrese una categoria">
-      
+              <input type="hidden" name="id_membership" id="id_membership" placeholder="Ingrese una categoria">
+
               <label for="">tipo membresia</label>
               <select class="form-control" name="type_membership" id="type_membership">
                 <option>Mensual</option>
@@ -96,7 +94,7 @@ require 'encabezado.php';
         </form>
       </div>
       <div class="modal-footer">
-      <button type="button" onclick="actualizar_membership();" class="btn btn-primary-gt">Actualizar Categoria</button>
+        <button type="button" onclick="actualizar_membership();" class="btn btn-primary-gt">Actualizar Categoria</button>
         <button type="button" class="btn btn-secondary-gt" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
