@@ -61,7 +61,84 @@
 
   <div class="container mt-5">
     <div class="row">
-      <h2>Agragados a mi biblioteca</h2>
+      <div class="col-md-12 mb-5 btn-add-product">
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1">
+          <defs>
+            <filter id="gooey">
+              <!-- in="sourceGraphic" -->
+              <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur" />
+              <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+                result="highContrastGraphic" />
+              <feComposite in="SourceGraphic" in2="highContrastGraphic" operator="atop" />
+            </filter>
+          </defs>
+        </svg>
+
+        <button id="gooey-button" data-toggle="modal" data-target=".modal-product-add">
+          <i class="fas fa-plus"></i>
+          Agregar Libro
+          <span class="bubbles">
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+            <span class="bubble"></span>
+          </span>
+        </button>
+      </div>
+      <div class="modal fade modal-product-add" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Detalles del libro</h5>
+            </div>
+            <div class="modal-body">
+              <form enctype="multipart/form-data" action="" method="POST" id="formAddBook">
+                <div class="row">
+                  <div class="form-group col-md-12 mt-2">
+                    <label for="" class="font-weight-bolder">Titulo:</label>
+                    <input type="text" name="category" id="category" placeholder="Ingrese el titulo del libro"
+                      class="form-control">
+                  </div>
+                  <div class="form-group col-md-12 mt-2">
+                    <label for="" class="font-weight-bolder">Descripción:</label>
+                    <textarea name="description" id="description" class="form-control" rows="4" cols="30"
+                      placeholder="Ingrese una descripción"></textarea>
+                  </div>
+                  <div class="form-group col-md-12 mt-2">
+                    <label for="" class="font-weight-bolder">Categoria:</label>
+                    <select class="form-control" name="selectCategory" id="selectCategory">
+                      <option>Libro 1</option>
+                      <option>Libro 2</option>
+                      <option>Libro 3</option>
+                    </select>
+                  </div>
+                  <div class="col-md-6 form-group mt-4">
+                    <label for="">Subir nuevo PDF:</label>
+                    <input name="uploadedfile" type="file" id="fileDocument" name="fileDocumentPDF" />
+                  </div>
+                  <div class="col-md-6 form-group mt-4">
+                    <label for="">Subir nueva portada:</label>
+                    <input name="uploadedfile" type="file" id="filePortada" name="filePortada" />
+                  </div>
+                </div>
+              </form>
+            </div>
+            <div class="modal-footer mt-4">
+              <a href="" class="btn btn-primary-gt"><i class="fas fa-plus"></i> Agregar Libro</a>
+              <button type="button" class="btn btn-secondary-gt" data-dismiss="modal">Close</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+      <h1>Agregados a mi biblioteca</h1>
       <div class="col-md-12 tab-container-buttons">
         <input type="button" class="btn btn-lg btn-secondary-gt btn-category active my-3 mx-2" value="Todos">
         <input type="button" class="btn btn-lg btn-secondary-gt btn-category my-3 mx-2" value="Libros">
@@ -69,16 +146,16 @@
         <input type="button" class="btn btn-lg btn-secondary-gt btn-category my-3 mx-2" value="Revistas">
       </div>
       <div class="title-tab-container px-2">
-        <div class="title-category active">
+        <div class="title-category active scroll-x">
           Todos los articulos
         </div>
-        <div class="title-category">
+        <div class="title-category scroll-x">
           Libros
         </div>
-        <div class="title-category">
+        <div class="title-category scroll-x">
           Articulos
         </div>
-        <div class="title-category">
+        <div class="title-category scroll-x">
           Revistas
         </div>
       </div>
@@ -127,7 +204,7 @@
         </main>
       </div>
     </div>
-
+    <h1 class="mt-3">Mis Documentos</h1>
     <div class="row">
       <div class="col-md-12 tab-container-buttons mt-2">
         <input type="button" class="btn btn-lg btn-secondary-gt btn-libro active my-3 mx-2"
@@ -136,17 +213,17 @@
         <input type="button" class="btn btn-lg btn-secondary-gt btn-libro my-3 mx-2" value="Mis Revistas">
         <input type="button" class="btn btn-lg btn-secondary-gt btn-libro my-3 mx-2" value="Mis Articulos">
       </div>
-      <div class="title-tab-container px-2">
-        <div class="title-libro active">
+      <div class="title-tab-container  px-2">
+        <div class="title-libro active scroll-x">
           Todos Mis Documentos
         </div>
-        <div class="title-libro">
+        <div class="title-libro scroll-x">
           Mis Libros
         </div>
-        <div class="title-libro">
+        <div class="title-libro scroll-x">
           Mis Revistas
         </div>
-        <div class="title-libro">
+        <div class="title-libro scroll-x">
           Mis Articulos
         </div>
       </div>
@@ -330,35 +407,35 @@
         </div>
       </div>
     </div>
-
-    <!-- </div> -->
-    <!-- jQuery -->
-    <script src="./js/jquery/jquery.min.js"></script>
-    <!-- Bootstrap 4 -->
-    <script src="./js/bootstrap/bootstrap.bundle.min.js"></script>
-    <script src="js/script.js"></script>
-    <script>
-      $(document).ready(function () {
-        $(".profile .icon_wrap").click(function () {
-          $(this).parent().toggleClass("active");
-          $(".notifications").removeClass("active");
-        });
-
-        $(".notifications .icon_wrap").click(function () {
-          $(this).parent().toggleClass("active");
-          $(".profile").removeClass("active");
-        });
-
-        $(".show_all .link").click(function () {
-          $(".notifications").removeClass("active");
-          $(".popup").show();
-        });
-
-        $(".close").click(function () {
-          $(".popup").hide();
-        });
+  </div>
+  <!-- </div> -->
+  <!-- jQuery -->
+  <script src="./js/jquery/jquery.min.js"></script>
+  <!-- Bootstrap 4 -->
+  <script src="./js/bootstrap/bootstrap.bundle.min.js"></script>
+  <script src="js/script.js"></script>
+  <script>
+    $(document).ready(function () {
+      $(".profile .icon_wrap").click(function () {
+        $(this).parent().toggleClass("active");
+        $(".notifications").removeClass("active");
       });
-    </script>
+
+      $(".notifications .icon_wrap").click(function () {
+        $(this).parent().toggleClass("active");
+        $(".profile").removeClass("active");
+      });
+
+      $(".show_all .link").click(function () {
+        $(".notifications").removeClass("active");
+        $(".popup").show();
+      });
+
+      $(".close").click(function () {
+        $(".popup").hide();
+      });
+    });
+  </script>
 
 
 
