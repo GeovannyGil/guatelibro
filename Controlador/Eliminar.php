@@ -85,5 +85,16 @@ class Eliminar extends Controlador{
     return true;
 }
 
+      /*Categoria*/
+
+      public function categoria(){
+        $consultas = $this->modelo('Categoria');
+        $datos=$_POST['id_category'];
+        $mensaje=$consultas->EliminarCategoria($datos);
+        echo json_encode($mensaje); 
+
+        return true;
+    }
+
   
 }

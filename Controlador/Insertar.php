@@ -194,7 +194,16 @@ class Insertar extends Controlador{
         }
 
     
-
+    /*Categoria */
+    public function categoria(){
+        $consultas=$this->modelo('Categoria');
+        $category=$_POST['category'];
+    
+        $mensaje=$consultas->InsertarCategoria($category);
+        echo json_encode($mensaje); 
+        
+        return true;
+    }
 
     public function correo($datos){
         require 'Modelo/activar.php';

@@ -186,5 +186,18 @@ class Modificar extends Controlador{
         
     }
 
+        /*Categoria*/
+        public function categoria(){
+            $consultas=$this->modelo('Categoria');
+            $id=$_POST['id_category'];
+            $category=$_POST['category'];
+
+           
+    
+            $mensaje=$consultas->ActualizarCategoria($category,$id);
+                    echo json_encode($mensaje);        
+                    return true;
+        }
+
 }
 ?>

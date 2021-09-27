@@ -383,4 +383,47 @@ class Cargar extends Controlador
         }
         echo '<tbody></table></div>';
     }
+
+    /*Categoria*/
+    public function categoria()
+    {
+        $consultas = $this->modelo('Categoria');
+
+        $filas = $consultas->buscarCategoria();
+        echo '
+        <div class="table-responsive">
+            <table class="table mt-4 table-striped">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Categoria</th>
+                        <th>Eliminar</th>
+                        <th>Actualizar</th>
+                    </tr>
+                </thead>
+                <tbody>
+            ';
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '
+                    <tr>
+                        <td>' . $fila['id_category'] . '</td>
+                        <td>' . $fila['category'] . '</td>                    
+                        <td><button onclick="mostrar_msg(' . $fila['id_category'] . ');" class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button></td>
+                        <td><button id="cargar' . $fila['id_category'] . '" onclick="cargar(' . $fila['id_category'] . ')"; class="btn btn-secondary-gt" data-toggle="modal" data-target="#actualizarCategoria"><i class="fas fa-user-edit"></i></button></td>
+                    </tr>
+                ';
+            }
+        }
+        echo '<tbody></table></div>';
+    }
+
+    public function buscarCategoria()
+    {
+        $consultas = $this->modelo('Categoria');
+        $filas = $consultas->buscarCategoria();
+        return $filas;
+    }
+
+    
 }
