@@ -35,8 +35,8 @@ create table library_user(
 );
 create table rol(
   id_rol int primary key auto_increment,
-  rol json,
-  permits varchar(50)
+  rol varchar(50),
+  permits json
 );
 create table membership(
   id_membership int primary key auto_increment,

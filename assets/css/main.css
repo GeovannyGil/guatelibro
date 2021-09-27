@@ -159,3 +159,7 @@ div.col-md-12.header-title > h1 {
   padding-left: 2rem;
   display: inline-block;
 }
+
+.letter-large {
+  font-size: 1rem;
+}

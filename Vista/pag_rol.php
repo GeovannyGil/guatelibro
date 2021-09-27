@@ -27,7 +27,7 @@ require 'encabezado.php';
                           <li class=" list-group-item">
                     <!-- Default checked -->
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="categoryAccess" name="categoryAccess">
+                      <input type="checkbox" class="custom-control-input permitsI" id="categoryAccess" name="categorias">
                       <label class="custom-control-label" for="categoryAccess">Categorias</label>
                     </div>
                     </li>
@@ -36,7 +36,7 @@ require 'encabezado.php';
                     <li class="list-group-item">
                       <!-- Default checked -->
                       <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="rolAccess" name="rolAccess">
+                        <input type="checkbox" class="custom-control-input permitsI" id="rolAccess" name="rol">
                         <label class="custom-control-label" for="rolAccess">Rol</label>
                       </div>
                     </li>
@@ -45,7 +45,7 @@ require 'encabezado.php';
                           <li class=" list-group-item">
                     <!-- Default checked -->
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="productAccess" name="productAccess">
+                      <input type="checkbox" class="custom-control-input permitsI" id="productAccess" name="productos">
                       <label class="custom-control-label" for="productAccess">Productos</label>
                     </div>
                     </li>
@@ -54,7 +54,7 @@ require 'encabezado.php';
                     <li class=" list-group-item">
                       <!-- Default checked -->
                       <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="membersAccess" name="membersAccess">
+                        <input type="checkbox" class="custom-control-input permitsI" id="membersAccess" name="miembros">
                         <label class="custom-control-label" for="membersAccess">Miembros</label>
                       </div>
                     </li>
@@ -63,8 +63,7 @@ require 'encabezado.php';
                     <li class=" list-group-item">
                       <!-- Default checked -->
                       <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="membershipAccess"
-                          name="membershipAccess">
+                        <input type="checkbox" class="custom-control-input permitsI" id="membershipAccess" name="membresias">
                         <label class="custom-control-label" for="membershipAccess">Membresias</label>
                       </div>
                     </li>
@@ -73,8 +72,7 @@ require 'encabezado.php';
                     <li class=" list-group-item">
                       <!-- Default checked -->
                       <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="suscriptionsAccess"
-                          name="suscriptionsAccess">
+                        <input type="checkbox" class="custom-control-input permitsI" id="suscriptionsAccess" name="suscripciones">
                         <label class="custom-control-label" for="suscriptionsAccess">Suscripciones</label>
                       </div>
                     </li>
@@ -83,8 +81,17 @@ require 'encabezado.php';
                     <li class=" list-group-item">
                       <!-- Default checked -->
                       <div class="custom-control custom-checkbox">
-                        <input type="checkbox" class="custom-control-input" id="paymentsAccess" name="paymentsAccess">
+                        <input type="checkbox" class="custom-control-input permitsI" id="paymentsAccess" name="pagos">
                         <label class="custom-control-label" for="paymentsAccess">Pagos</label>
+                      </div>
+                    </li>
+                  </div>
+                  <div class="col-md-6 my-2">
+                    <li class=" list-group-item">
+                      <!-- Default checked -->
+                      <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input permitsI" id="clientAccesView" name="client">
+                        <label class="custom-control-label" for="clientAccesView">Vista Cliente</label>
                       </div>
                     </li>
                   </div>
@@ -98,50 +105,10 @@ require 'encabezado.php';
       </div>
     </div>
     <div class="col-md-8">
-      <div class="table-responsive">
-        <table class="table">
-          <thead class="thead-bg1">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Rol</th>
-              <th scope="col">Permisos</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Administrador</td>
-              <td>Registrar</td>
-              <td>
-                <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i class="fas fa-trash"></i></button>
-                <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i
-                    class="fas fa-edit"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Alumno</td>
-              <td>Ver</td>
-              <td>
-                <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i class="fas fa-trash"></i></button>
-                <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i
-                    class="fas fa-edit"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Profesor</td>
-              <td>Editar</td>
-              <td>
-                <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i class="fas fa-trash"></i></button>
-                <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i
-                    class="fas fa-edit"></i></button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <?php
+      $Cargar = new Cargar();
+      $Cargar->Rol();
+      ?>
     </div>
   </div>
 </div>
@@ -149,8 +116,7 @@ require 'encabezado.php';
 <!-- /.content-wrapper -->
 
 <!-- Modal -->
-<div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
-  aria-hidden="true">
+<div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header card-header-bg1">
@@ -173,7 +139,7 @@ require 'encabezado.php';
                   <li class=" list-group-item">
                     <!-- Default checked -->
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="categoryAccessU" name="categoryAccessU">
+                      <input type="checkbox" class="custom-control-input permitsU" id="categoryAccessU" name="categorias">
                       <label class="custom-control-label" for="categoryAccessU">Categorias</label>
                     </div>
                   </li>
@@ -182,7 +148,7 @@ require 'encabezado.php';
                   <li class="list-group-item">
                     <!-- Default checked -->
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="rolAccessU" name="rolAccessU">
+                      <input type="checkbox" class="custom-control-input permitsU" id="rolAccessU" name="rol">
                       <label class="custom-control-label" for="rolAccessU">Rol</label>
                     </div>
                   </li>
@@ -191,7 +157,7 @@ require 'encabezado.php';
                   <li class=" list-group-item">
                     <!-- Default checked -->
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="productAccessU" name="productAccessU">
+                      <input type="checkbox" class="custom-control-input permitsU" id="productAccessU" name="productos">
                       <label class="custom-control-label" for="productAccessU">Productos</label>
                     </div>
                   </li>
@@ -200,7 +166,7 @@ require 'encabezado.php';
                   <li class=" list-group-item">
                     <!-- Default checked -->
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="membersAccessU" name="membersAccessU">
+                      <input type="checkbox" class="custom-control-input permitsU" id="membersAccessU" name="miembros">
                       <label class="custom-control-label" for="membersAccessU">Miembros</label>
                     </div>
                   </li>
@@ -209,8 +175,7 @@ require 'encabezado.php';
                   <li class=" list-group-item">
                     <!-- Default checked -->
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="membershipAccessU"
-                        name="membershipAccessU">
+                      <input type="checkbox" class="custom-control-input permitsU" id="membershipAccessU" name="membresias">
                       <label class="custom-control-label" for="membershipAccessU">Membresias</label>
                     </div>
                   </li>
@@ -219,8 +184,7 @@ require 'encabezado.php';
                   <li class=" list-group-item">
                     <!-- Default checked -->
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="suscriptionsAccessU"
-                        name="suscriptionsAccessU">
+                      <input type="checkbox" class="custom-control-input permitsU" id="suscriptionsAccessU" name="suscripciones">
                       <label class="custom-control-label" for="suscriptionsAccessU">Suscripciones</label>
                     </div>
                   </li>
@@ -229,8 +193,17 @@ require 'encabezado.php';
                   <li class=" list-group-item">
                     <!-- Default checked -->
                     <div class="custom-control custom-checkbox">
-                      <input type="checkbox" class="custom-control-input" id="paymentsAccessU" name="paymentsAccessU">
+                      <input type="checkbox" class="custom-control-input permitsU" id="paymentsAccessU" name="pagos">
                       <label class="custom-control-label" for="paymentsAccessU">Pagos</label>
+                    </div>
+                  </li>
+                </div>
+                <div class="col-md-6 my-2">
+                  <li class=" list-group-item">
+                    <!-- Default checked -->
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input permitsU" id="clientAccesViewU" name="client">
+                      <label class="custom-control-label" for="clientAccesViewU">Vista Cliente</label>
                     </div>
                   </li>
                 </div>
@@ -251,3 +224,4 @@ require 'encabezado.php';
 require 'footer.php';
 ?>
 <script src="http://localhost/guatelibro/assets/js/global.js"></script>
+<script src="http://localhost/guatelibro/assets/js/rol.js"></script>

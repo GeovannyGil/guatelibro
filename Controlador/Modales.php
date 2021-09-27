@@ -1,7 +1,7 @@
 <?php
 require 'Controlador.php';
 
-class Eliminar extends Controlador
+class Modales extends Controlador
 {
   /*Rol*/
 
@@ -9,7 +9,7 @@ class Eliminar extends Controlador
   {
     $consultas = $this->modelo('Rol');
     $id_rol = $_POST['id_rol'];
-    $mensaje = $consultas->EliminarRol($id_rol);
+    $mensaje = $consultas->buscarRolID($id_rol);
     echo json_encode(array(
       "id_rol" => $id_rol,
       "consulta" => $mensaje
