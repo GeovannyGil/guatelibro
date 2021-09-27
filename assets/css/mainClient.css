@@ -374,7 +374,8 @@ div.brand-navbar > a {
   transform: translateY(0%);
 }
 
-.title-libro {
+
+.title-libro{
   /* margin: 1em;
   padding: 1em; */
   color: var(--letter-black);
@@ -405,6 +406,8 @@ div.brand-navbar > a {
   background-color: var(--bg-primary-color);
   color: var(--letter-light);
 }
+
+/*Perfil*/
 
 /* Cards */
 

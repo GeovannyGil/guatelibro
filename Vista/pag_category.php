@@ -15,61 +15,35 @@ require 'encabezado.php';
           Formulario Categorias
         </div>
         <div class="card-body">
-          <form action="" id="form-rol">
+          <form enctype="multipart/form-data" id="form-categoria">
             <div class="form-group">
               <label for="">Categoria</label>
               <input type="text" name="category" id="category" placeholder="Ingrese una categoria" class="form-control">
             </div>
           </form>
-          <input type="button" id="btnSave" class="btn btn-primary-gt btn-block" value="Guardar Categoria">
+          <button type="button" onclick="enviar_categoria();" class="btn btn-primary-gt btn-block">Guardar Categoria</button>
         </div>
       </div>
     </div>
     <div class="col-md-8">
-      <div class="table-responsive">
-        <table class="table">
-          <thead class="thead-bg1">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Categoria</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>
-                <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i class="fas fa-trash"></i></button>
-                <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i class="fas fa-edit"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>
-                <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i class="fas fa-trash"></i></button>
-                <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i class="fas fa-edit"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>
-                <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i class="fas fa-trash"></i></button>
-                <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i class="fas fa-edit"></i></button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    <div class="row no-gutters">        
+                <!-- parte del encabezado-->
+
+                <!-- Cuerpo de la página-->
+                <?php
+                $Cargar = new Cargar();
+                $Cargar->categoria();
+                ?>
+                <!-- Cuerpo de la página-->
+            </div>
+        </div>
     </div>
   </div>
 </div>
 
 
 <!-- Modal -->
-<div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="actualizarCategoria" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header card-header-bg1">
@@ -79,18 +53,18 @@ require 'encabezado.php';
         </button>
       </div>
       <div class="modal-body">
-        <form action="" id="updateCategory">
+        <form id="form_categoriaA" name="form_categoriaA">
           <div class="row">
-            <input type="hidden" name="keyCategory" id="keyCategory" placeholder="Ingrese una categoria">
+            <input type="hidden" name="id_category" id="id_category" placeholder="Ingrese una categoria">
             <div class="form-group col-12">
               <label for="">Categoria</label>
-              <input type="text" name="categoryU" placeholder="Ingrese una categoria" class="form-control">
+              <input type="text" name="category" placeholder="Ingrese una categoria" class="form-control">
             </div>
           </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary-gt" id="btnUpdate">Actualizar</button>
+      <button type="button" onclick="actualizar_categoria();" class="btn btn-primary-gt">Actualizar Categoria</button>
         <button type="button" class="btn btn-secondary-gt" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
@@ -100,4 +74,4 @@ require 'encabezado.php';
 <?php
 require 'footer.php';
 ?>
-<script src="http://localhost/guatelibro/assets/js/global.js"></script>
+<script src="../assets/js/Category.js"></script>

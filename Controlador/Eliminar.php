@@ -16,4 +16,28 @@ class Eliminar extends Controlador
     ));
     // return true;
   }
+
+  /*Categoria*/
+
+  public function categoria()
+  {
+    $consultas = $this->modelo('Categoria');
+    $datos = $_POST['id_category'];
+    $mensaje = $consultas->EliminarCategoria($datos);
+    echo json_encode($mensaje);
+
+    return true;
+  }
+
+  /*Membership*/
+
+  public function membership()
+  {
+    $consultas = $this->modelo('Membership');
+    $datos = $_POST['id_membership'];
+    $mensaje = $consultas->EliminarMembership($datos);
+    echo json_encode($mensaje);
+
+    return true;
+  }
 }
