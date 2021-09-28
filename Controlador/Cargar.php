@@ -315,6 +315,7 @@ class Cargar extends Controlador
         $filas = $consultas->buscarProducto();
         return $filas;
     }
+
     /*Pagos*/
     public function payments()
     {
@@ -360,6 +361,17 @@ class Cargar extends Controlador
         $consultas = $this->modelo('Payments');
         $filas = $consultas->buscarPayments();
         return $filas;
+    }
+
+    public function selectPayment()
+    {
+        $consultas = $this->modelo('Payments');
+        $filas = $consultas->buscarPayments();
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '<option value="' . $fila['id_payments'] . '">' . 'M' . $fila['id_member'] . '. ' . $fila['payment_type'] . '-' . $fila['payment'] . '</option>';
+            }
+        }
     }
 
     public function selectMembership()
@@ -449,5 +461,56 @@ class Cargar extends Controlador
             }
         }
         echo '<tbody></table></div>';
+    }
+
+    /*Pagos*/
+    public function suscription()
+    {
+        $consultas = $this->modelo('Suscription');
+
+        $filas = $consultas->buscarSuscription();
+        echo '
+        <div class="table-responsive">
+            <table class="table mt-4 table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Pago</th>
+                        <th>Inicio de Suscripción</th>
+                        <th>Fin de Suscripción</th>
+                        <th>Fecha de cancelado</th>
+                        <th>Estado</th>
+                        <th>Creado</th>
+                        <th>Eliminar</th>
+                        <th>Actualizar</th>
+                    </tr>
+                </thead>
+                <tbody>
+            ';
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '
+                    <tr>
+                        <td>' . $fila['id_suscription'] . '</td>
+                        <td>' . $fila['id_payments'] . '</td>     
+                        <td>' . $fila['subscription_start'] . '</td>    
+                        <td>' . $fila['subscription_end'] . '</td>   
+                        <td>' . $fila['date_cancel'] . '</td>                
+                        <td>' . $fila['state'] . '</td>                
+                        <td>' . $fila['created_at'] . '</td>                
+                        <td><button onclick="mostrar_msg(' . $fila['id_suscription'] . ');" class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button></td>
+                        <td><button id="cargar' . $fila['id_suscription'] . '" onclick="cargar(' . $fila['id_suscription'] . ')"; class="btn btn-secondary-gt" data-toggle="modal" data-target="#modalUpdate"><i class="fas fa-user-edit"></i></button></td>
+                    </tr>
+                ';
+            }
+        }
+        echo '<tbody></table></div>';
+    }
+
+    public function buscarSuscription()
+    {
+        $consultas = $this->modelo('Suscription');
+        $filas = $consultas->buscarSuscription();
+        return $filas;
     }
 }

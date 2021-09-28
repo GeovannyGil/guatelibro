@@ -58,9 +58,29 @@ class Insertar extends Controlador
         $payment = $_POST['payment'];
 
         $mensaje = $consultas->InsertarPayments($id_member, $id_membership, $payment_type, $payment);
-        echo json_encode($mensaje);
+        echo json_encode(array(
+            "id_member" => $id_member,
+            "id_membership" => $id_membership,
+            "payment_type" => $payment_type,
+            "payment" => $payment,
+        ));
 
-        return true;
+        // return true;
+    }
+
+    /*suscription */
+    public function suscription()
+    {
+        $consultas = $this->modelo('Suscription');
+        $id_payment = $_POST['id_payment'];
+        $suscription_start = $_POST['suscription_start'];
+        $suscription_end = $_POST['suscription_end'];
+        $cancel_suscription = $_POST['cancel_suscription'];
+        $state = $_POST['state'];
+
+        $mensaje = $consultas->InsertarSuscripcion($id_payment, $suscription_start, $suscription_end, $cancel_suscription, $state);
+        echo json_encode($state);
+        // return true;
     }
 
     /*Producto*/

@@ -62,6 +62,22 @@ class Modificar extends Controlador
         return true;
     }
 
+    /*Suscripciones*/
+    public function suscription()
+    {
+        $consultas = $this->modelo('Suscription');
+        $id_suscription = $_POST['id_suscription'];
+        $id_payment = $_POST['id_paymentU'];
+        $suscription_start = $_POST['suscription_startU'];
+        $suscription_end = $_POST['suscription_endU'];
+        $cancel_suscription = $_POST['cancel_suscriptionU'];
+        $state = $_POST['stateU'];
+
+        $mensaje = $consultas->ActualizarSuscription($id_payment, $suscription_start, $suscription_end, $cancel_suscription, $state, $id_suscription);
+        echo json_encode($mensaje);
+        // return true;
+    }
+
     public function library_user()
     {
         $consultas = $this->modelo('Library_user');

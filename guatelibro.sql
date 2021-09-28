@@ -47,9 +47,9 @@ create table membership(
 create table suscriptions(
   id_suscription int primary key auto_increment,
   id_payments int,
-  subscription_start dateTime,
-  subscription_end dateTime,
-  date_cancel dateTime,
+  subscription_start DATE,
+  subscription_end DATE,
+  date_cancel DATE NULL,
   state boolean,
   created_at timestamp
 );
@@ -93,3 +93,34 @@ alter table
   payments
 ADD
   foreign key (id_membership) references membership(id_membership);
+DELIMITER / / CREATE TRIGGER add_suscription
+AFTER
+INSERT
+  ON payments FOR EACH ROW BEGIN
+INSERT INTO
+  suscriptions(
+    id_payments,
+    subscription_start,
+    subscription_end,
+    state
+  )
+VALUES
+  (
+    new.id_payments,
+    new.created_at,
+    DATE(
+      DATE_ADD(
+        new.created_at,
+        INTERVAL (
+          select
+            date_months
+          from
+            membership
+          where
+            id_membership = new.id_membership
+        ) MONTH
+      )
+    ),
+    true
+  );
+END / / DELIMITER / / DROP TRIGGER add_suscription;

@@ -69,6 +69,16 @@ class Eliminar extends Controlador
 
     return true;
   }
+  /*Payments*/
+  public function suscription()
+  {
+    $consultas = $this->modelo('Suscription');
+    $datos = $_POST['id_suscription'];
+    $mensaje = $consultas->EliminarSuscription($datos);
+    echo json_encode($mensaje);
+
+    return true;
+  }
 
   /*Library user*/
   public function library_user()

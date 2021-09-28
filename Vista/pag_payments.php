@@ -16,19 +16,19 @@ require 'encabezado.php';
           Formulario PAGOS
         </div>
         <div class="card-body">
-          <form enctype="multipart/form-data" id="form-payments">
+          <form id="form-payments">
             <div class="form-group">
               <label for="">Miembro</label>
               <?php
-                $Cargar = new Cargar();
-                $Cargar->selectMembers();
-                ?>
+              $Cargar = new Cargar();
+              $Cargar->selectMembers();
+              ?>
             </div>
             <div class="form-group">
               <label for="">Membresias</label>
               <?php
-                $Cargar->selectMembership();
-                ?>
+              $Cargar->selectMembership();
+              ?>
             </div>
             <div class="form-group">
               <label for="">Tipo Pago</label>
@@ -44,22 +44,22 @@ require 'encabezado.php';
       </div>
     </div>
     <div class="col-md-8">
-    <div class="row no-gutters">        
-                <!-- parte del encabezado-->
+      <div class="row no-gutters">
+        <!-- parte del encabezado-->
 
-                <!-- Cuerpo de la página-->
-                <?php
-                $Cargar->payments();
-                ?>
-                <!-- Cuerpo de la página-->
-            </div>
-        </div>
+        <!-- Cuerpo de la página-->
+        <?php
+        $Cargar->payments();
+        ?>
+        <!-- Cuerpo de la página-->
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="modal fade" id="actualizarPayments" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
-  <div class="modal-content">
+    <div class="modal-content">
       <div class="modal-header card-header-bg1">
         <h5 class="modal-title " id="exampleModalLongTitle">Actualizar Dato</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -73,35 +73,35 @@ require 'encabezado.php';
             <div class="form-group col-12">
               <label for="">Miembro</label>
               <?php
-                $Cargar = new Cargar();
-                $Cargar->selectMembers();
-                ?>
-              </div>
+              $Cargar = new Cargar();
+              $Cargar->selectMembers();
+              ?>
+            </div>
 
-              <div class="form-group col-12">
+            <div class="form-group col-12">
               <label for="">Membresias</label>
               <?php
-                $Cargar->selectMembership();
-                ?>
-              </div>
+              $Cargar->selectMembership();
+              ?>
+            </div>
 
-              <div class="form-group col-12">
+            <div class="form-group col-12">
 
               <label for="">Tipo Pago</label>
               <input type="text" name="payment_type" id="payment_type" placeholder="Ingrese un tipo de pago" class="form-control">
-           
-              </div>
 
-              
-              <div class="form-group col-12">
+            </div>
+
+
+            <div class="form-group col-12">
               <label for="">Pago</label>
               <input type="number" name="payment" id="payment" placeholder="Ingrese una pago" class="form-control">
-              </div>
             </div>
+          </div>
         </form>
       </div>
       <div class="modal-footer">
-      <button type="button" onclick="actualizar_payments();" class="btn btn-primary-gt">Actualizar Pago</button>
+        <button type="button" onclick="actualizar_payments();" class="btn btn-primary-gt">Actualizar Pago</button>
         <button type="button" class="btn btn-secondary-gt" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
