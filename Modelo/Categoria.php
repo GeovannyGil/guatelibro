@@ -1,5 +1,5 @@
 <?php
-require 'conexion.php';
+require_once 'conexion.php';
 Class Categoria{
     public function buscarCategoria(){
         $modelo= new Conexion();
