@@ -18,9 +18,9 @@ require 'encabezado.php';
           <form enctype="multipart/form-data" id="form-categoria">
             <div class="form-group">
               <label for="">Categoria</label>
-              <input type="text" name="category" id="category" placeholder="Ingrese una categoria" class="form-control">
+              <input type="text" name="category" id="category" placeholder="Ingrese una categoria" class="form-control" required>          
             </div>
-          </form>
+            </form>
           <button type="button" onclick="enviar_categoria();" class="btn btn-primary-gt btn-block">Guardar Categoria</button>
         </div>
       </div>

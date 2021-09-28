@@ -24,10 +24,10 @@ function enviar_categoria(){
     
                             
         });
-    }else{
     }
     
 }
+
 
 
 function mostrar_msg(id){
