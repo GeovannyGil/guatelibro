@@ -108,6 +108,17 @@ class Cargar extends Controlador
         echo '</select>';
     }
 
+    public function selectCategoria2()
+    {
+        $consultas = $this->modelo('Categoria');
+        $filas = $consultas->buscarCategoria();
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '<option value="' . $fila['id_category'] . '">' . $fila['category'] . '</option>';
+            }
+        }
+    }
+
     /*Membership*/
     public function membership()
     {
@@ -153,17 +164,17 @@ class Cargar extends Controlador
         return $filas;
     }
 
-     public function selectRol()
-     {
-         $consultas = $this->modelo('Rol');
-         $filas = $consultas->buscarRol();
-         echo '<select class="form-control" name="id_rol" id="id_rol">';
-            if ($filas) {
-                foreach ($filas as $fila) {
-                    echo '<option value="' . $fila['id_rol'] . '">' . $fila['rol'] . '</option>';
-                }
+    public function selectRol()
+    {
+        $consultas = $this->modelo('Rol');
+        $filas = $consultas->buscarRol();
+        echo '<select class="form-control" name="id_rol" id="id_rol">';
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '<option value="' . $fila['id_rol'] . '">' . $fila['rol'] . '</option>';
             }
-         echo '</select>';
+        }
+        echo '</select>';
     }
 
 
@@ -206,7 +217,7 @@ class Cargar extends Controlador
                         <td>' . $fila['email'] . '</td>
                         <td>' . $fila['phone'] . '</td>    
                         <td>' . $fila['direction'] . '</td>
-                        <td><img src="../assets/img/members/'.$fila['photo'].'" class="img-fluid" width=60 height=4 alt="'.$fila['photo'].'" id="photo'.$fila['id_member'].'"></td>                 
+                        <td><img src="../assets/img/members/' . $fila['photo'] . '" class="img-fluid" width=60 height=4 alt="' . $fila['photo'] . '" id="photo' . $fila['id_member'] . '"></td>                 
                         <td>' . $fila['institution'] . '</td>
                         <td>' . $fila['user_member'] . '</td>
                         <td>' . $fila['password'] . '</td>
@@ -227,6 +238,82 @@ class Cargar extends Controlador
         $filas = $consultas->buscarMembers();
         return $filas;
     }
-    
-    
+
+    public function selectMember()
+    {
+        $consultas = $this->modelo('Members');
+        $filas = $consultas->buscarMembers();
+        echo '<select class="form-control" name="selectMember" id="selectMember">';
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '<option value="' . $fila['id_member'] . '">' . $fila['name_member'] . '</option>';
+            }
+        }
+        echo '</select>';
+    }
+
+    public function selectMember2()
+    {
+        $consultas = $this->modelo('Members');
+        $filas = $consultas->buscarMembers();
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '<option value="' . $fila['id_member'] . '">' . $fila['name_member'] . '</option>';
+            }
+        }
+    }
+
+    /*Productos*/
+    public function products()
+    {
+        $consultas = $this->modelo('Product');
+
+        $filas = $consultas->buscarProducto();
+        echo '
+        <div class="table-responsive">
+            <table class="table mt-4 table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Documento</th>
+                        <th>Portada</th>
+                        <th>Fecha de registro</th>
+                        <th>Categoria</th>
+                        <th>Miembro</th>
+                        <th>Eliminar</th>
+                        <th>Actualizar</th>
+                    </tr>
+                </thead>
+                <tbody>
+            ';
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '
+                    <tr>
+                        <td>' . $fila['id_product'] . '</td>
+                        <td>' . $fila['name_product'] . '</td>     
+                        <td>' . $fila['description_product'] . '</td>    
+                        <td>' . $fila['path_product'] . '</td>    
+                        <td><img src="../assets/img/portadas/' . $fila['image_product'] . '" class="img-fluid" width=60 height=4 alt="' . $fila['image_product'] . '" id="image_product' . $fila['id_product'] . '"></td>   
+                        <td>' . $fila['date_register'] . '</td>   
+                        <td>' . $fila['id_category'] . '</td>   
+                        <td>' . $fila['id_member'] . '</td>   
+                        <td><button onclick="deleteRegister(' . $fila['id_product'] . ');" class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button></td>
+
+                        <td><button id="cargar' . $fila['id_product'] . '" onclick="cargar(' . $fila['id_product'] . ')"; class="btn btn-secondary-gt" data-toggle="modal" data-target="#modalUpdate"><i class="fas fa-user-edit"></i></button></td>
+                    </tr>
+                ';
+            }
+        }
+        echo '<tbody></table></div>';
+    }
+
+    public function buscarProducto()
+    {
+        $consultas = $this->modelo('Product');
+        $filas = $consultas->buscarProducto();
+        return $filas;
+    }
 }

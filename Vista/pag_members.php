@@ -44,9 +44,9 @@ require 'encabezado.php';
               <div class="form-group col-md-12">
                 <label for="">Estado:</label>
                 <select class="form-control" name="state" id="state">
-                <option value="0">Activo</option>
-                <option value="1">Inactivo</option>
-              </select>
+                  <option value="0">Activo</option>
+                  <option value="1">Inactivo</option>
+                </select>
               </div>
               <div class="form-group col-md-6">
                 <label for="">Usuario</label>
@@ -65,16 +65,21 @@ require 'encabezado.php';
                 ?>
               </div>
 
-              <div class="form-group col-md-12 mt-4 informacion1" style="width:30%; margin-left: 30%; margin-right: auto;">        
-                <input id="file-upload1" name="img-1" onchange='cambiar();' onclick="cambio()" type="file" style='display: none;' />
-                    <img class="img-fluid img-prev1 img1" id="img1" src="http://localhost/guatelibro/assets/img/no_disponible.jpg" width="100" height="100" />                        
+              <label for="">Fotografía: </label>
+              <div class="col-md-12 mt-4 informacion1 content-input-img">
+
+                <div class="div-img-file-input">
+                  <input id="file-upload1" name="img-1" onchange='cambiar();' onclick="cambio()" type="file" style='display: none;' />
+                  <img class="img-fluid img-prev1 img1" id="img1" src="http://localhost/guatelibro/assets/img/no_disponible.png">
                 </div>
-                <div class="text-center" style="width:30%; margin-left: 30%; margin-right: auto;">                
-                    <div id="info1"></div>
-                    <label for="file-upload1" class="subir mt-4">
-                    <i class="fas fa-images"></i> Cambiar Imagen
-                    </label>                    
+                <div class="div-button-info-img">
+                  <div id="info1"></div>
+                  <label for="file-upload1" class="subir mt-2 btn btn-secondary-gt">
+                    <i class="fas fa-images"></i> Selecciona una imagen
+                  </label>
                 </div>
+
+              </div>
 
             </div>
           </form>
@@ -83,19 +88,19 @@ require 'encabezado.php';
       </div>
     </div>
     <div class="col-md-8">
-    <div class="row no-gutters">        
-                <!-- parte del encabezado-->
+      <div class="row no-gutters">
+        <!-- parte del encabezado-->
 
-                <!-- Cuerpo de la página-->
-                <?php
-                $Cargar->memberbers();
-                ?>
-                <!-- Cuerpo de la página-->
-            </div>
-        </div>
+        <!-- Cuerpo de la página-->
+        <?php
+        $Cargar->memberbers();
+        ?>
+        <!-- Cuerpo de la página-->
+      </div>
     </div>
   </div>
-  </div>
+</div>
+</div>
 </div>
 
 
@@ -112,65 +117,67 @@ require 'encabezado.php';
       <div class="modal-body">
         <form enctype="multipart/form-data" id="form_membersA" name="form_membersA">
           <div class="row">
-          <div class="form-group col-md-6">
-             <input type="hidden" name="id_member">
-                <label for="">Nombre: </label>
-                <input type="text" id="name_member" name="name_member" placeholder="Ingrese el nombre del miembro" class="form-control">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="">Apellido: </label>
-                <input type="text" id="surname_member" name="surname_member" placeholder="Ingrese el apellido del miembro" class="form-control">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="">Correo: </label>
-                <input type="email" id="email" name="email" placeholder="Ingrese el correo electronico" class="form-control">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="">Telefono: </label>
-                <input type="number" id="phone" name="phone" placeholder="Ingrese numero telefonico" class="form-control">
-              </div>
-              <div class="form-group col-md-12">
-                <label for="">Dirección: </label>
-                <input type="text" id="direction" name="direction" placeholder="Ingrese la dirección" class="form-control">
-              </div>
-              <div class="form-group col-md-12">
-                <label for="">Institución:</label>
-                <input type="text" id="institution" name="institution" placeholder="Ingrese la institución" class="form-control">
-              </div>
-              <div class="form-group col-md-12">
-                <label for="">Estado:</label>
-                <select class="form-control" name="state" id="state">
-                <option value="0">Activo</option>
-                <option value="1">Inactivo</option>
+            <div class="form-group col-md-6">
+              <input type="hidden" name="id_member">
+              <label for="">Nombre: </label>
+              <input type="text" id="name_member" name="name_member" placeholder="Ingrese el nombre del miembro" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="">Apellido: </label>
+              <input type="text" id="surname_member" name="surname_member" placeholder="Ingrese el apellido del miembro" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="">Correo: </label>
+              <input type="email" id="email" name="email" placeholder="Ingrese el correo electronico" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="">Telefono: </label>
+              <input type="number" id="phone" name="phone" placeholder="Ingrese numero telefonico" class="form-control">
+            </div>
+            <div class="form-group col-md-12">
+              <label for="">Dirección: </label>
+              <input type="text" id="direction" name="direction" placeholder="Ingrese la dirección" class="form-control">
+            </div>
+            <div class="form-group col-md-12">
+              <label for="">Institución:</label>
+              <input type="text" id="institution" name="institution" placeholder="Ingrese la institución" class="form-control">
+            </div>
+            <div class="form-group col-md-12">
+              <label for="">Estado:</label>
+              <select class="form-control" name="state" id="state">
+                <option value="1">Activo</option>
+                <option value="0">Inactivo</option>
               </select>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="">Usuario</label>
-                <input type="text" id="user_member" name="user_member" placeholder="Ingrese el usuario" class="form-control">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="">Contraseña</label>
-                <input type="text" id="password" name="password" placeholder="Ingrese la contraseña" class="form-control">
-              </div>
+            </div>
+            <div class="form-group col-md-6">
+              <label for="">Usuario</label>
+              <input type="text" id="user_member" name="user_member" placeholder="Ingrese el usuario" class="form-control">
+            </div>
+            <div class="form-group col-md-6">
+              <label for="">Contraseña</label>
+              <input type="text" id="password" name="password" placeholder="Ingrese la contraseña" class="form-control">
+            </div>
 
-              <div class="form-group col-md-12">
-                <label for="">Rol</label>
-                <?php
-                $Cargar = new Cargar();
-                $Cargar->selectRol();
-                ?>
-              </div>
+            <div class="form-group col-md-12">
+              <label for="">Rol</label>
+              <?php
+              $Cargar->selectRol();
+              ?>
+            </div>
 
-              <div class="form-group col-md-12 mt-4 informacion2" style="width:30%; margin-left: 30%; margin-right: auto;">        
+            <label for="">Fotografía: </label>
+            <div class="col-md-12 mt-4 informacion2 content-input-img">
+              <div class="div-img-file-input">
                 <input id="file-upload2" name="img-2" onchange='cambiar2();' onclick="cambio2()" type="file" style='display: none;' />
-                    <img class="img-fluid img-prev1 img2" id="photoMembers" src="http://localhost/guatelibro/assets/img/no_disponible.jpg" width="100" height="100" />                        
-                </div>
-                <div class="text-center" style="width:30%; margin-left: 30%; margin-right: auto;">                
-                    <div id="info1"></div>
-                    <label for="file-upload2" class="subir mt-4">
-                    <i class="fas fa-images"></i> Cambiar Imagen
-                    </label>                    
-                </div>
+                <img class="img-fluid img-prev2 img2" id="photoMembers" src="http://localhost/guatelibro/assets/img/no_disponible.png">
+              </div>
+              <div class="div-button-info-img">
+                <div id="info2"></div>
+                <label for="file-upload2" class="subir mt-2 btn btn-secondary-gt">
+                  <i class="fas fa-images"></i> Selecciona una imagen
+                </label>
+              </div>
+            </div>
 
           </div>
         </form>

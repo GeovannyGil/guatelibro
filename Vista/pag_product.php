@@ -23,11 +23,10 @@ require 'encabezado.php';
               </div>
               <div class="form-group col-md-6">
                 <label for="">Miembro</label>
-                <select class="form-control" name="selectMember" id="selectMember">
-                  <option value="1">Kevin</option>
-                  <option value="2">Angel</option>
-                  <option value="3">Mateo</option>
-                </select>
+                <?php
+                $Cargar = new Cargar();
+                $Cargar->selectMember();
+                ?>
               </div>
               <div class="form-group col-md-12">
                 <label for="">Descripción</label>
@@ -66,7 +65,6 @@ require 'encabezado.php';
               <div class="form-group col-md-6">
                 <label for="">Categoria</label>
                 <?php
-                $Cargar = new Cargar();
                 $Cargar->selectCategoria();
                 ?>
               </div>
@@ -78,50 +76,9 @@ require 'encabezado.php';
       </div>
     </div>
     <div class="col-md-8">
-      <div class="table-responsive">
-        <table class="table">
-          <thead class="thead-bg1">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Nombre</th>
-              <th scope="col">Descripción</th>
-              <th scope="col">Path</th>
-              <th scope="col">Fecha Registro</th>
-              <th scope="col">Categoria</th>
-              <th scope="col">Miembro</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Harry Potter</td>
-              <td>Libro Entretenido</td>
-              <td>141541</td>
-              <td>14-05-2021</td>
-              <td>Libro</td>
-              <td>Kevin</td>
-              <td>
-                <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i class="fas fa-trash"></i></button>
-                <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i class="fas fa-edit"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Harry Potter 2</td>
-              <td>Libro Divertido</td>
-              <td>158441</td>
-              <td>15-05-2021</td>
-              <td>Libro</td>
-              <td>Angel</td>
-              <td>
-                <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i class="fas fa-trash"></i></button>
-                <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i class="fas fa-edit"></i></button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <?php
+      $Cargar->products();
+      ?>
     </div>
   </div>
 </div>
@@ -138,7 +95,7 @@ require 'encabezado.php';
         </button>
       </div>
       <div class="modal-body">
-        <form action="" id="formProductsU">
+        <form enctype="multipart/form-data" id="formProductsU" name="formProductsU">
           <input type="hidden" id="keyProduct" name="keyProduct">
           <div class="form-group">
             <label for="">Nombre Producto</label>
@@ -148,29 +105,48 @@ require 'encabezado.php';
             <label for="">Descripción</label>
             <textarea name="descriptionU" id="descriptionU" class="form-control" rows="3" cols="20" placeholder="Ingrese el nombre del producto"></textarea>
           </div>
-          <div class="form-group">
-            <label for="">Path del Producto</label>
-            <input type="text" name="pathProductU" id="pathProductU" placeholder="Ingrese el path del producto" class="form-control">
+
+          <label for="">Portada: </label>
+          <div class="col-md-12 mt-4 informacion2 content-input-img">
+            <div class="div-img-file-input">
+              <input id="file-upload2" name="img-2" onchange='cambiar2();' onclick="cambio2()" type="file" style='display: none;' />
+              <img class="img-fluid img-prev2 img2" id="portadaProduct" src="http://localhost/guatelibro/assets/img/no_disponible.png">
+            </div>
+            <div class="div-button-info-img">
+              <div id="info2"></div>
+              <label for="file-upload2" class="subir mt-2 btn btn-secondary-gt">
+                <i class="fas fa-images"></i> Selecciona una imagen
+              </label>
+            </div>
           </div>
+
+          <div class="form-group col-md-12">
+            <label for="">Documento: </label>
+            <input type="file" name="file2" id="file2" class="input-file2">
+            <label for="file2" class="btn btn-tertiary js-labelFile2">
+              <i class="icon fa fa-check"></i>
+              <span class="js-fileName2" id="js-fileName2">Cargar documento pdf</span>
+            </label>
+          </div>
+
           <div class="form-group">
             <label for="">Fecha Registro</label>
             <input type="date" name="dateRegisterU" id="dateRegisterU" class="form-control">
           </div>
-
           <div class="form-group">
             <label for="">Categoria</label>
             <select class="form-control" name="selectCategoryU" id="selectCategoryU">
-              <option>Revista</option>
-              <option>Libro</option>
-              <option>Articulo 3</option>
+              <?php
+              $Cargar->selectCategoria2();
+              ?>
             </select>
           </div>
           <div class="form-group">
             <label for="">Miembro</label>
             <select class="form-control" name="selectMemberU" id="selectMemberU">
-              <option>Kevin</option>
-              <option>Angel</option>
-              <option>Mateo</option>
+              <?php
+              $Cargar->selectMember2();
+              ?>
             </select>
           </div>
         </form>

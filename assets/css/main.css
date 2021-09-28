@@ -200,7 +200,8 @@ div.col-md-12.header-title > h1 {
 }
 
 /* input file style */
-.input-file {
+.input-file,
+.input-file2 {
   width: 0.1px;
   height: 0.1px;
   opacity: 0;
@@ -208,17 +209,20 @@ div.col-md-12.header-title > h1 {
   position: absolute;
   z-index: -1;
 }
-.input-file + .js-labelFile {
+.input-file + .js-labelFile,
+.input-file2 + .js-labelFile2 {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
   padding: 0 10px;
   cursor: pointer;
 }
-.input-file + .js-labelFile .icon:before {
+.input-file + .js-labelFile .icon:before,
+.input-file2 + .js-labelFile2 .icon:before {
   content: "";
 }
-.input-file + .js-labelFile.has-file .icon:before {
+.input-file + .js-labelFile.has-file .icon:before,
+.input-file2 + .js-labelFile2.has-file .icon:before {
   content: "";
   color: #5aac7b;
 }

@@ -32,6 +32,7 @@ function cambiar2() {
   var pdrs = document.getElementById('file-upload2').files[0].name;
   document.getElementById('info2').innerHTML = pdrs;
 }
+
 function cambio2() {
   var input = document.querySelector(".informacion2 #file-upload2"),
     img = document.querySelector(".informacion2 .img2");

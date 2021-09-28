@@ -41,20 +41,35 @@ class Eliminar extends Controlador
     return true;
   }
 
-    /*Miembro*/
-    public function members(){
-      $consultas=$this->modelo('Members');
-      $datos=$_POST['id_member'];
-      $filas=$consultas->buscarMembersE($datos); 
-      if($filas){
-        foreach($filas as $fila){
-          $nombre_photo=$fila['photo'];
-        }
-      }       
-      echo json_encode($nombre_photo);
-      unlink("assets/img/members/".$nombre_photo);
+  /*Miembro*/
+  public function members()
+  {
+    $consultas = $this->modelo('Members');
+    $datos = $_POST['id_member'];
+    $filas = $consultas->buscarMembersE($datos);
+    if ($filas) {
+      foreach ($filas as $fila) {
+        $nombre_photo = $fila['photo'];
+      }
+    }
+    echo json_encode($nombre_photo);
+    unlink("assets/img/members/" . $nombre_photo);
 
-      $consultas->EliminarMembers($datos);        
-      return true;
-}
+    $consultas->EliminarMembers($datos);
+    return true;
+  }
+
+  /*Productos*/
+
+  public function product()
+  {
+    $consultas = $this->modelo('Product');
+    $id_product = $_POST['id_product'];
+    $mensaje = $consultas->EliminarProducto($id_product);
+    echo json_encode(array(
+      "id_product" => $id_product,
+      "consulta" => $mensaje
+    ));
+    // return true;
+  }
 }
