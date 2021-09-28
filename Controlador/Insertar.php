@@ -48,6 +48,21 @@ class Insertar extends Controlador
         return true;
     }
 
+        /*Paymets */
+    public function payments()
+    {
+        $consultas = $this->modelo('Payments');
+        $id_member = $_POST['id_member'];
+        $id_membership = $_POST['id_membership'];
+        $payment_type = $_POST['payment_type'];
+        $payment = $_POST['payment'];
+
+        $mensaje = $consultas->InsertarPayments($id_member, $id_membership, $payment_type, $payment);
+        echo json_encode($mensaje);
+
+        return true;
+    }
+
     /*Producto*/
     public function product()
     {

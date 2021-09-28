@@ -227,6 +227,78 @@ class Cargar extends Controlador
         $filas = $consultas->buscarMembers();
         return $filas;
     }
+
+    /*Pagos*/
+    public function payments()
+    {
+        $consultas = $this->modelo('Payments');
+
+        $filas = $consultas->buscarPayments();
+        echo '
+        <div class="table-responsive">
+            <table class="table mt-4 table-striped">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Miembro</th>
+                        <th>Membresia</th>
+                        <th>Tipo Pago</th>
+                        <th>Pago</th>
+                        <th>Eliminar</th>
+                        <th>Actualizar</th>
+                    </tr>
+                </thead>
+                <tbody>
+            ';
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '
+                    <tr>
+                        <td>' . $fila['id_payments'] . '</td>
+                        <td>' . $fila['id_member'] . '</td>     
+                        <td>' . $fila['id_membership'] . '</td>    
+                        <td>' . $fila['payment_type'] . '</td>   
+                        <td>' . $fila['payment'] . '</td>                
+                        <td><button onclick="mostrar_msg(' . $fila['id_payments'] . ');" class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button></td>
+                        <td><button id="cargar' . $fila['id_payments'] . '" onclick="cargar(' . $fila['id_payments'] . ')"; class="btn btn-secondary-gt" data-toggle="modal" data-target="#actualizarPayments"><i class="fas fa-user-edit"></i></button></td>
+                    </tr>
+                ';
+            }
+        }
+        echo '<tbody></table></div>';
+    }
+
+    public function buscarPayments()
+    {
+        $consultas = $this->modelo('Payments');
+        $filas = $consultas->buscarPayments();
+        return $filas;
+    } 
     
+    public function selectMembership()
+    {
+        $consultas = $this->modelo('Membership');
+        $filas = $consultas->buscarMembership();
+        echo '<select class="form-control" name="id_membership" id="id_membership">';
+           if ($filas) {
+               foreach ($filas as $fila) {
+                   echo '<option value="' . $fila['id_membership'] . '">' . $fila['type_membership'] . '</option>';
+               }
+           }
+        echo '</select>';
+   }
+
+   public function selectMembers()
+   {
+       $consultas = $this->modelo('Members');
+       $filas = $consultas->buscarMembers();
+       echo '<select class="form-control" name="id_member" id="id_member">';
+          if ($filas) {
+              foreach ($filas as $fila) {
+                  echo '<option value="' . $fila['id_member'] . '">' . $fila['name_member'] . '</option>';
+              }
+          }
+       echo '</select>';
+  }
     
 }

@@ -57,4 +57,15 @@ class Eliminar extends Controlador
       $consultas->EliminarMembers($datos);        
       return true;
 }
+
+/*Payments*/
+public function payments()
+{
+  $consultas = $this->modelo('Payments');
+  $datos = $_POST['id_payments'];
+  $mensaje = $consultas->EliminarPayments($datos);
+  echo json_encode($mensaje);
+
+  return true;
+}
 }
