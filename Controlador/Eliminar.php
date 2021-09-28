@@ -75,7 +75,7 @@ class Eliminar extends Controlador
   {
     $consultas = $this->modelo('Library_user');
     $datos = $_POST['id_user'];
-    $mensaje = $consultas->EliminarLibrary_user($datos);
+    $mensaje = $consultas->EliminarLibrery_user($datos);
     echo json_encode($mensaje);
 
     return true;

@@ -83,7 +83,7 @@ require 'encabezado.php';
 
             </div>
           </form>
-          <button type="button" onclick="enviar_members();" class="btn btn-primary-gt btn-block">Guardar Miembro</button>
+          <button type="button" id="btnSave" class="btn btn-primary-gt btn-block">Guardar Miembro</button>
         </div>
       </div>
     </div>

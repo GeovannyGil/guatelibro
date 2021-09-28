@@ -269,6 +269,51 @@ class Cargar extends Controlador
         $consultas = $this->modelo('Product');
 
         $filas = $consultas->buscarProducto();
+        echo '
+        <div class="table-responsive">
+            <table class="table mt-4 table-striped">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Nombre</th>
+                        <th>Descripción</th>
+                        <th>Documento</th>
+                        <th>Portada</th>
+                        <th>Fecha de registro</th>
+                        <th>Categoria</th>
+                        <th>Miembro</th>
+                        <th>Eliminar</th>
+                        <th>Actualizar</th>
+                    </tr>
+                </thead>
+                <tbody>
+            ';
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '
+                    <tr>
+                        <td>' . $fila['id_product'] . '</td>
+                        <td>' . $fila['name_product'] . '</td>     
+                        <td>' . $fila['description_product'] . '</td>    
+                        <td>' . $fila['path_product'] . '</td>    
+                        <td><img src="../assets/img/portadas/' . $fila['image_product'] . '" class="img-fluid" width=60 height=4 alt="' . $fila['image_product'] . '" id="image_product' . $fila['id_product'] . '"></td>   
+                        <td>' . $fila['date_register'] . '</td>   
+                        <td>' . $fila['id_category'] . '</td>   
+                        <td>' . $fila['id_member'] . '</td>   
+                        <td><button onclick="deleteRegister(' . $fila['id_product'] . ');" class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button></td>
+                        <td><button id="cargar' . $fila['id_product'] . '" onclick="cargar(' . $fila['id_product'] . ')"; class="btn btn-secondary-gt" data-toggle="modal" data-target="#modalUpdate"><i class="fas fa-user-edit"></i></button></td>
+                    </tr>
+                ';
+            }
+        }
+        echo '<tbody></table></div>';
+    }
+
+    public function buscarProducto()
+    {
+        $consultas = $this->modelo('Product');
+        $filas = $consultas->buscarProducto();
+        return $filas;
     }
     /*Pagos*/
     public function payments()
@@ -333,7 +378,7 @@ class Cargar extends Controlador
     public function selectProduct()
     {
         $consultas = $this->modelo('Product');
-        $filas = $consultas->buscarProduct();
+        $filas = $consultas->buscarProducto();
         echo '<select class="form-control" name="id_product" id="id_product">';
         if ($filas) {
             foreach ($filas as $fila) {
@@ -342,6 +387,18 @@ class Cargar extends Controlador
         }
         echo '</select>';
     }
+
+    public function selectProduct2()
+    {
+        $consultas = $this->modelo('Product');
+        $filas = $consultas->buscarProducto();
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '<option value="' . $fila['id_product'] . '">' . $fila['name_product'] . '</option>';
+            }
+        }
+    }
+
 
     public function selectMembers()
     {
@@ -356,10 +413,12 @@ class Cargar extends Controlador
         echo '</select>';
     }
 
+
+
     /*Pagos*/
     public function library_user()
     {
-        $consultas = $this->modelo('Librery_user');
+        $consultas = $this->modelo('Library_user');
 
         $filas = $consultas->buscarLibrery_user();
         echo '
@@ -390,12 +449,5 @@ class Cargar extends Controlador
             }
         }
         echo '<tbody></table></div>';
-    }
-
-    public function buscarProducto()
-    {
-        $consultas = $this->modelo('Product');
-        $filas = $consultas->buscarProducto();
-        return $filas;
     }
 }

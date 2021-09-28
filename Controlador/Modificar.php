@@ -66,12 +66,16 @@ class Modificar extends Controlador
     {
         $consultas = $this->modelo('Library_user');
         $id = $_POST['id_user'];
-        $id_member = $_POST['id_member'];
-        $id_product = $_POST['id_product'];
+        $id_member = $_POST['selectMemberU'];
+        $id_product = $_POST['selectProductU'];
 
-        $mensaje = $consultas->ActualizarLibrary_user($id_member, $id_product, $id);
-        echo json_encode($mensaje);
-        return true;
+        $mensaje = $consultas->ActualizarLibrery_user($id_member, $id_product, $id);
+        echo json_encode(array(
+            "id" => $id,
+            "id_member" => $id_member,
+            "id_product" => $id_product
+        ));
+        // return true;
     }
 
     /*Miembros*/

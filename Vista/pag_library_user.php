@@ -17,16 +17,17 @@ require 'encabezado.php';
         <div class="card-body">
           <form enctype="multipart/form-data" id="form-library_user">
             <div class="form-group">
-            <label for="">Miembro</label>
+              <label for="">Miembro</label>
               <?php
-                $Cargar->selectMembers();
-                ?>
+              $Cargar = new Cargar();
+              $Cargar->selectMembers();
+              ?>
             </div>
             <div class="form-group">
-            <label for="">Producto</label>
+              <label for="">Producto</label>
               <?php
-                $Cargar->selectProduct();
-                ?>
+              $Cargar->selectProduct();
+              ?>
             </div>
           </form>
           <button type="button" onclick="enviar_library_user();" class="btn btn-primary-gt btn-block">Guardar Libreria Personal</button>
@@ -34,15 +35,15 @@ require 'encabezado.php';
       </div>
     </div>
     <div class="col-md-8">
-    <div class="row no-gutters">        
-                <!-- parte del encabezado-->
+      <div class="row no-gutters">
+        <!-- parte del encabezado-->
 
-                <!-- Cuerpo de la página-->
-                <?php
-                $Cargar->library_user();
-                ?>
-                <!-- Cuerpo de la página-->
-            </div>
+        <!-- Cuerpo de la página-->
+        <?php
+        $Cargar->library_user();
+        ?>
+        <!-- Cuerpo de la página-->
+      </div>
     </div>
   </div>
 </div>
@@ -60,28 +61,33 @@ require 'encabezado.php';
       </div>
       <div class="modal-body">
         <form id="form_library_userA" name="form_library_userA">
-          <input type="hidden" id="id_user" id="id_user">
+          <input type="hidden" name="id_user" id="id_user">
           <div class="form-group">
-              <label for="">Miembro</label>
+            <label for="">Miembro</label>
+            <select class="form-control" name="selectMemberU" id="selectMemberU">
               <?php
-                $Cargar->selectMembers();
+              $Cargar->selectMember2();
               ?>
+            </select>
           </div>
           <div class="form-group">
-          <label for="">Producto</label>
+            <label for="">Producto</label>
+            <select class="form-control" name="selectProductU" id="selectProductU">
               <?php
-                $Cargar->selectProduct();
-                ?>
-            </div>
+              $Cargar->selectProduct2();
+              ?>
+            </select>
           </div>
-        </form>
       </div>
+      </form>
+
       <div class="modal-footer">
-      <button type="button" onclick="actualizar_library_user();" class="btn btn-primary-gt">Actualizar Libreria Personal</button>
+        <button type="button" onclick="actualizar_library_user();" class="btn btn-primary-gt">Actualizar Libreria Personal</button>
         <button type="button" class="btn btn-secondary-gt" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
   </div>
+</div>
 </div>
 
 
