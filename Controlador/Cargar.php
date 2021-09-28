@@ -288,6 +288,19 @@ class Cargar extends Controlador
         echo '</select>';
    }
 
+   public function selectProduct()
+   {
+       $consultas = $this->modelo('Product');
+       $filas = $consultas->buscarProduct();
+       echo '<select class="form-control" name="id_product" id="id_product">';
+          if ($filas) {
+              foreach ($filas as $fila) {
+                  echo '<option value="' . $fila['id_product'] . '">' . $fila['name_product'] . '</option>';
+              }
+          }
+       echo '</select>';
+  }
+
    public function selectMembers()
    {
        $consultas = $this->modelo('Members');
@@ -300,5 +313,42 @@ class Cargar extends Controlador
           }
        echo '</select>';
   }
+
+    /*Pagos*/
+    public function library_user()
+    {
+        $consultas = $this->modelo('Librery_user');
+
+        $filas = $consultas->buscarLibrery_user();
+        echo '
+        <div class="table-responsive">
+            <table class="table mt-4 table-striped">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Miembro</th>
+                        <th>Producto</th>
+                        <th>Eliminar</th>
+                        <th>Actualizar</th>
+                    </tr>
+                </thead>
+                <tbody>
+            ';
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '
+                    <tr>
+                        <td>' . $fila['id_user'] . '</td>
+                        <td>' . $fila['id_member'] . '</td>     
+                        <td>' . $fila['id_product'] . '</td>                    
+                        <td><button onclick="mostrar_msg(' . $fila['id_user'] . ');" class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button></td>
+                        <td><button id="cargar' . $fila['id_user'] . '" onclick="cargar(' . $fila['id_user'] . ')"; class="btn btn-secondary-gt" data-toggle="modal" data-target="#actualizarLibrary_user"><i class="fas fa-user-edit"></i></button></td>
+                    </tr>
+                ';
+            }
+        }
+        echo '<tbody></table></div>';
+    }
+
     
 }

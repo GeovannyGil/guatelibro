@@ -136,6 +136,19 @@ class Insertar extends Controlador
         return true;
     }
 
+    /*Library user */
+    public function library_user()
+    {
+        $consultas = $this->modelo('Library_user');
+        $id_member = $_POST['id_member'];
+        $id_product = $_POST['id_product'];
+
+        $mensaje = $consultas->InsertarLibrary_user($id_member, $id_product);
+        echo json_encode($mensaje);
+
+        return true;
+    }
+
     public function correo($datos)
     {
         require 'Modelo/activar.php';
