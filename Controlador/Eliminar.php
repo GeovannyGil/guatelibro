@@ -40,4 +40,21 @@ class Eliminar extends Controlador
 
     return true;
   }
+
+    /*Miembro*/
+    public function members(){
+      $consultas=$this->modelo('Members');
+      $datos=$_POST['id_member'];
+      $filas=$consultas->buscarMembersE($datos); 
+      if($filas){
+        foreach($filas as $fila){
+          $nombre_photo=$fila['photo'];
+        }
+      }       
+      echo json_encode($nombre_photo);
+      unlink("assets/img/members/".$nombre_photo);
+
+      $consultas->EliminarMembers($datos);        
+      return true;
+}
 }

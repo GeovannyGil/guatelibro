@@ -65,7 +65,7 @@ function mostrar_msg(id){
                                     });                                    
                     });
         } else {
-          swal("No se eliminó el dato");
+            Swal.fire("No se eliminó el dato");
         }
       });
 }

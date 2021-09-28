@@ -206,6 +206,17 @@ a {
 }
 
 /*Cards*/
+.img1,.img2{
+  border-radius: .5em;
+  border: .1em lightgray solid;
+  display: block;
+  transition: 2.5s;
+}
+
+.centro{
+  text-align: center;
+}
+
 
 h1 {
   text-align: center;

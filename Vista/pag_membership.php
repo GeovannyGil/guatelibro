@@ -19,10 +19,11 @@ require 'encabezado.php';
             <div class="row">
               <div class="form-group col-md-12">
                 <label for="">Tipo membresia:</label>
-                <?php
-                $Cargar = new Cargar();
-                // $Cargar->selectCategoria();
-                ?>
+                <select class="form-control" name="type_membership" id="type_membership">
+                <option>Mensual</option>
+                <option>Semestral</option>
+                <option>Anual</option>
+              </select>
               </div>
               <div class="form-group col-md-6">
                 <label for="">Precio</label>
@@ -46,6 +47,7 @@ require 'encabezado.php';
 
         <!-- Cuerpo de la página-->
         <?php
+        $Cargar = new Cargar();
         $Cargar->membership();
         ?>
         <!-- Cuerpo de la página-->

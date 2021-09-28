@@ -152,4 +152,81 @@ class Cargar extends Controlador
         $filas = $consultas->buscarMembership();
         return $filas;
     }
+
+     public function selectRol()
+     {
+         $consultas = $this->modelo('Rol');
+         $filas = $consultas->buscarRol();
+         echo '<select class="form-control" name="id_rol" id="id_rol">';
+            if ($filas) {
+                foreach ($filas as $fila) {
+                    echo '<option value="' . $fila['id_rol'] . '">' . $fila['rol'] . '</option>';
+                }
+            }
+         echo '</select>';
+    }
+
+
+    /*Usuarios*/
+    public function memberbers()
+    {
+        $consultas = $this->modelo('Members');
+
+        $filas = $consultas->buscarMembers();
+        echo '
+        <div class="table-responsive">
+            <table class="table mt-4 table-striped">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Nombre</th>
+                        <th>Apellido</th>
+                        <th>Correo</th>
+                        <th>Teléfono</th>
+                        <th>Dirección</th>
+                        <th>Foto</th>
+                        <th>Institución</th>
+                        <th>Usuario</th>
+                        <th>Contraseña</th>
+                        <th>Estado</th>
+                        <th>Rol</th>
+                        <th>Eliminar</th>
+                        <th>Actualizar</th>
+                    </tr>
+                </thead>
+                <tbody>
+            ';
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '
+                    <tr>
+                        <td>' . $fila['id_member'] . '</td>
+                        <td>' . $fila['name_member'] . '</td>     
+                        <td>' . $fila['surname_member'] . '</td>    
+                        <td>' . $fila['email'] . '</td>
+                        <td>' . $fila['phone'] . '</td>    
+                        <td>' . $fila['direction'] . '</td>
+                        <td><img src="../assets/img/members/'.$fila['photo'].'" class="img-fluid" width=60 height=4 alt="'.$fila['photo'].'" id="photo'.$fila['id_member'].'"></td>                 
+                        <td>' . $fila['institution'] . '</td>
+                        <td>' . $fila['user_member'] . '</td>
+                        <td>' . $fila['password'] . '</td>
+                        <td>' . $fila['state'] . '</td>
+                        <td>' . $fila['id_rol'] . '</td>
+                        <td><button onclick="mostrar_msg(' . $fila['id_member'] . ');" class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button></td>
+                        <td><button id="cargar' . $fila['id_member'] . '" onclick="cargar(' . $fila['id_member'] . ')"; class="btn btn-secondary-gt" data-toggle="modal" data-target="#actualizarMembers"><i class="fas fa-user-edit"></i></button></td>
+                    </tr>
+                ';
+            }
+        }
+        echo '<tbody></table></div>';
+    }
+
+    public function buscarMembers()
+    {
+        $consultas = $this->modelo('Members');
+        $filas = $consultas->buscarMembers();
+        return $filas;
+    }
+    
+    
 }
