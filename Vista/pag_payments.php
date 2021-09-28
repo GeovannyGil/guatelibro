@@ -16,22 +16,19 @@ require 'encabezado.php';
           Formulario PAGOS
         </div>
         <div class="card-body">
-          <form action="" id="formPayments">
+          <form enctype="multipart/form-data" id="form-payments">
             <div class="form-group">
               <label for="">Miembro</label>
-              <select class="form-control" name="id_member" id="id_member">
-                <option>Kevin</option>
-                <option>Angel</option>
-                <option>Mateo</option>
-              </select>
+              <?php
+                $Cargar = new Cargar();
+                $Cargar->selectMembers();
+                ?>
             </div>
             <div class="form-group">
               <label for="">Membresias</label>
-              <select class="form-control" name="id_membership" id="id_membership">
-                <option>Mensual</option>
-                <option>Semestral</option>
-                <option>Anual</option>
-              </select>
+              <?php
+                $Cargar->selectMembership();
+                ?>
             </div>
             <div class="form-group">
               <label for="">Tipo Pago</label>
@@ -39,59 +36,30 @@ require 'encabezado.php';
             </div>
             <div class="form-group">
               <label for="">Pago</label>
-              <input type="text" name="payment" id="payment" placeholder="Ingrese una pago" class="form-control">
+              <input type="number" name="payment" id="payment" placeholder="Ingrese una pago" class="form-control">
             </div>
           </form>
-          <input type="button" class="btn btn-primary-gt btn-block" id="btnSave" value="Guardar Pagos">
+          <button type="button" onclick="enviar_payments();" class="btn btn-primary-gt btn-block">Guardar Pago</button>
         </div>
       </div>
     </div>
     <div class="col-md-8">
-      <div class="table-responsive">
-        <table class="table">
-          <thead class="thead-bg1">
-            <tr>
-              <th scope="col">#</th>
-              <th scope="col">Miembro</th>
-              <th scope="col">Membresia</th>
-              <th scope="col">Tipo Pago</th>
-              <th scope="col">Pago</th>
-              <th scope="col">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <th scope="row">1</th>
-              <td>Kevin</td>
-              <td>Anual</td>
-              <td>Paypal</td>
-              <td>849.99</td>
-              <td>
-                <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i class="fas fa-trash"></i></button>
-                <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i class="fas fa-edit"></i></button>
-              </td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Angel</td>
-              <td>Mensual</td>
-              <td>Paypal</td>
-              <td>79.99</td>
-              <td>
-                <button class="btn btn-secondary-gt" onclick="deleteRegister(5)"><i class="fas fa-trash"></i></button>
-                <button data-toggle="modal" data-target="#modalUpdate" class="btn btn-secondary-gt"><i class="fas fa-edit"></i></button>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
+    <div class="row no-gutters">        
+                <!-- parte del encabezado-->
+
+                <!-- Cuerpo de la página-->
+                <?php
+                $Cargar->payments();
+                ?>
+                <!-- Cuerpo de la página-->
+            </div>
+        </div>
   </div>
 </div>
 
-<div class="modal fade" id="modalUpdate" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+<div class="modal fade" id="actualizarPayments" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
+  <div class="modal-content">
       <div class="modal-header card-header-bg1">
         <h5 class="modal-title " id="exampleModalLongTitle">Actualizar Dato</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -99,38 +67,41 @@ require 'encabezado.php';
         </button>
       </div>
       <div class="modal-body">
-        <form action="" id="formPaymentsU">
+        <form id="form_paymentsA" name="form_paymentsA">
           <div class="row">
-            <input type="hidden" name="keyPayments" id="keyPayments" placeholder="Ingrese una pago">
+            <input type="hidden" name="id_payments" id="id_payments" placeholder="Ingrese una categoria">
             <div class="form-group col-12">
-
               <label for="">Miembro</label>
-              <select class="form-control" name="id_memberU" id="id_memberU">
-                <option>Kevin</option>
-                <option>Angel</option>
-                <option>Mateo</option>
-              </select>
+              <?php
+                $Cargar = new Cargar();
+                $Cargar->selectMembers();
+                ?>
+              </div>
 
+              <div class="form-group col-12">
               <label for="">Membresias</label>
-              <select class="form-control" name="id_membershipU" id="id_membershipU">
-                <option>Mensual</option>
-                <option>Semestral</option>
-                <option>Anual</option>
-              </select>
+              <?php
+                $Cargar->selectMembership();
+                ?>
+              </div>
+
+              <div class="form-group col-12">
 
               <label for="">Tipo Pago</label>
-              <input type="text" name="payment_typeU" id="payment_typeU" placeholder="Ingrese un tipo de pago" class="form-control">
+              <input type="text" name="payment_type" id="payment_type" placeholder="Ingrese un tipo de pago" class="form-control">
+           
+              </div>
 
-              <div class="form-group">
-                <label for="">Pago</label>
-                <input type="text" name="paymentU" id="paymentU" placeholder="Ingrese una pago" class="form-control">
+              
+              <div class="form-group col-12">
+              <label for="">Pago</label>
+              <input type="number" name="payment" id="payment" placeholder="Ingrese una pago" class="form-control">
               </div>
             </div>
-          </div>
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary-gt" id="btnUpdate">Actualizar</button>
+      <button type="button" onclick="actualizar_payments();" class="btn btn-primary-gt">Actualizar Pago</button>
         <button type="button" class="btn btn-secondary-gt" data-dismiss="modal">Cerrar</button>
       </div>
     </div>
@@ -141,4 +112,5 @@ require 'encabezado.php';
 <?php
 require 'footer.php';
 ?>
+<script src="http://localhost/guatelibro/assets/js/Payments.js"></script>
 <script src="http://localhost/guatelibro/assets/js/global.js"></script>

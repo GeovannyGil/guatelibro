@@ -48,6 +48,21 @@ class Insertar extends Controlador
         return true;
     }
 
+        /*Paymets */
+    public function payments()
+    {
+        $consultas = $this->modelo('Payments');
+        $id_member = $_POST['id_member'];
+        $id_membership = $_POST['id_membership'];
+        $payment_type = $_POST['payment_type'];
+        $payment = $_POST['payment'];
+
+        $mensaje = $consultas->InsertarPayments($id_member, $id_membership, $payment_type, $payment);
+        echo json_encode($mensaje);
+
+        return true;
+    }
+
     /*Producto*/
     public function product()
     {
@@ -117,6 +132,19 @@ class Insertar extends Controlador
                 return true;
             }
         }
+
+        return true;
+    }
+
+    /*Library user */
+    public function library_user()
+    {
+        $consultas = $this->modelo('Library_user');
+        $id_member = $_POST['id_member'];
+        $id_product = $_POST['id_product'];
+
+        $mensaje = $consultas->InsertarLibrary_user($id_member, $id_product);
+        echo json_encode($mensaje);
 
         return true;
     }

@@ -1,11 +1,12 @@
-function enviar_categoria(){
-    var category = document.getElementById('category').value;
+function enviar_payments(){
+    var payment_type = document.getElementById('payment_type').value;
+    var payment = document.getElementById('payment').value;
 
-    if(category.length>0){   
-        var formData= new FormData(document.getElementById('form-categoria'));
+    if(payment_type.length>0 && payment.length>0){   
+        var formData= new FormData(document.getElementById('form-payments'));
         $.ajax({
             type: "POST",
-            url: "http://localhost/guatelibro/Insertar/categoria",
+            url: "http://localhost/guatelibro/Insertar/payments",
             data: formData,
             cache: false,
             contentType: false,
@@ -19,16 +20,15 @@ function enviar_categoria(){
                 title: '¡Éxito!',
                 text: 'El dato fue agregado correctamente '
               }).then((response) => {
-                window.location.href='http://localhost/guatelibro/Ver/categorias';
+                window.location.href='http://localhost/guatelibro/Ver/pagos';
               })   
     
                             
         });
+    }else{
     }
     
 }
-
-
 
 function mostrar_msg(id){
     Swal.fire({
@@ -44,10 +44,10 @@ function mostrar_msg(id){
       .then((willDelete) => {
         if (willDelete) {
             var formData= new FormData();
-                    formData.append('id_category',id)
+                    formData.append('id_payments',id)
                     $.ajax({                            
                             type: "post",
-                            url: "http://localhost/guatelibro/Eliminar/categoria",
+                            url: "http://localhost/guatelibro/Eliminar/payments",
                             data: formData,
                             cache: false,
                             contentType: false,
@@ -60,7 +60,7 @@ function mostrar_msg(id){
                                     title: 'Atención',
                                     text: 'Se ha eliminado el dato',
                                     }).then(function () {							
-                                    window.location.href='http://localhost/guatelibro/ver/categorias';        
+                                    window.location.href='http://localhost/guatelibro/ver/pagos';        
                                     });                                    
                     });
         } else {
@@ -74,11 +74,20 @@ function cargar(id){
     $("#cargar"+id).parents("tr").find("td").each(function(){
             
                     if(conteo==0){
-                        document.form_categoriaA.id_category.value=$(this).html();
+                        document.form_paymentsA.id_payments.value=$(this).html();
                     }
                     if(conteo==1){
-                        document.form_categoriaA.category.value=$(this).html();
+                        document.form_paymentsA.id_member.value=$(this).html();
                     }   
+                    if(conteo==2){
+                        document.form_paymentsA.id_membership.value=$(this).html();
+                    } 
+                    if(conteo==3){
+                        document.form_paymentsA.payment_type.value=$(this).html();
+                    } 
+                    if(conteo==4){
+                        document.form_paymentsA.payment.value=$(this).html();
+                    } 
                             
                   
             
@@ -86,13 +95,12 @@ function cargar(id){
     });
 }
 
-
-function actualizar_categoria(){
-    var formData= new FormData(document.getElementById('form_categoriaA'));
+function actualizar_payments(){
+    var formData= new FormData(document.getElementById('form_paymentsA'));
 
     $.ajax({
         type: "POST",
-        url: "http://localhost/guatelibro/Modificar/categoria",
+        url: "http://localhost/guatelibro/Modificar/payments",
         data: formData,
         cache: false,
         contentType: false,
@@ -104,8 +112,8 @@ function actualizar_categoria(){
             title: 'Atención',
             text: 'Se ha actualizado correctamente',
             }).then(function () {	
-                $('#actualizarCategoria').modal("hide");	
-                window.location.href='http://localhost/guatelibro/ver/categorias';					
+                $('#actualizarPayments').modal("hide");	
+                window.location.href='http://localhost/guatelibro/ver/pagos';					
             });
     });
 }

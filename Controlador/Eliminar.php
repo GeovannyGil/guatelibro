@@ -59,6 +59,28 @@ class Eliminar extends Controlador
     return true;
   }
 
+  /*Payments*/
+  public function payments()
+  {
+    $consultas = $this->modelo('Payments');
+    $datos = $_POST['id_payments'];
+    $mensaje = $consultas->EliminarPayments($datos);
+    echo json_encode($mensaje);
+
+    return true;
+  }
+
+  /*Library user*/
+  public function library_user()
+  {
+    $consultas = $this->modelo('Library_user');
+    $datos = $_POST['id_user'];
+    $mensaje = $consultas->EliminarLibrary_user($datos);
+    echo json_encode($mensaje);
+
+    return true;
+  }
+
   /*Productos*/
 
   public function product()

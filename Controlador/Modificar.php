@@ -47,6 +47,33 @@ class Modificar extends Controlador
         return true;
     }
 
+    /*Payments*/
+    public function payments()
+    {
+        $consultas = $this->modelo('Payments');
+        $id = $_POST['id_payments'];
+        $id_member = $_POST['id_member'];
+        $id_membership = $_POST['id_membership'];
+        $payment_type = $_POST['payment_type'];
+        $payment = $_POST['payment'];
+
+        $mensaje = $consultas->ActualizarPayments($id_member, $id_membership, $payment_type, $payment, $id);
+        echo json_encode($mensaje);
+        return true;
+    }
+
+    public function library_user()
+    {
+        $consultas = $this->modelo('Library_user');
+        $id = $_POST['id_user'];
+        $id_member = $_POST['id_member'];
+        $id_product = $_POST['id_product'];
+
+        $mensaje = $consultas->ActualizarLibrary_user($id_member, $id_product, $id);
+        echo json_encode($mensaje);
+        return true;
+    }
+
     /*Miembros*/
     public function members()
     {

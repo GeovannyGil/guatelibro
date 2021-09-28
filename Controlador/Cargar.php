@@ -269,19 +269,23 @@ class Cargar extends Controlador
         $consultas = $this->modelo('Product');
 
         $filas = $consultas->buscarProducto();
+    }
+    /*Pagos*/
+    public function payments()
+    {
+        $consultas = $this->modelo('Payments');
+
+        $filas = $consultas->buscarPayments();
         echo '
         <div class="table-responsive">
             <table class="table mt-4 table-striped">
                 <thead>
                     <tr>
-                        <th>#</th>
-                        <th>Nombre</th>
-                        <th>Descripción</th>
-                        <th>Documento</th>
-                        <th>Portada</th>
-                        <th>Fecha de registro</th>
-                        <th>Categoria</th>
+                        <th>No.</th>
                         <th>Miembro</th>
+                        <th>Membresia</th>
+                        <th>Tipo Pago</th>
+                        <th>Pago</th>
                         <th>Eliminar</th>
                         <th>Actualizar</th>
                     </tr>
@@ -292,17 +296,95 @@ class Cargar extends Controlador
             foreach ($filas as $fila) {
                 echo '
                     <tr>
-                        <td>' . $fila['id_product'] . '</td>
-                        <td>' . $fila['name_product'] . '</td>     
-                        <td>' . $fila['description_product'] . '</td>    
-                        <td>' . $fila['path_product'] . '</td>    
-                        <td><img src="../assets/img/portadas/' . $fila['image_product'] . '" class="img-fluid" width=60 height=4 alt="' . $fila['image_product'] . '" id="image_product' . $fila['id_product'] . '"></td>   
-                        <td>' . $fila['date_register'] . '</td>   
-                        <td>' . $fila['id_category'] . '</td>   
-                        <td>' . $fila['id_member'] . '</td>   
-                        <td><button onclick="deleteRegister(' . $fila['id_product'] . ');" class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button></td>
+                        <td>' . $fila['id_payments'] . '</td>
+                        <td>' . $fila['id_member'] . '</td>     
+                        <td>' . $fila['id_membership'] . '</td>    
+                        <td>' . $fila['payment_type'] . '</td>   
+                        <td>' . $fila['payment'] . '</td>                
+                        <td><button onclick="mostrar_msg(' . $fila['id_payments'] . ');" class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button></td>
+                        <td><button id="cargar' . $fila['id_payments'] . '" onclick="cargar(' . $fila['id_payments'] . ')"; class="btn btn-secondary-gt" data-toggle="modal" data-target="#actualizarPayments"><i class="fas fa-user-edit"></i></button></td>
+                    </tr>
+                ';
+            }
+        }
+        echo '<tbody></table></div>';
+    }
 
-                        <td><button id="cargar' . $fila['id_product'] . '" onclick="cargar(' . $fila['id_product'] . ')"; class="btn btn-secondary-gt" data-toggle="modal" data-target="#modalUpdate"><i class="fas fa-user-edit"></i></button></td>
+    public function buscarPayments()
+    {
+        $consultas = $this->modelo('Payments');
+        $filas = $consultas->buscarPayments();
+        return $filas;
+    }
+
+    public function selectMembership()
+    {
+        $consultas = $this->modelo('Membership');
+        $filas = $consultas->buscarMembership();
+        echo '<select class="form-control" name="id_membership" id="id_membership">';
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '<option value="' . $fila['id_membership'] . '">' . $fila['type_membership'] . '</option>';
+            }
+        }
+        echo '</select>';
+    }
+
+    public function selectProduct()
+    {
+        $consultas = $this->modelo('Product');
+        $filas = $consultas->buscarProduct();
+        echo '<select class="form-control" name="id_product" id="id_product">';
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '<option value="' . $fila['id_product'] . '">' . $fila['name_product'] . '</option>';
+            }
+        }
+        echo '</select>';
+    }
+
+    public function selectMembers()
+    {
+        $consultas = $this->modelo('Members');
+        $filas = $consultas->buscarMembers();
+        echo '<select class="form-control" name="id_member" id="id_member">';
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '<option value="' . $fila['id_member'] . '">' . $fila['name_member'] . '</option>';
+            }
+        }
+        echo '</select>';
+    }
+
+    /*Pagos*/
+    public function library_user()
+    {
+        $consultas = $this->modelo('Librery_user');
+
+        $filas = $consultas->buscarLibrery_user();
+        echo '
+        <div class="table-responsive">
+            <table class="table mt-4 table-striped">
+                <thead>
+                    <tr>
+                        <th>No.</th>
+                        <th>Miembro</th>
+                        <th>Producto</th>
+                        <th>Eliminar</th>
+                        <th>Actualizar</th>
+                    </tr>
+                </thead>
+                <tbody>
+            ';
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '
+                    <tr>
+                        <td>' . $fila['id_user'] . '</td>
+                        <td>' . $fila['id_member'] . '</td>     
+                        <td>' . $fila['id_product'] . '</td>                    
+                        <td><button onclick="mostrar_msg(' . $fila['id_user'] . ');" class="btn btn-secondary-gt"><i class="fas fa-trash"></i></button></td>
+                        <td><button id="cargar' . $fila['id_user'] . '" onclick="cargar(' . $fila['id_user'] . ')"; class="btn btn-secondary-gt" data-toggle="modal" data-target="#actualizarLibrary_user"><i class="fas fa-user-edit"></i></button></td>
                     </tr>
                 ';
             }
