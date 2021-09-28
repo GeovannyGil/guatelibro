@@ -16,42 +16,64 @@ require 'encabezado.php';
         </div>
         <div class="card-body">
           <form action="" id="formProducts">
-            <div class="form-group">
-              <label for="">Nombre Producto</label>
-              <input type="text" placeholder="Ingrese el nombre del producto" name="productName" id="productName" class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="">Descripción</label>
-              <textarea name="description" id="description" class="form-control" rows="3" cols="20" placeholder="Ingrese el nombre del producto"></textarea>
-            </div>
-            <div class="form-group">
-              <label for="">Path del Producto</label>
-              <input type="text" name="pathProduct" id="pathProduct" placeholder="Ingrese el path del producto" class="form-control">
-            </div>
-            <div class="form-group">
-              <label for="">Fecha Registro</label>
-              <input type="date" name="dateRegister" id="dateRegister" class="form-control">
-            </div>
+            <div class="row">
+              <div class="form-group col-md-6">
+                <label for="">Nombre Producto</label>
+                <input type="text" placeholder="Ingrese el nombre del producto" name="productName" id="productName" class="form-control">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="">Miembro</label>
+                <select class="form-control" name="selectMember" id="selectMember">
+                  <option value="1">Kevin</option>
+                  <option value="2">Angel</option>
+                  <option value="3">Mateo</option>
+                </select>
+              </div>
+              <div class="form-group col-md-12">
+                <label for="">Descripción</label>
+                <textarea name="description" id="description" class="form-control" rows="3" cols="20" placeholder="Ingrese el nombre del producto"></textarea>
+              </div>
+              <label for="">Portada: </label>
+              <div class="col-md-12 mt-4 informacion1 content-input-img">
 
-            <div class="form-group">
-              <label for="">Categoria</label>
-              <select class="form-control" name="selectCategory" id="selectCategory">
-                <option>Revista</option>
-                <option>Libro</option>
-                <option>Articulo 3</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label for="">Miembro</label>
-              <select class="form-control" name="selectMember" id="selectMember">
-                <option>Kevin</option>
-                <option>Angel</option>
-                <option>Mateo</option>
-              </select>
+                <div class="div-img-file-input">
+                  <input id="file-upload1" name="img-1" onchange='cambiar();' onclick="cambio()" type="file" style='display: none;' />
+                  <img class="img-fluid img-prev1 img1" id="img1" src="http://localhost/guatelibro/assets/img/no_disponible.png">
+                </div>
+                <div class="div-button-info-img">
+                  <div id="info1"></div>
+                  <label for="file-upload1" class="subir mt-2 btn btn-secondary-gt">
+                    <i class="fas fa-images"></i> Selecciona una imagen
+                  </label>
+                </div>
+
+              </div>
+
+              <div class="form-group col-md-12">
+                <label for="">Documento: </label>
+                <input type="file" name="file" id="file" class="input-file">
+                <label for="file" class="btn btn-tertiary js-labelFile">
+                  <i class="icon fa fa-check"></i>
+                  <span class="js-fileName">Cargar documento pdf</span>
+                </label>
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="">Fecha Registro</label>
+                <input type="date" name="dateRegister" id="dateRegister" class="form-control">
+              </div>
+
+              <div class="form-group col-md-6">
+                <label for="">Categoria</label>
+                <?php
+                $Cargar = new Cargar();
+                $Cargar->selectCategoria();
+                ?>
+              </div>
+
             </div>
           </form>
           <input type="button" id="btnSave" class="btn btn-primary-gt btn-block" value="Guardar Libreria Personal">
-
         </div>
       </div>
     </div>
@@ -164,4 +186,5 @@ require 'encabezado.php';
 <?php
 require 'footer.php';
 ?>
-<script src="http://localhost/guatelibro/assets/js/global.js"></script>
+<script src="http://localhost/guatelibro/assets/js/cargar_img.js"></script>
+<script src="http://localhost/guatelibro/assets/js/product.js"></script>

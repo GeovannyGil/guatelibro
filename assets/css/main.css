@@ -163,3 +163,62 @@ div.col-md-12.header-title > h1 {
 .letter-large {
   font-size: 1rem;
 }
+
+/* Input image style */
+.content-input-img {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.content-input-img > div.div-img-file-input > img {
+  height: 100px;
+  width: 100px;
+  border-radius: 15px;
+}
+
+.content-input-img > div.div-button-info-img {
+  margin: 0 10px;
+}
+
+/* Global style */
+
+.btn-tertiary {
+  color: var(--bg-primary-color-hover);
+  padding: 0;
+  line-height: 40px;
+  width: 80%;
+  margin: auto;
+  display: block;
+  border: 2px solid var(--bg-primary-color);
+}
+.btn-tertiary:hover,
+.btn-tertiary:focus {
+  color: var(--bg-primary-color);
+  border-color: var(--bg-primary-color-hover);
+}
+
+/* input file style */
+.input-file {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.input-file + .js-labelFile {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 10px;
+  cursor: pointer;
+}
+.input-file + .js-labelFile .icon:before {
+  content: "";
+}
+.input-file + .js-labelFile.has-file .icon:before {
+  content: "";
+  color: #5aac7b;
+}
