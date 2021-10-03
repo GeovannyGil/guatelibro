@@ -206,17 +206,17 @@ a {
 }
 
 /*Cards*/
-.img1,.img2{
-  border-radius: .5em;
-  border: .1em lightgray solid;
+.img1,
+.img2 {
+  border-radius: 0.5em;
+  border: 0.1em lightgray solid;
   display: block;
   transition: 2.5s;
 }
 
-.centro{
+.centro {
   text-align: center;
 }
-
 
 h1 {
   text-align: center;
@@ -377,7 +377,7 @@ div.brand-navbar > a {
     inset 0 0 0 transparent, inset 0 0 0 transparent;
   opacity: 0;
   transform: translateY(50%);
-  transition: all 0.5s ease;
+  transition: all 0.2s ease;
 }
 
 .title-category.active {
@@ -385,8 +385,7 @@ div.brand-navbar > a {
   transform: translateY(0%);
 }
 
-
-.title-libro{
+.title-libro {
   /* margin: 1em;
   padding: 1em; */
   color: var(--letter-black);
@@ -474,6 +473,7 @@ body {
   width: 100%;
   text-align: center;
   color: whitesmoke;
+  border: none;
   background-repeat: round;
   background-color: whitesmoke;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 2px 2px rgba(0, 0, 0, 0.1),
@@ -531,6 +531,7 @@ body {
   transition: transform calc(var(--d) * 2) var(--e);
 }
 
+/* 
 .card.card-book:nth-child(1):before {
   background-image: url(https://images.unsplash.com/photo-1517021897933-0e0319cfbc28?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
 }
@@ -542,7 +543,8 @@ body {
 }
 .card.card-book:nth-child(4):before {
   background-image: url(https://images.unsplash.com/photo-1531306728370-e2ebd9d7bb99?ixlib=rb-1.2.1&q=80&fm=jpg&crop=entropy&cs=tinysrgb&w=400&fit=max&ixid=eyJhcHBfaWQiOjE0NTg5fQ);
-}
+} 
+*/
 
 .content {
   position: relative;

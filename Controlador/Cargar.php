@@ -53,6 +53,43 @@ class Cargar extends Controlador
         return $filas;
     }
 
+    /*botonoes Categoria*/
+    public function botonesCategorias()
+    {
+        $consultas = $this->modelo('Categoria');
+
+        $filas = $consultas->buscarCategoria();
+        echo '<a type="button" class="btn btn-lg btn-secondary-gt btn-category ';
+        echo $_GET['cat'] == 0 ? 'active' : '';
+        echo ' my-3 mx-2" href="http://localhost/guatelibro/ver/bibliotecadigital?page=1&cat=0">Todos</a>';
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '
+                    <a class="btn btn-lg btn-secondary-gt btn-category my-3 mx-2 ';
+                echo $_GET['cat'] ==  $fila['id_category'] ? 'active' : '';
+                echo '" href="http://localhost/guatelibro/ver/bibliotecadigital?page=1&cat=' . $fila['id_category'] . '">' . $fila['category'] . '</a>
+                ';
+            }
+        }
+    }
+
+    /*Etiquetas Categoria*/
+    public function labelsCategorias()
+    {
+        $consultas = $this->modelo('Categoria');
+
+        $filas = $consultas->buscarCategoria();
+        echo '<div class="title-category ';
+        echo $_GET['cat'] == 0 ? 'active' : '';
+        echo '">Todos los articulos</div>';
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '<div class="title-category ';
+                echo $_GET['cat'] ==  $fila['id_category'] ? 'active' : '';
+                echo '">' . $fila['category'] . '</div>';
+            }
+        }
+    }
 
     /*Categoria*/
     public function categoria()
@@ -289,7 +326,7 @@ class Cargar extends Controlador
                 <tbody>
             ';
         if ($filas) {
-            foreach ($filas as $fila) {
+            foreach ($filas['rows'] as $fila) {
                 echo '
                     <tr>
                         <td>' . $fila['id_product'] . '</td>
@@ -314,6 +351,66 @@ class Cargar extends Controlador
         $consultas = $this->modelo('Product');
         $filas = $consultas->buscarProducto();
         return $filas;
+    }
+
+    public function buscarProductoPagination()
+    {
+        $consultas = $this->modelo('Product');
+        $filas = $consultas->buscarProductoPagination();
+        return $filas;
+    }
+
+    /*Productos*/
+    public function productPagination($pagina, $category_id)
+    {
+        $consultas = $this->modelo('Product');
+
+        $page = $consultas->buscarProducto($category_id);
+        $filas = $consultas->buscarProductoPagination($pagina, $category_id);
+        if ($filas) {
+            echo '
+            <div class="row grid-cards">
+                <div class="col-md-12">
+                    <main class="page-content">
+            ';
+            foreach ($filas['rows'] as $fila) {
+                echo '
+                <div class="card card-book" style="background-image: url(http://localhost/guatelibro/assets/img/portadas/' . $fila['image_product'] . ')">
+                <div class="content">
+                    <h2 class="title">' . $fila['name_product'] . '</h2>
+                    <button class="btn-card-book" data-toggle="modal" data-target=".modal-product-details">Ver mas</button>
+                </div>
+                </div>
+                ';
+            }
+            echo '
+                    </main>
+                </div>
+            </div>
+            ';
+
+            echo '
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                    <li class="page-item ';
+            echo $_GET['page'] <= 1 ? "disabled" : "";
+            echo '"><a class="page-link btn btn-terceary-gt mx-1" href="http://localhost/guatelibro/ver/bibliotecadigital?page=' . $_GET['page'] - 1  . '&cat=' . $_GET['cat'] . '">Anterior</a></li>
+            ';
+
+            for ($i = 0; $i < $page['total_db_page']; $i++) {
+                echo '
+                    <li class="page-item ';
+                echo $_GET['page'] == $i + 1 ? "active" : "";
+                echo '"><a class="page-link  mx-1" href="http://localhost/guatelibro/ver/bibliotecadigital?page=' . $i + 1 . '&cat=' . $_GET['cat'] . '">' . $i + 1 . '</a></li>';
+            }
+            echo '
+                <li class="page-item ';
+            echo $_GET['page'] >= $page['total_db_page'] ? "disabled" : "";
+            echo '"><a class="page-link btn btn-terceary-gt mx-1" href="http://localhost/guatelibro/ver/bibliotecadigital?page=' . $_GET['page'] + 1  . '&cat=' . $_GET['cat'] . '">Siguiente</a></li>
+                    </ul>
+                </nav>
+            ';
+        }
     }
 
     /*Pagos*/
@@ -393,7 +490,7 @@ class Cargar extends Controlador
         $filas = $consultas->buscarProducto();
         echo '<select class="form-control" name="id_product" id="id_product">';
         if ($filas) {
-            foreach ($filas as $fila) {
+            foreach ($filas['rows'] as $fila) {
                 echo '<option value="' . $fila['id_product'] . '">' . $fila['name_product'] . '</option>';
             }
         }
@@ -405,7 +502,7 @@ class Cargar extends Controlador
         $consultas = $this->modelo('Product');
         $filas = $consultas->buscarProducto();
         if ($filas) {
-            foreach ($filas as $fila) {
+            foreach ($filas['rows'] as $fila) {
                 echo '<option value="' . $fila['id_product'] . '">' . $fila['name_product'] . '</option>';
             }
         }

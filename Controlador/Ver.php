@@ -47,4 +47,8 @@ class Ver extends Controlador
     {
         $this->vista2('pag_payments');
     }
+    public function bibliotecadigital()
+    {
+        $this->vista2('biblioteca');
+    }
 }

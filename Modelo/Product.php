@@ -2,19 +2,67 @@
 require_once 'conexion.php';
 class Product
 {
-    public function buscarProducto()
+    public function buscarProducto($category_id)
     {
         $modelo = new Conexion();
         $conexion = $modelo->obtener_conexion();
-        $sql = "select * from product";
-        $estado = $conexion->prepare($sql);
+
+        if ($category_id == 0) {
+            $sql = "select * from product";
+            $estado = $conexion->prepare($sql);
+        } else {
+            $sql = "select * from product WHERE id_category = :id_category";
+            $estado = $conexion->prepare($sql);
+            $estado->bindParam(':id_category', $category_id);
+        }
+
+        $estado->execute();
+        while ($result = $estado->fetch()) {
+            $rows[] = $result;
+        }
+
+        $total_productos = $estado->rowCount();
+        $paginas = ceil($total_productos / 2); //Redondear hacia arriba
+
+        if (isset($rows)) {
+            return array(
+                "rows" => $rows,
+                "total_db_page" => $paginas
+            );
+        } else {
+            return null;
+        }
+    }
+
+    public function buscarProductoPagination($pagina, $category_id)
+    {
+        $articulos_x_pagina = 2;
+        $iniciar = ($pagina - 1) * $articulos_x_pagina;
+
+        $modelo = new Conexion();
+        $conexion = $modelo->obtener_conexion();
+        if ($category_id == 0) {
+            $sql = "select * from product LIMIT :inicio,:narticulos";
+            $estado = $conexion->prepare($sql);
+            $estado->bindParam(':inicio', $iniciar, PDO::PARAM_INT);
+            $estado->bindParam(':narticulos', $articulos_x_pagina, PDO::PARAM_INT);
+        } else {
+            $sql = "select * from product WHERE id_category = :id_category LIMIT :inicio,:narticulos";
+            $estado = $conexion->prepare($sql);
+            $estado->bindParam(':id_category', $category_id);
+            $estado->bindParam(':inicio', $iniciar, PDO::PARAM_INT);
+            $estado->bindParam(':narticulos', $articulos_x_pagina, PDO::PARAM_INT);
+        }
         $estado->execute();
 
         while ($result = $estado->fetch()) {
             $rows[] = $result;
         }
+
         if (isset($rows)) {
-            return $rows;
+            return array(
+                "rows" => $rows
+            );
         } else {
             return null;
         }
