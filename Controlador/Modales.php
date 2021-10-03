@@ -16,4 +16,16 @@ class Modales extends Controlador
     ));
     // return true;
   }
+
+  public function Product()
+  {
+    $consultas = $this->modelo('Product');
+    $id_product = $_POST['id_product'];
+    $mensaje = $consultas->buscarProductoID($id_product);
+    echo json_encode(array(
+      "id_product" => $id_product,
+      "consulta" => $mensaje
+    ));
+    // return true;
+  }
 }

@@ -2,7 +2,7 @@
 require_once 'conexion.php';
 class Product
 {
-    public function buscarProducto($category_id)
+    public function buscarProducto($category_id = 0)
     {
         $modelo = new Conexion();
         $conexion = $modelo->obtener_conexion();

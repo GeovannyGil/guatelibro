@@ -346,6 +346,36 @@ class Cargar extends Controlador
         echo '<tbody></table></div>';
     }
 
+    /*Productos*/
+    public function productsPDF($id_product)
+    {
+        $consultas = $this->modelo('Product');
+
+        $filas = $consultas->buscarProductoID($id_product);
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '
+                    <div class="col-md-12">
+                    <iframe src="http://localhost/guatelibro/assets/documents/' . $fila['path_product'] . '" width="100%" height="600px"></iframe>
+                    </div>
+                    <div class="col-md-12 details-book-pdf mt-3">
+                    <div>
+                        <div class="img-book">
+                        <img src="http://localhost/guatelibro/assets/img/portadas/' . $fila['image_product'] . '" class="img-rounded" alt="">
+                        </div>
+                        <p>' . $fila['name_product'] . '</p>
+                    </div>
+                    <div>
+                        <button class="btn btn-lg btn-danger m-2 hide">Eliminar de mi biblioteca</button>
+                        <button class="btn btn-lg btn-terceary-gt m2 hide" disabled>Ya está en tu biblioteca</button>
+                        <button class="btn btn-lg btn-secondary-gt m2 ">Agregar a mi biblioteca</button>
+                    </div>
+                    </div>
+                ';
+            }
+        }
+    }
+
     public function buscarProducto()
     {
         $consultas = $this->modelo('Product');
@@ -378,7 +408,7 @@ class Cargar extends Controlador
                 <div class="card card-book" style="background-image: url(http://localhost/guatelibro/assets/img/portadas/' . $fila['image_product'] . ')">
                 <div class="content">
                     <h2 class="title">' . $fila['name_product'] . '</h2>
-                    <button class="btn-card-book" data-toggle="modal" data-target=".modal-product-details">Ver mas</button>
+                    <button class="btn-card-book" data-toggle="modal" data-target=".modal-product-details" onclick="cargarDatos(' . $fila['id_product'] . ')">Ver mas</button>
                 </div>
                 </div>
                 ';

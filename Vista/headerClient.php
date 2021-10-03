@@ -28,7 +28,7 @@ echo '
       </div>
     </div>
     <div class="navbar_left">
-      <a href="http://localhost/guatelibro/books.html" class="link_page active-link ">Libros</a>
+      <a href="http://localhost/guatelibro/ver/bibliotecaDigital" class="link_page active-link ">Libros</a>
       <a href="http://localhost/guatelibro/biblioteca.html" class="link_page">Mi Biblioteca</a>
     </div>
     <div class="navbar_right">

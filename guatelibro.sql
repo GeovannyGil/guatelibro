@@ -17,7 +17,7 @@ create table members(
 create table product(
   id_product int primary key auto_increment,
   name_product varchar(30),
-  description_product varchar(100),
+  description_product TEXT,
   path_product varchar(50),
   image_product varchar(75),
   date_register date,

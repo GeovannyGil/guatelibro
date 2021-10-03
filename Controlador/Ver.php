@@ -51,4 +51,8 @@ class Ver extends Controlador
     {
         $this->vista2('biblioteca');
     }
+    public function verLibro()
+    {
+        $this->vista2('viewPdf');
+    }
 }
