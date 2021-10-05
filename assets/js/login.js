@@ -1,41 +1,98 @@
-const btnLogin = document.getElementById('btnLogin');
-const btnSupport = document.getElementById('btnSupport');
-const formLogin = document.getElementById('form-login');
-const in_password = document.getElementById('password');
+const signUpButton = document.getElementById('signUp');
+const signInButton = document.getElementById('signIn');
+const container = document.getElementById('container');
+const formLogin = document.getElementById('formLogin');
+const login_member = document.getElementById('login_member');
 
-formLogin.addEventListener('submit', (e) => {
-  e.preventDefault();
-  let formData = new FormData(formLogin);
 
-  if (formData.get('user') === '' || formData.get('password') === '') {
-    console.log("El usuario y la contraseña son obligatorias");
-  } else {
-    if (formData.get('user') == 'admin' && formData.get('password') == 'watsy') {
-      window.location = "http://localhost:3000/login-admin.html";
-    } else if (formData.get('user') != 'admin' && formData.get('password') != 'watsy') {
-      console.log('Credenciales invalidas');
-    }
-  }
+signUpButton.addEventListener('click', () => {
+  container.classList.add("right-panel-active");
+});
+
+signInButton.addEventListener('click', () => {
+  container.classList.remove("right-panel-active");
 });
 
 
-btnSupport.onclick = () => {
-  console.log("Soporte");
-}
 
-
-const btn_show_password = document.getElementById('show_password');
-
-function watchPassword(input) {
-  if (input.type == "password") {
-    input.type = "text";
-    $('.inputShowPassword').removeClass('fa fa-eye-slash').addClass('fa fa-eye');
-  } else {
-    input.type = "password";
-    $('.inputShowPassword').removeClass('fa fa-eye').addClass('fa fa-eye-slash');
+function ingresar_usuario() {
+  let formData = new FormData(formLogin);
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', 'http://localhost/guatelibro/Verificar/usuario', true);
+  xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+  xhr.onreadystatechange = function () {
+    if (xhr.readyState == 4 && xhr.status == 200) {
+      var resultado = xhr.responseText;
+      console.log(resultado);
+      var json = JSON.parse(resultado);
+      console.log(json);
+      if (json.type_message == "success") {
+        Swal.fire({
+          icon: json.type_message,
+          title: json.title,
+          text: json.message,
+        }).then((response) => {
+          if (response.isConfirmed === true) {
+            window.location.href = 'http://localhost/guatelibro/ver/bibliotecadigital';
+          }
+        })
+      } else {
+        Swal.fire({
+          icon: json.type_message,
+          title: json.title,
+          text: json.message,
+        })
+      }
+    }
   }
+  xhr.send(formData);
+
+  // var formData = new FormData(document.getElementById('form-loginL'));
+  // $('#loading-screen').css('display', 'block');
+  // $.ajax({
+  //   type: "POST",
+  //   url: "http://localhost/sistema_zapateria_venta/Verificar/usuario",
+  //   data: formData,
+  //   cache: false,
+  //   contentType: false,
+  //   processData: false
+
+  // }).done(function (response) {
+  //   var mensaje = JSON.parse(response);
+  //   $('#loading-screen').css('display', 'none');
+  //   if (mensaje == "Correo o Contraseña incorrecta") {
+  //     swal({
+  //       title: 'Atención',
+  //       text: mensaje,
+  //       icon: 'error'
+  //     }).then(function () {
+  //       window.location.href = 'http://localhost/sistema_zapateria_venta/Ver/login';
+  //     });
+  //   }
+  //   if (mensaje == "Esta cuenta no ha sido activada, vaya a su correo y dele click en el enlace") {
+  //     swal({
+  //       title: 'Atención',
+  //       text: mensaje,
+  //       icon: 'info'
+  //     }).then(function () {
+  //       window.location.href = 'http://localhost/sistema_zapateria_venta/Ver/login';
+  //     });
+  //   }
+  //   if (mensaje == "Bienvenido") {
+  //     swal({
+  //       title: 'Atención',
+  //       text: mensaje,
+  //       icon: 'success'
+  //     }).then(function () {
+  //       window.location.href = 'http://localhost/sistema_zapateria_venta/Ver/dashboard';
+  //     });
+  //   }
+  // });
+
 }
 
-btn_show_password.onclick = () => {
-  watchPassword(in_password);
-}
+login_member.addEventListener('click', (e) => {
+  e.preventDefault();
+  ingresar_usuario();
+});
+

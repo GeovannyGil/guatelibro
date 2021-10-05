@@ -1,4 +1,8 @@
 <?php
+session_start();
+if ($_SESSION["id_member"] == "" || $_SESSION["name_member"] == null) {
+  header("Location: http://localhost/guatelibro/ver/login");
+}
 echo '
 <!DOCTYPE html>
 <html lang="es">
@@ -35,8 +39,8 @@ echo '
 
       <div class="profile">
         <div class="icon_wrap">
-          <img src="http://localhost/guatelibro/assets/img/profile_pic.png" alt="profile_pic">
-          <span class="name">Angel Teret</span>
+          <img src="http://localhost/guatelibro/assets/img/members/' . $_SESSION['photo'] . '" alt="profile_pic">
+          <span class="name">' . $_SESSION['name_member'] . '</span>
           <i class="fas fa-chevron-down"></i>
         </div>
 

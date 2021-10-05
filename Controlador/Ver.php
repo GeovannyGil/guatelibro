@@ -3,6 +3,11 @@ require 'Controlador.php';
 require 'Cargar.php';
 class Ver extends Controlador
 {
+    public function login()
+    {
+        $this->vista2('pag_login');
+    }
+
     public function dashboard()
     {
         $this->vista2('pag_dashboard');
