@@ -430,7 +430,7 @@ class Cargar extends Controlador
             for ($i = 0; $i < $page['total_db_page']; $i++) {
                 echo '
                     <li class="page-item ';
-                echo $_GET['page'] == $i + 1 ? "active" : "";
+                echo (int)$_GET['page'] == $i + 1 ? "active" : "";
                 echo '"><a class="page-link  mx-1" href="http://localhost/guatelibro/ver/bibliotecadigital?page=' . $i + 1 . '&cat=' . $_GET['cat'] . '">' . $i + 1 . '</a></li>';
             }
             echo '
