@@ -419,13 +419,12 @@ class Cargar extends Controlador
             </div>
             ';
 
-            echo '
-                <nav aria-label="Page navigation example">
-                    <ul class="pagination">
-                    <li class="page-item ';
-            echo (int)$_GET['page'] <= 1 ? "disabled" : "";
-            echo '"><a class="page-link btn btn-terceary-gt mx-1" href="http://localhost/guatelibro/ver/bibliotecadigital?page=' . (int)$_GET['page'] - 1  . '&cat=' . $_GET['cat'] . '">Anterior</a></li>
-            ';
+            echo '<nav aria-label="Page navigation example">
+                    <ul class="pagination">';
+            //         <li class="page-item ';
+            // echo (int)$_GET['page'] <= 1 ? "disabled" : "";
+            // echo '"><a class="page-link btn btn-terceary-gt mx-1" href="http://localhost/guatelibro/ver/bibliotecadigital?page=' . (int)$_GET['page'] - 1  . '&cat=' . $_GET['cat'] . '">Anterior</a></li>
+            // ';
 
             for ($i = 0; $i < $page['total_db_page']; $i++) {
                 echo '
@@ -434,11 +433,11 @@ class Cargar extends Controlador
                 echo '"><a class="page-link  mx-1" href="http://localhost/guatelibro/ver/bibliotecadigital?page=' . $i + 1 . '&cat=' . $_GET['cat'] . '">' . $i + 1 . '</a></li>';
             }
 
-            echo '
-                <li class="page-item ';
-            echo (int)$_GET['page'] >= $page['total_db_page'] ? "disabled" : "";
-            echo '"><a class="page-link btn btn-terceary-gt mx-1" href="http://localhost/guatelibro/ver/bibliotecadigital?page=' . (int)$_GET['page'] + 1  . '&cat=' . $_GET['cat'] . '">Siguiente</a></li>
-                    </ul>
+
+            //     <li class="page-item ';
+            // echo (int)$_GET['page'] >= $page['total_db_page'] ? "disabled" : "";
+            // echo '"><a class="page-link btn btn-terceary-gt mx-1" href="http://localhost/guatelibro/ver/bibliotecadigital?page=' . (int)$_GET['page'] + 1  . '&cat=' . $_GET['cat'] . '">Siguiente</a></li>
+            echo '  </ul>
                 </nav>
             ';
         }
