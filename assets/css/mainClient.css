@@ -102,6 +102,10 @@ a {
   position: relative;
 }
 
+div.icon_wrap > img {
+  border-radius: 50%;
+}
+
 .navbar .profile .profile_dd,
 .notification_dd {
   position: absolute;
