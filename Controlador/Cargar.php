@@ -423,8 +423,8 @@ class Cargar extends Controlador
                 <nav aria-label="Page navigation example">
                     <ul class="pagination">
                     <li class="page-item ';
-            echo $_GET['page'] <= 1 ? "disabled" : "";
-            echo '"><a class="page-link btn btn-terceary-gt mx-1" href="http://localhost/guatelibro/ver/bibliotecadigital?page=' . $_GET['page'] - 1  . '&cat=' . $_GET['cat'] . '">Anterior</a></li>
+            echo (int)$_GET['page'] <= 1 ? "disabled" : "";
+            echo '"><a class="page-link btn btn-terceary-gt mx-1" href="http://localhost/guatelibro/ver/bibliotecadigital?page=' . (int)$_GET['page'] - 1  . '&cat=' . $_GET['cat'] . '">Anterior</a></li>
             ';
 
             for ($i = 0; $i < $page['total_db_page']; $i++) {
@@ -433,10 +433,11 @@ class Cargar extends Controlador
                 echo (int)$_GET['page'] == $i + 1 ? "active" : "";
                 echo '"><a class="page-link  mx-1" href="http://localhost/guatelibro/ver/bibliotecadigital?page=' . $i + 1 . '&cat=' . $_GET['cat'] . '">' . $i + 1 . '</a></li>';
             }
+
             echo '
                 <li class="page-item ';
-            echo $_GET['page'] >= $page['total_db_page'] ? "disabled" : "";
-            echo '"><a class="page-link btn btn-terceary-gt mx-1" href="http://localhost/guatelibro/ver/bibliotecadigital?page=' . $_GET['page'] + 1  . '&cat=' . $_GET['cat'] . '">Siguiente</a></li>
+            echo (int)$_GET['page'] >= $page['total_db_page'] ? "disabled" : "";
+            echo '"><a class="page-link btn btn-terceary-gt mx-1" href="http://localhost/guatelibro/ver/bibliotecadigital?page=' . (int)$_GET['page'] + 1  . '&cat=' . $_GET['cat'] . '">Siguiente</a></li>
                     </ul>
                 </nav>
             ';

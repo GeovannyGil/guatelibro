@@ -22,7 +22,7 @@ class Product
         }
 
         $total_productos = $estado->rowCount();
-        $paginas = ceil($total_productos / 2); //Redondear hacia arriba
+        $paginas = ceil($total_productos / 20); //Redondear hacia arriba
 
         if (isset($rows)) {
             return array(
@@ -36,7 +36,7 @@ class Product
 
     public function buscarProductoPagination($pagina, $category_id)
     {
-        $articulos_x_pagina = 2;
+        $articulos_x_pagina = 20;
         $iniciar = ($pagina - 1) * $articulos_x_pagina;
 
         $modelo = new Conexion();
