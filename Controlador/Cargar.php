@@ -404,6 +404,9 @@ class Cargar extends Controlador
         return $filas;
     }
 
+    
+
+
     public function buscarProductoPagination()
     {
         $consultas = $this->modelo('Product');

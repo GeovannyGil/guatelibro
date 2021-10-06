@@ -70,4 +70,9 @@ class Ver extends Controlador
     {
         $this->vista2('perfil');
     }
+
+    public function membresia()
+    {
+        $this->vista2('membresias');
+    }
 }

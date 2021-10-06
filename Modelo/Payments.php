@@ -19,6 +19,8 @@ class Payments
         }
     }
 
+
+
     public function InsertarPayments($id_member, $id_membership, $payment_type, $payment)
     {
         $modelo = new Conexion();

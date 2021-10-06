@@ -52,7 +52,7 @@ echo '
                 <div class="btn">Mi Perfil</div>
               </a>
             </li>
-            <li><a class="address letra" href="#"><span class="picon"><i class="fas fa-crown"></i></i></span>Membresias</a></li>
+            <li><a class="address letra" href="http://localhost/guatelibro/ver/membresia"><span class="picon"><i class="fas fa-crown"></i></i></span>Membresias</a></li>
             <li><a class="logout letra" href="http://localhost/guatelibro/Cerrar_session/cerrar"><span class="picon"><i class="fas fa-sign-out-alt"></i></span>Salir</a>
             </li>
           </ul>
