@@ -164,7 +164,10 @@ class Insertar extends Controlador
         $id_product = $_POST['id_product'];
 
         $mensaje = $consultas->InsertarLibrery_user($id_member, $id_product);
-        echo json_encode($mensaje);
+        echo json_encode(array(
+            "icon" => "success",
+            "mensaje" => $mensaje
+        ));
 
         return true;
     }

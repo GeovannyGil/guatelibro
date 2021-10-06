@@ -56,8 +56,19 @@ class Ver extends Controlador
     {
         $this->vista2('biblioteca');
     }
+
+    public function mibiblioteca()
+    {
+        $this->vista2('pag_mi_biblioteca');
+    }
+
     public function verLibro()
     {
         $this->vista2('viewPdf');
+    }
+
+    public function comprar_membresias()
+    {
+        $this->vista2('pag_membresias');
     }
 }

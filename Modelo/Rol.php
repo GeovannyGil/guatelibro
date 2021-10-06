@@ -18,6 +18,22 @@ class Rol
     }
   }
 
+  public function buscarRolSinAdmin()
+  {
+    $modelo = new Conexion();
+    $conexion = $modelo->obtener_conexion();
+    $sql = "select * from rol where rol = 'Alumno' or rol = 'Profesor' or rol = 'Particular'";
+    $estado = $conexion->prepare($sql);
+    $estado->execute();
+
+    while ($result = $estado->fetch()) {
+      $rows[] = $result;
+    }
+    if (isset($rows)) {
+      return $rows;
+    }
+  }
+
   public function buscarRolID($id_rol)
   {
     $modelo = new Conexion();

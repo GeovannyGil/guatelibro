@@ -63,6 +63,15 @@ require 'encabezado.php';
                     <li class=" list-group-item">
                       <!-- Default checked -->
                       <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input permitsI" id="libreria_personal" name="libreria_personal">
+                        <label class="custom-control-label" for="libreria_personal">Libreria personal</label>
+                      </div>
+                    </li>
+                  </div>
+                  <div class="col-md-6 my-2">
+                    <li class=" list-group-item">
+                      <!-- Default checked -->
+                      <div class="custom-control custom-checkbox">
                         <input type="checkbox" class="custom-control-input permitsI" id="membershipAccess" name="membresias">
                         <label class="custom-control-label" for="membershipAccess">Membresias</label>
                       </div>
@@ -168,6 +177,15 @@ require 'encabezado.php';
                     <div class="custom-control custom-checkbox">
                       <input type="checkbox" class="custom-control-input permitsU" id="membersAccessU" name="miembros">
                       <label class="custom-control-label" for="membersAccessU">Miembros</label>
+                    </div>
+                  </li>
+                </div>
+                <div class="col-md-6 my-2">
+                  <li class=" list-group-item">
+                    <!-- Default checked -->
+                    <div class="custom-control custom-checkbox">
+                      <input type="checkbox" class="custom-control-input permitsU" id="libreria_personalU" name="libreria_personal">
+                      <label class="custom-control-label" for="libreria_personalU">Libreria Personal</label>
                     </div>
                   </li>
                 </div>

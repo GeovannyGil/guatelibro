@@ -22,8 +22,6 @@ function enviar_library_user() {
             }).then((response) => {
                 window.location.href = 'http://localhost/guatelibro/Ver/libreria_personal';
             })
-
-
         });
     } else {
     }

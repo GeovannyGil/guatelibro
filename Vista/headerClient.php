@@ -3,6 +3,7 @@ session_start();
 if ($_SESSION["id_member"] == "" || $_SESSION["name_member"] == null) {
   header("Location: http://localhost/guatelibro/ver/login");
 }
+$page_actual = explode("?", (explode("/", $_SERVER['REQUEST_URI'])[3]))[0];
 echo '
 <!DOCTYPE html>
 <html lang="es">
@@ -32,11 +33,18 @@ echo '
       </div>
     </div>
     <div class="navbar_left">
-      <a href="http://localhost/guatelibro/ver/bibliotecaDigital" class="link_page active-link ">Libros</a>
-      <a href="http://localhost/guatelibro/biblioteca.html" class="link_page">Mi Biblioteca</a>
+      <a href="http://localhost/guatelibro/ver/bibliotecaDigital" class="link_page ';
+echo $page_actual == "bibliotecadigital" ? "active-link" : "";
+echo '">Libros</a>
+      <a href="http://localhost/guatelibro/ver/mibiblioteca" class="link_page ';
+echo $page_actual == "mibiblioteca" ? "active-link" : "";
+echo '">Mi Biblioteca</a>';
+if ($_SESSION['rol'] !== "Particular" && $_SESSION['rol'] !== "Alumno" && $_SESSION['rol'] !== "Profesor") {
+  echo '<a href="http://localhost/guatelibro/ver/dashboard" class="link_page">Panel de Administradores</a>';
+}
+echo ' 
     </div>
     <div class="navbar_right">
-
       <div class="profile">
         <div class="icon_wrap">
           <img src="http://localhost/guatelibro/assets/img/members/' . $_SESSION['photo'] . '" alt="profile_pic">

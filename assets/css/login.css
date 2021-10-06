@@ -266,3 +266,11 @@ footer a {
   color: #3c97bf;
   text-decoration: none;
 }
+
+select.form-control {
+  width: 100%;
+  padding: 0.8em;
+  margin: 15px 0;
+  border: none;
+  background-color: #eee;
+}

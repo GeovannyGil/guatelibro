@@ -18,6 +18,26 @@ class Library_user
         }
     }
 
+    public function buscarProductoIDUser($id_product, $id_member)
+    {
+        $modelo = new Conexion();
+        $conexion = $modelo->obtener_conexion();
+        $sql = "select * from library_user where id_product = :id_product and id_member = :id_member";
+        $estado = $conexion->prepare($sql);
+        $estado->bindParam(':id_product', $id_product);
+        $estado->bindParam(':id_member', $id_member);
+        $estado->execute();
+
+        while ($result = $estado->fetch()) {
+            $rows[] = $result;
+        }
+        if (isset($rows)) {
+            return $rows;
+        } else {
+            return false;
+        }
+    }
+
     public function InsertarLibrery_user($id_member, $id_product)
     {
         $modelo = new Conexion();

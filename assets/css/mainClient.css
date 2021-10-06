@@ -80,7 +80,7 @@ a {
 }
 
 .navbar .navbar_right img {
-  width: 45px;
+  width: 50px;
 }
 
 .navbar .navbar_right .icon_wrap {
@@ -104,6 +104,8 @@ a {
 
 div.icon_wrap > img {
   border-radius: 50%;
+  height: 50px;
+  width: 50px;
 }
 
 .navbar .profile .profile_dd,
@@ -346,7 +348,7 @@ div.brand-navbar > a {
   }
 
   .navbar .navbar_right img {
-    width: 35px;
+    width: 50px;
   }
 
   .navbar .navbar_right .notifications .icon_wrap {
@@ -1100,6 +1102,34 @@ svg {
 
 div.btn-add-product {
   display: flex;
-  justify-content: flex-end;
+  justify-content: flex-start;
   align-items: center;
+}
+
+/* input file style */
+.input-file,
+.input-file2 {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+.input-file + .js-labelFile,
+.input-file2 + .js-labelFile2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 10px;
+  cursor: pointer;
+}
+.input-file + .js-labelFile .icon:before,
+.input-file2 + .js-labelFile2 .icon:before {
+  content: "";
+}
+.input-file + .js-labelFile.has-file .icon:before,
+.input-file2 + .js-labelFile2.has-file .icon:before {
+  content: "";
+  color: #5aac7b;
 }

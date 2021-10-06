@@ -15,4 +15,4 @@ require 'headerClient.php';
 <?php
 require 'footerClient.php';
 ?>
-<!-- <script src="http://localhost/guatelibro/assets/js/biblioteca.js"></script> -->
+<script src="http://localhost/guatelibro/assets/js/viewPDF.js"></script>

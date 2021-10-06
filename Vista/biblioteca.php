@@ -1,12 +1,10 @@
 <?php
 require 'headerClient.php';
-?>
-<?php
 if (!$_GET['page']) {
   header('Location:http://localhost/guatelibro/ver/bibliotecadigital?page=1&cat=0');
 }
-
 ?>
+
 <div class="container mt-5">
   <div class="row">
     <div class="col-md-12 tab-container-buttons">
@@ -26,7 +24,7 @@ if (!$_GET['page']) {
     </div>
   </div>
   <?php
-  $Cargar->productPagination($_GET['page'], $_GET['cat']);
+  $Cargar->productPagination($_GET['page'], $_GET['cat'], $_SESSION['id_member']);
   ?>
 </div>
 
@@ -69,7 +67,7 @@ if (!$_GET['page']) {
       <div class="modal-footer">
         <a href="" id="view_pdf" class="btn btn-primary-gt"><i class="fas fa-eye"></i> Ver
           libro</a>
-        <button type="button" class="btn btn-primary-gt">Agregar a mi biblioteca</button>
+        <button type="button" class="btn btn-primary-gt" id="add_book_library">Agregar a mi biblioteca</button>
         <button type="button" class="btn btn-secondary-gt" data-dismiss="modal">Close</button>
       </div>
     </div>

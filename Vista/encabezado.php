@@ -1,4 +1,12 @@
 <?php
+session_start();
+if ($_SESSION["id_member"] == "" || $_SESSION["name_member"] == null) {
+  header("Location: http://localhost/guatelibro/ver/login");
+}
+
+if ($_SESSION['rol'] == "Particular" || $_SESSION['rol'] == "Alumno" || $_SESSION['rol'] == "Profesor") {
+  header("Location: http://localhost/guatelibro/ver/bibliotecaDigital");
+}
 echo '<!DOCTYPE html>
 <html lang="es">
 
@@ -88,6 +96,11 @@ echo '<!DOCTYPE html>
             <i class="fas fa-expand-arrows-alt"></i>
           </a>
         </li>
+        <li class="nav-item">
+          <a class="nav-link"  href="http://localhost/guatelibro/Cerrar_session/cerrar" role="button">
+            <i class="fas fa-sign-out-alt"></i>
+          </a>
+        </li>
         <!-- <li class="nav-item">
           <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
             <i class="fas fa-th-large"></i>
@@ -110,10 +123,11 @@ echo '<!DOCTYPE html>
         <!-- Sidebar user (optional) -->
         <div class="user-panel mt-3 pb-3 mb-3 d-flex">
           <div class="image">
-            <img src="http://localhost/guatelibro/assets/img/login-admin/3.png" class="img-circle elevation-2" alt="User Image">
+            <img src="http://localhost/guatelibro/assets/img/members/' . $_SESSION['photo'] . '" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">Leslie Chajaj</a>
+            <a href="#" class="d-block">' . $_SESSION['name_member'] .
+  '</a>
           </div>
         </div>
         <!-- SidebarSearch Form -->
@@ -132,104 +146,117 @@ echo '<!DOCTYPE html>
           <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
             <!-- Add icons to the links using the .nav-icon class
                                      with font-awesome or any other icon font library -->
-            <!-- <li class="nav-item">
-                                    <a href="#" class="nav-link">
-                                      <i class="nav-icon fas fas fa-file-invoice"></i>
-                                      <p>
-                                        Documentos
-                                        <i class="right fas fa-angle-left"></i>
-                                      </p>
-                                    </a>
-                                    <ul class="nav nav-treeview">
-                                      <li class="nav-item">
-                                        <a href="../../index.html" class="nav-link">
-                                          <i class="fas fa-angle-right nav-icon"></i>
-                                          <p>Facturas</p>
-                                        </a>
-                                      </li>
-                                      <li class="nav-item">
-                                        <a href="/cotizaciones.html" class="nav-link">
-                                          <i class="fas fa-angle-right nav-icon"></i>
-                                          <p>Cotizaciones</p>
-                                        </a>
-                                      </li>
-                                      <li class="nav-item">
-                                        <a href="../../index3.html" class="nav-link">
-                                          <i class="fas fa-angle-right nav-icon"></i>
-                                          <p>Recibos de Caja</p>
-                                        </a>
-                                      </li>
-                                    </ul>
-                                  </li> -->
-            <li class="nav-item">
+          <li class="nav-item">
+              <a href="http://localhost/guatelibro/ver/dashboard" class="nav-link">
+                <i class="nav-icon fas fa-table"></i>
+                <p>
+                  Dashboard
+                </p>
+              </a>
+        </li>
+        ';
+$permisos = json_decode($_SESSION['permisos']);
+foreach ($permisos as $permiso) :
+  if ($permiso == "categorias") {
+    echo '<li class="nav-item">
               <a href="http://localhost/guatelibro/ver/categorias" class="nav-link">
                 <i class="nav-icon fas fa-tags"></i>
                 <p>
                   Categorias
                 </p>
               </a>
-            </li>
-            <li class="nav-item">
+        </li>';
+  }
+  if ($permiso == "rol") {
+    echo ' <li class="nav-item">
               <a href="http://localhost/guatelibro/ver/rol" class="nav-link">
                 <i class="nav-icon fas fa-user-lock"></i>
                 <p>
                   Rol
                 </p>
               </a>
-            </li>
+            </li>';
+  }
 
-            <li class="nav-item">
+  if ($permiso == "productos") {
+    echo '<li class="nav-item">
               <a href="http://localhost/guatelibro/ver/productos" class="nav-link">
                 <i class="nav-icon fas fa-book"></i>
                 <p>
                   Productos
                 </p>
               </a>
-            </li>
+            </li>';
+  }
 
-            <li class="nav-item">
+  if ($permiso == "miembros") {
+    echo '  <li class="nav-item">
               <a href="http://localhost/guatelibro/ver/miembros" class="nav-link">
                 <i class="nav-icon fas fa-user"></i>
                 <p>
                   Miembros
                 </p>
               </a>
-            </li>
-      
+            </li>';
+  }
 
-            <li class="nav-item">
+  if ($permiso == "libreria_personal") {
+    echo '<li class="nav-item">
               <a href="http://localhost/guatelibro/ver/libreria_personal" class="nav-link">
                 <i class="nav-icon fas fa-book-reader"></i>
                 <p>
                   Libreria Personal
                 </p>
               </a>
-            </li>
-            <li class="nav-item">
+            </li>';
+  }
+
+  if ($permiso == "membresias") {
+    echo ' <li class="nav-item">
               <a href="http://localhost/guatelibro/ver/membresias" class="nav-link">
                 <i class="nav-icon fas fa-crown"></i>
                 <p>
                   Membresias
                 </p>
               </a>
-            </li>
-            <li class="nav-item">
+            </li>';
+  }
+
+  if ($permiso == "suscripciones") {
+    echo '<li class="nav-item">
               <a href="http://localhost/guatelibro/ver/suscripciones" class="nav-link">
                 <i class="nav-icon fas fa-users"></i>
                 <p>
                   Suscripciones
                 </p>
               </a>
-            </li>
-            <li class="nav-item">
+            </li>';
+  }
+
+  if ($permiso == "pagos") {
+    echo
+    '<li class="nav-item">
               <a href="http://localhost/guatelibro/ver/pagos" class="nav-link">
                 <i class="nav-icon fas fa-money-check-alt"></i>
                 <p>
                   Pagos
                 </p>
               </a>
-            </li>
-          </ul>
+            </li>';
+  }
+
+
+endforeach;
+
+echo ' <li class="nav-item">
+              <a href="http://localhost/guatelibro/ver/bibliotecaDigital" class="nav-link">
+                <i class="nav-icon fas fa-street-view "></i>
+                <p>
+                  Vista cliente
+                </p>
+              </a>
+      </li>
+      </ul>
         </nav>
         <!-- /.sidebar-menu -->
       </div>
