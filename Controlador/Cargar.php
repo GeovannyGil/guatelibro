@@ -610,6 +610,8 @@ class Cargar extends Controlador
         }
     }
 
+
+
     /*Pagos*/
     public function payments()
     {

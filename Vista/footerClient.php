@@ -3,6 +3,8 @@
   <!-- </div> -->
   <!-- jQuery -->
   <script src="http://localhost/guatelibro/assets/js/jquery/jquery.min.js"></script>
+  <script src="http://localhost/guatelibro/assets/js/sweetAlert/sweetalert2.all.min.js"></script>
+ 
   <!-- Bootstrap 4 -->
   <script src="http://localhost/guatelibro/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
   <script src="http://localhost/guatelibro/assets/js/sweetAlert/sweetalert2.all.min.js"></script>

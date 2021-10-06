@@ -1133,3 +1133,14 @@ div.btn-add-product {
   content: "";
   color: #5aac7b;
 }
+
+.centrar {
+  height: 100vh;
+  width: 100vh;
+  display: inline-block;
+  justify-content: center;
+}
+
+.mover {
+  margin-left: 75%;
+}

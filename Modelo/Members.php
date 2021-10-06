@@ -158,6 +158,29 @@ class Members
         }
     }
 
+    public function ActualizarMembersIU($name_member, $surname_member, $email, $phone, $direction, $photo, $institution, $user_member, $id)
+    {
+        $modelo = new Conexion();
+        $conexion = $modelo->obtener_conexion();
+        $sql = "update members set name_member=:name_member, surname_member=:surname_member,email=:email, phone=:phone, direction=:direction, photo=:photo, institution=:institution, user_member=:user_member where id_member=:id";
+        $estado = $conexion->prepare($sql);
+        $estado->bindParam(':name_member', $name_member);
+        $estado->bindParam(':surname_member', $surname_member);
+        $estado->bindParam(':email', $email);
+        $estado->bindParam(':phone', $phone);
+        $estado->bindParam(':direction', $direction);
+        $estado->bindParam(':photo', $photo);
+        $estado->bindParam(':institution', $institution);
+        $estado->bindParam(':user_member', $user_member);
+        $estado->bindParam(':id', $id);
+        if (!$estado) {
+            return 'Error al guardar';
+        } else {
+            $estado->execute();
+            return 'Datos guardados con exito';
+        }
+    }
+
     public function ActualizarMembers($name_member, $surname_member, $email, $phone, $direction, $institution, $state, $user_member, $password, $id_rol, $id)
     {
         $modelo = new Conexion();
@@ -174,6 +197,28 @@ class Members
         $estado->bindParam(':user_member', $user_member);
         $estado->bindParam(':password', $password);
         $estado->bindParam(':id_rol', $id_rol);
+        $estado->bindParam(':id', $id);
+        if (!$estado) {
+            return 'Error al guardar';
+        } else {
+            $estado->execute();
+            return 'Datos guardados con exito';
+        }
+    }
+
+    public function ActualizarMembersU($name_member, $surname_member, $email, $phone, $direction, $institution, $user_member, $id)
+    {
+        $modelo = new Conexion();
+        $conexion = $modelo->obtener_conexion();
+        $sql = "update members set name_member=:name_member, surname_member=:surname_member,email=:email, phone=:phone, direction=:direction, institution=:institution, user_member=:user_member where id_member=:id";
+        $estado = $conexion->prepare($sql);
+        $estado->bindParam(':name_member', $name_member);
+        $estado->bindParam(':surname_member', $surname_member);
+        $estado->bindParam(':email', $email);
+        $estado->bindParam(':phone', $phone);
+        $estado->bindParam(':direction', $direction);
+        $estado->bindParam(':institution', $institution);
+        $estado->bindParam(':user_member', $user_member);
         $estado->bindParam(':id', $id);
         if (!$estado) {
             return 'Error al guardar';

@@ -131,6 +131,41 @@ class Modificar extends Controlador
         return true;
     }
 
+    public function membersU()
+    {
+        $consultas = $this->modelo('Members');
+        $id = $_POST['id_member'];
+        $name_member = $_POST['name_member'];
+        $surname_member = $_POST['surname_member'];
+        $email = $_POST['email'];
+        $phone = $_POST['phone'];
+        $direction = $_POST['direction'];
+        $institution = $_POST['institution'];
+        $user_member = $_POST['user_member'];
+
+
+
+
+        if ($_FILES['img-2']['name'] != "") {
+            $ruta = "assets/img/members/" . $_FILES['img-2']['name'];
+            $photo = $_FILES['img-2']['name'];
+            if (move_uploaded_file($_FILES['img-2']['tmp_name'], $ruta)) {
+
+
+                $mensaje = $consultas->ActualizarMembersIU($name_member, $surname_member, $email, $phone, $direction, $photo, $institution, $user_member, $id);
+                echo json_encode($mensaje);
+                return true;
+            }
+        } else {
+            $mensaje = $consultas->ActualizarMembersU($name_member, $surname_member, $email, $phone, $direction, $institution, $user_member, $id);
+            echo json_encode($mensaje);
+            return true;
+        }
+
+
+        return true;
+    }
+
 
     public function product()
     {
