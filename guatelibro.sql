@@ -7,7 +7,7 @@ create table members(
   email varchar(30),
   phone int(8),
   direction varchar(75),
-  photo varchar(75),
+  photo text DEFAULT 'default.jpeg',
   institution varchar(50),
   state boolean,
   user_member varchar(50),

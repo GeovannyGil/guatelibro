@@ -8,10 +8,10 @@ class Verificar extends Controlador
         $consultas = $this->modelo('Members');
         $email_member = $_POST['email_member'];
         $password_member = $_POST['password_member'];
-        $incorrecto = false;
+        // $incorrecto = false;
         $filas = $consultas->buscarMemberVerification($email_member, $password_member);
 
-        if ($filas) {
+        if ($filas !== "user_not_found") {
             foreach ($filas as $fila) {
                 if (($email_member == $fila['email']) && ($password_member == $fila['password'])) {
                     if ($fila['state'] != 0) {
@@ -29,9 +29,11 @@ class Verificar extends Controlador
                         $_SESSION['user_member'] = $fila['user_member'];
                         // $_SESSION['password'] = $fila['password'];
                         $_SESSION['id_rol'] = $fila['id_rol'];
-                        $incorrecto = false;
+                        $_SESSION['rol'] = $fila['rol_member'];
+                        $_SESSION['permisos'] = $fila['permisos_member'];
+                        // $incorrecto = false;
                         echo json_encode(array(
-                            "title" => '¡Éxito!',
+                            "title" => 'Exito!',
                             "message" => 'Bienvenido',
                             "type_message" => "success"
                         ));
@@ -39,14 +41,15 @@ class Verificar extends Controlador
                     }
                     echo json_encode(array(
                         "title" => 'Aviso!',
-                        "message" => 'Esta cuenta no ha sido activada, vaya a su correo y dele click en el enlace',
+                        "message" => 'Esta cuenta esta desactivada',
                         "type_message" => "warning"
                     ));
                     // exit;
                     return true;
-                } else {
-                    $incorrecto = true;
                 }
+                // else {
+                //     $incorrecto = true;
+                // }
             }
         } else {
             echo json_encode(array(
@@ -56,13 +59,33 @@ class Verificar extends Controlador
             ));
             return true;
         }
+    }
 
-        if ($incorrecto == true) {
-            echo json_encode(array(
-                "title" => 'Error!',
-                "message" => 'Correo o contraseña incorrecta',
-                "icon" => "error"
-            ));
-        }
+    public function verificar_correo()
+    {
+        $consultas = $this->modelo('Members');
+        $email_member = $_POST['email_memberR'];
+
+        $existe = $consultas->buscarMembersEmail($email_member);
+        echo json_encode(array(
+            "email" => $existe
+        ));
+    }
+
+
+    public function register_usuario()
+    {
+        $consultas = $this->modelo('Members');
+        $name = $_POST['name'];
+        $surname = $_POST['surname'];
+        $email_member = $_POST['email_memberR'];
+        $passwordR = $_POST['passwordR'];
+        $id_rol = $_POST['id_rol'];
+
+        $registrado = $consultas->registrarMiembro($name, $surname, $email_member, $passwordR, $id_rol);
+        echo json_encode(array(
+            "icon" => $registrado[0],
+            "message" => $registrado[1]
+        ));
     }
 }

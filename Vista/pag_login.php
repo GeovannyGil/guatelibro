@@ -19,11 +19,15 @@
     <div class="form-container sign-up-container">
       <form action="#" id="formRegister">
         <h1>Crear una cuenta</h1>
-        <input type="text" placeholder="Nombre: " />
-        <input type="text" placeholder="Apellido: " />
-        <input type="email" placeholder="Correo" />
-        <input type="password" placeholder="Contraseña" />
-        <button>Registrarse</button>
+        <input type="text" name="name" id="name" placeholder="Nombre: " />
+        <input type="text" name="surname" id="surname" placeholder="Apellido: " />
+        <input type="email" name="email_memberR" id="email_memberR" placeholder="Correo" />
+        <input type="password" name="passwordR" id="passwordR" placeholder="Contraseña" />
+        <?php
+        $Cargar = new Cargar();
+        $Cargar->selectRolRegister();
+        ?>
+        <button id="register_member">Registrarse</button>
       </form>
     </div>
     <div class="form-container sign-in-container">
@@ -31,7 +35,7 @@
         <h1>Ya tengo una cuenta</h1>
         <input type="email" placeholder="Correo" name="email_member" id="email_member" />
         <input type="password" placeholder="Contraseña" id="password_member" name="password_member" />
-        <a href=" #">Olvido su contraseña?</a>
+        <!-- <a href=" #">Olvido su contraseña?</a> -->
         <button id="login_member">Iniciar Sesion</button>
       </form>
     </div>

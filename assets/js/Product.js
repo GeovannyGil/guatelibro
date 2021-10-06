@@ -45,15 +45,6 @@ const send_data = () => {
     }
   }
   xhr.send(formData);
-  // } else {
-  //   Swal.fire({
-  //     icon: 'error',
-  //     title: '¡Advertencia!',
-  //     text: 'El campo rol y los permisos no pueden estar vacios'
-  //   }).then((response) => {
-  //     console.log(response);
-  //   })
-  // }
 }
 
 btnEnviar.onclick = () => { send_data() }

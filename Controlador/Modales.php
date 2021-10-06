@@ -19,12 +19,19 @@ class Modales extends Controlador
 
   public function Product()
   {
-    $consultas = $this->modelo('Product');
     $id_product = $_POST['id_product'];
+    $id_member = $_POST['id_member'];
+
+    $libroYaAgregado = $this->modelo('Library_user');
+    $existe = $libroYaAgregado->buscarProductoIDUser($id_product, $id_member);
+
+    $consultas = $this->modelo('Product');
     $mensaje = $consultas->buscarProductoID($id_product);
+
     echo json_encode(array(
       "id_product" => $id_product,
-      "consulta" => $mensaje
+      "consulta" => $mensaje,
+      "libro_existe" => $existe
     ));
     // return true;
   }

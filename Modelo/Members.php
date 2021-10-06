@@ -36,11 +36,27 @@ class Members
         return $rows;
     }
 
+    public function buscarMembersEmail($correo)
+    {
+        $modelo = new Conexion();
+        $conexion = $modelo->obtener_conexion();
+        $sql = "select email from members where email =:email";
+        $estado = $conexion->prepare($sql);
+        $estado->bindParam(':email', $correo);
+
+        $estado->execute();
+
+        while ($result = $estado->fetch()) {
+            $rows[] = $result;
+        }
+        return isset($rows) ? $rows : "user_not_found";
+    }
+
     public function buscarMemberVerification($email_member, $password_member)
     {
         $modelo = new Conexion();
         $conexion = $modelo->obtener_conexion();
-        $sql = "select * from members where email=:email_member and password = :password_member";
+        $sql = "select m.*, r.rol as rol_member, r.permits as permisos_member from members as m INNER JOIN rol as r ON m.id_rol = r.id_rol where m.email=:email_member and m.password = :password_member";
         $estado = $conexion->prepare($sql);
         $estado->bindParam(':email_member', $email_member);
         $estado->bindParam(':password_member', $password_member);
@@ -50,7 +66,8 @@ class Members
         while ($result = $estado->fetch()) {
             $rows[] = $result;
         }
-        return $rows;
+
+        return isset($rows) ? $rows : "user_not_found";
     }
 
     public function InsertarMembers($name_member, $surname_member, $email, $phone, $direction, $photo, $institution, $state, $user_member, $password, $id_rol)
@@ -76,6 +93,26 @@ class Members
         } else {
             $estado->execute();
             return 'Datos guardados con exito';
+        }
+    }
+
+    public function registrarMiembro($name_member, $surname_member, $email, $password, $rol)
+    {
+        $modelo = new Conexion();
+        $conexion = $modelo->obtener_conexion();
+        $sql = "insert into members(name_member,surname_member,email,state,password,id_rol) values(:name_member,:surname_member,:email, 1, :password, :id_rol)";
+        $estado = $conexion->prepare($sql);
+        $estado->bindParam(':name_member', $name_member);
+        $estado->bindParam(':surname_member', $surname_member);
+        $estado->bindParam(':email', $email);
+        $estado->bindParam(':password', $password);
+        $estado->bindParam(':id_rol', $rol);
+
+        if (!$estado) {
+            return array('error', 'Hubo un error al registrar la cuenta');
+        } else {
+            $estado->execute();
+            return array('success', 'Se registro la cuenta correctamente');
         }
     }
 
