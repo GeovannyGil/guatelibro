@@ -1,5 +1,8 @@
 <?php
 require 'headerClient.php';
+if ($_SESSION['suscription'] == NULL && ($_SESSION['suscription'] == NULL && $_SESSION['rol'] !== "Alumno") && ($_SESSION['suscription'] == NULL && $_SESSION['rol'] !== "Administrador")) {
+  header("Location: http://localhost/guatelibro/ver/comprar_membresias");
+}
 ?>
 
 <div class="container mt-5">

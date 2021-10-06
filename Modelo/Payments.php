@@ -19,6 +19,23 @@ class Payments
         }
     }
 
+    public function buscarPaymentsMember($id_member)
+    {
+        $modelo = new Conexion();
+        $conexion = $modelo->obtener_conexion();
+        $sql = "select pay.*, subs.subscription_end, subs.state, subs.id_suscription from payments as pay INNER JOIN suscriptions as subs ON pay.id_payments = subs.id_payments WHERE pay.id_member = :id_member and subs.state = 1";
+        $estado = $conexion->prepare($sql);
+        $estado->bindParam(':id_member', $id_member);
+        $estado->execute();
+
+        while ($result = $estado->fetch()) {
+            $rows[] = $result;
+        }
+        if (isset($rows)) {
+            return $rows;
+        }
+    }
+
 
 
     public function InsertarPayments($id_member, $id_membership, $payment_type, $payment)

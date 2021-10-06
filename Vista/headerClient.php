@@ -11,6 +11,7 @@ echo '
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="http://localhost/guatelibro/assets/css/style.css">
+    <link rel="shortcut icon" type="image/jpg" href="http://localhost/guatelibro/assets/img/logo-admin.ico" />
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -29,7 +30,12 @@ echo '
     <div class="navbar_left">
       <div class="brand-navbar">
         <img src="http://localhost/guatelibro/assets/img/logo-admin.png" alt="">
-        <a href="#">Guatelibro</a>
+        <a href="#">Guatelibro ';
+if ($_SESSION['suscription'] == true || $_SESSION['rol'] == "Alumno" || $_SESSION['rol'] == "Administrador") {
+  echo '<i class="fas fa-crown"></i>';
+}
+
+echo '</a>
       </div>
     </div>
     <div class="navbar_left">
@@ -59,9 +65,11 @@ echo '
               <a href="http://localhost/guatelibro/ver/perfil">
                 <div class="btn">Mi Perfil</div>
               </a>
-            </li>
-            <li><a class="address letra" href="http://localhost/guatelibro/ver/membresia"><span class="picon"><i class="fas fa-crown"></i></i></span>Membresias</a></li>
-            <li><a class="logout letra" href="http://localhost/guatelibro/Cerrar_session/cerrar"><span class="picon"><i class="fas fa-sign-out-alt"></i></span>Salir</a>
+            </li>';
+if ($_SESSION['suscription'] !== true && ($_SESSION['suscription'] !== true && $_SESSION['rol'] !== "Alumno") && ($_SESSION['suscription'] !== true && $_SESSION['rol'] !== "Administrador")) {
+  echo '<li><a class="address letra" href="http://localhost/guatelibro/ver/comprar_membresias"><span class="picon"><i class="fas fa-crown"></i></i></span>Membresias</a></li>';
+}
+echo '<li><a class="logout letra" href="http://localhost/guatelibro/Cerrar_session/cerrar"><span class="picon"><i class="fas fa-sign-out-alt"></i></span>Salir</a>
             </li>
           </ul>
         </div>

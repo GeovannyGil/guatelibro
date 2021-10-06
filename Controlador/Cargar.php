@@ -277,6 +277,86 @@ class Cargar extends Controlador
         return $filas;
     }
 
+    /*Membership*/
+    public function comprar_membership()
+    {
+        $consultas = $this->modelo('Membership');
+
+        $filas = $consultas->buscarMembership();
+        echo '';
+        if ($filas) {
+            foreach ($filas as $fila) {
+                echo '      
+                    <div class="col-lg-4 mb-5 mb-lg-0">
+                        <div class="bg-white p-5 rounded-lg shadow">';
+                if ($fila['type_membership'] == "Mensual") {
+                    echo '      
+
+                        <h1 class="h6 text-uppercase font-weight-bold mb-4">' . $fila['type_membership'] . '</h1>
+                        <h2 class="h1 font-weight-bold">Q79.99<span class="text-small font-weight-normal ml-2">/ mes</span></h2>
+
+                        <div class="custom-separator my-4 mx-auto btn-primary-gt"></div>
+
+                        <ul class="list-unstyled my-5 text-small text-left">
+                            <li class="mb-3">
+                            <i class="fa fa-check mr-2 text-primary"></i> Acesso a todos los libros
+                            </li>
+                            <li class="mb-3">
+                            <i class="fa fa-check mr-2 text-primary"></i> Compartir libros
+                            </li>
+                            <li class="mb-3">
+                            <i class="fa fa-check mr-2 text-primary"></i> Soporte Completo
+                            </li>
+                        </ul>
+                       ';
+                }
+                if ($fila['type_membership'] == "Anual") {
+                    echo '      
+                        <h1 class="h6 text-uppercase font-weight-bold mb-4">' . $fila['type_membership'] . '</h1>
+                        <h2 class="h1 font-weight-bold">Q849.99<span class="text-small font-weight-normal ml-2">/ anual</span></h2>
+
+                        <div class="custom-separator my-4 mx-auto btn-primary-gt"></div>
+
+                             <ul class="list-unstyled my-5 text-small text-left">
+                            <li class="mb-3">
+                            <i class="fa fa-check mr-2 text-primary"></i> Acesso a todos los libros
+                            </li>
+                            <li class="mb-3">
+                            <i class="fa fa-check mr-2 text-primary"></i> Compartir libros
+                            </li>
+                            <li class="mb-3">
+                            <i class="fa fa-check mr-2 text-primary"></i> Pagas solo 10 meses
+                            </li>
+                        </ul>';
+                }
+                if ($fila['type_membership'] == "Semestral") {
+                    echo '      
+                        <h1 class="h6 text-uppercase font-weight-bold mb-4">' . $fila['type_membership'] . '</h1>
+                        <h2 class="h1 font-weight-bold">Q399.99<span class="text-small font-weight-normal ml-2">/ semestral</span></h2>
+
+                        <div class="custom-separator my-4 mx-auto btn-primary-gt"></div>
+
+                <ul class="list-unstyled my-5 text-small text-left">
+                            <li class="mb-3">
+                            <i class="fa fa-check mr-2 text-primary"></i> Acesso a todos los libros
+                            </li>
+                            <li class="mb-3">
+                            <i class="fa fa-check mr-2 text-primary"></i> Compartir libros
+                            </li>
+                            <li class="mb-3">
+                            <i class="fa fa-check mr-2 text-primary"></i> Pagas solo 5 meses
+                            </li>
+                        </ul>
+                       ';
+                }
+
+                echo '<button href="" class="btn btn-primary-gt btn-block p-2 shadow rounded-pill" onclick="comprar(' . $fila['id_membership'] . ',' . $_SESSION['id_member'] . ',' . $fila['price'] . ',' . $fila['date_months'] . ')">Suscribete</button>
+                        </div>
+                    </div>';
+            }
+        }
+    }
+
     public function selectRol()
     {
         $consultas = $this->modelo('Rol');
@@ -467,7 +547,7 @@ class Cargar extends Controlador
                     echo '<a class="btn btn-lg btn-danger m-2" onclick="delete_library(' . $existe[0]['id_user'] . ')">Eliminar de mi biblioteca</a>
                         <button class="btn btn-lg btn-terceary-gt m2" disabled="disabled" >Ya está en tu biblioteca</button>';
                 } else {
-                    echo '<a class="btn btn-lg btn-secondary-gt m2" id="add_book_library" onclick="add_book(' . $id_product . ',' . $_SESSION['id_member'] . ')">Agregar a mi biblioteca</a>';
+                    echo '<button class="btn btn-lg btn-secondary-gt m2" id="add_book_library" onclick="add_book(' . $id_product . ',' . $_SESSION['id_member'] . ')">Agregar a mi biblioteca</button>';
                 }
                 echo ' </div>
                     </div>';

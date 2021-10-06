@@ -6,10 +6,12 @@ class Verificar extends Controlador
     public function usuario()
     {
         $consultas = $this->modelo('Members');
+        $consultas2 = $this->modelo('Payments');
         $email_member = $_POST['email_member'];
         $password_member = $_POST['password_member'];
         // $incorrecto = false;
         $filas = $consultas->buscarMemberVerification($email_member, $password_member);
+
 
         if ($filas !== "user_not_found") {
             foreach ($filas as $fila) {
@@ -17,6 +19,17 @@ class Verificar extends Controlador
                     if ($fila['state'] != 0) {
                         session_start();
                         $_SESSION['id_member'] = $fila['id_member'];
+                        //SUSCRIPTION
+                        $suscription = $consultas2->buscarPaymentsMember($_SESSION['id_member']);
+                        if ($suscription == null) {
+                            $_SESSION['suscription'] = NULL;
+                        } else {
+                            $_SESSION['suscription'] = true;
+                        }
+
+
+
+                        //SUSCRIPTION
                         $_SESSION['name_member'] = $fila['name_member'];
                         $_SESSION['surname_member'] = $fila['surname_member'];
                         $_SESSION['email'] = $fila['email'];
@@ -31,6 +44,8 @@ class Verificar extends Controlador
                         $_SESSION['id_rol'] = $fila['id_rol'];
                         $_SESSION['rol'] = $fila['rol_member'];
                         $_SESSION['permisos'] = $fila['permisos_member'];
+                        // $_SESSION['state_suscription'] = $fila['state_suscription'];
+                        // $_SESSION['date_suscription_end'] = $fila['date_suscription_end'];
                         // $incorrecto = false;
                         echo json_encode(array(
                             "title" => 'Exito!',
