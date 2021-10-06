@@ -12,6 +12,7 @@ echo '<!DOCTYPE html>
 
 <head>
   <meta charset="utf-8">
+    <title>GUATELIBRO S.A</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Dashboard</title>
   <link rel="shortcut icon" type="image/jpg" href="http://localhost/guatelibro/assets/img/logo-admin.ico" />

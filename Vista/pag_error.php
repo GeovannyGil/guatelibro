@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
   <link rel="shortcut icon" type="image/jpg" href="http://localhost/guatelibro/assets/img/logo-admin.ico" />
-  <title>404 HTML Tempalte by Colorlib</title>
+  <title>GUATELIBRO S.A | ERROR</title>
 
   <!-- Google font -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,900" rel="stylesheet">

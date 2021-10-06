@@ -12,7 +12,7 @@
   <link rel="stylesheet" href="http://localhost/guatelibro/assets/css/fontawesome-free/css/all.min.css">
   <!-- Sweet Alert -->
   <link rel="stylesheet" href="http://localhost/guatelibro/assets/css/sweetAlert/sweetalert2.min.css">
-  <title>Login</title>
+  <title>GUATELIBRO S.A</title>
 </head>
 
 <body>

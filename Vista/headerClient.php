@@ -10,6 +10,7 @@ echo '
 
 <head>
   <meta charset="UTF-8">
+  <title>GUATELIBRO S.A</title>
   <link rel="stylesheet" href="http://localhost/guatelibro/assets/css/style.css">
     <link rel="shortcut icon" type="image/jpg" href="http://localhost/guatelibro/assets/img/logo-admin.ico" />
   <!-- Google Font: Source Sans Pro -->
