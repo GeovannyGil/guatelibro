@@ -73,6 +73,27 @@ class Cargar extends Controlador
         }
     }
 
+        /*botonoes Categoria*/
+        public function botonesCategoriasL()
+        {
+            $consultas = $this->modelo('Categoria');
+    
+            $filas = $consultas->buscarCategoria();
+            echo '<a type="button" class="btn btn-lg btn-secondary-gt btn-category ';
+            echo $_GET['cat'] == 0 ? 'active' : '';
+            echo ' my-3 mx-2" href="http://localhost/guatelibro/ver/libro?page=1&cat=0">Todos</a>';
+
+            if ($filas) {
+                foreach ($filas as $fila) {
+                    echo '
+                        <a class="btn btn-lg btn-secondary-gt btn-category my-3 mx-2 ';
+                    echo $_GET['cat'] ==  $fila['id_category'] ? 'active' : '';
+                    echo '" href="http://localhost/guatelibro/ver/libro?page=1&cat=' . $fila['id_category'] . '">' . $fila['category'] . '</a>
+                    ';
+                }
+            }
+        }
+
     /*Etiquetas Categoria*/
     public function labelsCategorias()
     {
@@ -89,7 +110,7 @@ class Cargar extends Controlador
                 echo '">' . $fila['category'] . '</div>';
             }
         }
-    }
+}
 
     /*Categoria*/
     public function categoria()
@@ -442,6 +463,8 @@ class Cargar extends Controlador
             // ';
         }
     }
+
+    
 
     /*Pagos*/
     public function payments()

@@ -60,4 +60,14 @@ class Ver extends Controlador
     {
         $this->vista2('viewPdf');
     }
+
+    public function libro()
+    {
+        $this->vista2('books');
+    }
+
+    public function perfil()
+    {
+        $this->vista2('perfil');
+    }
 }

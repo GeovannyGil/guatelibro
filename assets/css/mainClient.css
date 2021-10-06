@@ -1103,3 +1103,14 @@ div.btn-add-product {
   justify-content: flex-end;
   align-items: center;
 }
+
+.centrar{
+      height: 100vh;
+      width: 100vh;
+        display: inline-block;        
+        justify-content: center;
+}
+
+.mover {
+margin-left: 75%;
+}

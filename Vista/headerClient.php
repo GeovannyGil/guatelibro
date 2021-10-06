@@ -33,7 +33,7 @@ echo '
     </div>
     <div class="navbar_left">
       <a href="http://localhost/guatelibro/ver/bibliotecaDigital" class="link_page active-link ">Libros</a>
-      <a href="http://localhost/guatelibro/biblioteca.html" class="link_page">Mi Biblioteca</a>
+      <a href="http://localhost/guatelibro/ver/libro" class="link_page">Mi Biblioteca</a>
     </div>
     <div class="navbar_right">
 
@@ -48,7 +48,7 @@ echo '
           <ul class="profile_ul">
             <li class="profile_li"><a class="profile letra" href=""><span class="picon"><i class="fas fa-user-alt"></i>
                 </span>Perfil</a>
-              <a href="http://localhost/guatelibro/perfil.html">
+              <a href="http://localhost/guatelibro/ver/perfil">
                 <div class="btn">Mi Perfil</div>
               </a>
             </li>
